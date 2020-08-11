@@ -11,10 +11,13 @@ import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import PrivateRoute from './components/routing/PrivateRoute';
 import PrivateAdmin from './components/routing/PrivateAdmin';
-import Dashboard from './components/dashboard/Dashboard';
 import Book from './components/auth/Book';
 import ForgotPassword from './components/auth/ForgotPassword';
 import BookId from './components/auth/BookId';
+import Dashboard from './components/dashboard/Dashboard';
+import Regulation from './components/dashboard/Regulation';
+import Visitor from './components/dashboard/Visitor';
+import Schedules from './components/dashboard/Schedules';
 // Actions 
 
 const App= ()=>{
@@ -30,6 +33,9 @@ const App= ()=>{
       <Route exact path='/register' component={Signup} />
       <Route exact path='/forgot-password' component={ForgotPassword} />
       <PrivateAdmin exact path="/dashboard" component={Dashboard} />
+      <PrivateAdmin exact path="/regulation" component={Regulation} />
+      <PrivateAdmin exact path="/visitor" component={Visitor} />
+      <PrivateAdmin exact path="/schedules" component={Schedules} />
       <PrivateRoute exact path="/book" component={Book} />
       <PrivateRoute exact path="/book/:id" component={BookId} />
       </Fragment>
