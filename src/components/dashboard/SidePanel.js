@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import '../auth/assets/css/sb-admin-2.css';
+import "../auth/assets/css/sb-admin-2.css";
 
 const SidePanel = (props) => {
   return (
@@ -68,7 +67,5 @@ const SidePanel = (props) => {
     </Fragment>
   );
 };
-
-SidePanel.propTypes = {};
 
 export default SidePanel;

@@ -1,40 +1,18 @@
+// React Import
 import React, { Fragment } from "react";
-import { Link, Redirect } from "react-router-dom";
-import { Link as Links, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-router-dom";
+import { Link as Links } from "react-scroll";
 import ReactPlayer from 'react-player';
-
 // Main CSS style
 import "./assets/css/style.css";
-// Vendor
-import "./assets/vendor/bootstrap/css/bootstrap.min.css";
-import "./assets/vendor/font-awesome/css/font-awesome.min.css";
-import "./assets/vendor/boxicons/css/boxicons.min.css";
-import "./assets/vendor/owl.carousel/assets/owl.carousel.min.css";
-import "./assets/vendor/venobox/venobox.css";
-import "./assets/vendor/aos/aos.css";
 
-const Landing = () => {
-  // if authenticated , check admin or not , kalo admin ke dashboard, kalo visitor ke booking
-  // if(true){
-  //     return <Redirect to="/dashboard" />
-  // }
+const Landing = ({loadUser}) => {
   return (
     <Fragment>
-      {/* <h1>Landing Pages</h1>
-            <Link to="/login">
-            <button className="btn btn-dark" >Login</button>
-
-            </Link>
-            <Link to="/register">
-            <button className="btn btn-dark" >Signup</button>
-
-            </Link> */}
-
       <header id="header" className="header-transparent">
         <div className="container">
           <div id="logo" className="pull-left">
             {/* <a href="index.html"><img src="assets/img/logo.png" alt=""></a> */}
-
             <h1>
             <Links
                   activeClass="active"
@@ -154,7 +132,7 @@ const Landing = () => {
         <div className="hero-container" data-aos="zoom-in" data-aos-delay="100">
         <div className="row">
           <div className="col-md-6 align-items-center my-4"  >
-          <ReactPlayer width="115%" height="125%" controls url='https://www.youtube.com/watch?v=f9CfAqZfHoc'/>
+          <ReactPlayer width="115%" height="125%"  controls url='https://www.youtube.com/watch?v=f9CfAqZfHoc'/>
 
           </div>
           <div className="col-md-1" />
@@ -934,5 +912,7 @@ const Landing = () => {
     </Fragment>
   );
 };
+
+
 
 export default Landing;

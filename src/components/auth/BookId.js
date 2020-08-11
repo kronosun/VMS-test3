@@ -1,28 +1,16 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { Fragment } from "react";
 import { Helmet } from "react-helmet";
 import "./Signup.css";
 import { QRCode } from "react-qr-svg";
+import "./assets/vendor/fontawesome-free/css/all.min.css";
 
-import TextField from "@material-ui/core/TextField";
-import { makeStyles ,useTheme} from "@material-ui/core/styles";
-import Stepper from "@material-ui/core/Stepper";
-import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import axios from "axios";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Box from "@material-ui/core/Box";
-//Redux
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-// Actions
-import { signupCognito, loadUser, logOut } from "../../actions/auth";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -47,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
     width: 150,
     height: 150,
     alignItems: "center",
-
   },
   controls: {
     display: "flex",
@@ -76,47 +63,75 @@ const BookId = ({ match }) => {
       <div className="container">
         <div className="row justify-content-center">
           <div className=" col-lg-6 col-md-6 col-sm-5">
-            <div className="card o-hidden border-0 shadow-lg my-5">
+            <div className="card o-hidden border-0 shadow-lg my-3">
               <div className="card-body ">
                 <div className="row justify-content-center">
                   <div
-                    className="col-lg-6 col-sm-5 align-items-center  text-center "
-                    style={{ height: "600px" }}
+                    className="col-lg-8 col-sm-5 align-items-center text-center "
+                    style={{ height: "615px" }}
                   >
                     <div className="text-center">
-                      <h1 className="h4 text-gray-900 my-2">Digital Badge</h1>
-                      <QRCode
-                        level="Q"
-                        style={{ width: 100 }}
-                        value={JSON.stringify({
-                          id: 928328,
-                          name: "Jane Doe",
-                          insider: true,
-                        })}
-                      />
-                    </div>
-                    {/* Tempat Isinya */}
-                    <br />
-                    <br />
-                    <br />
-                    <h2 className="h5 text-gray-900 my-2">
-                      Visitor ID : {match.params.id}
-                    </h2>
-                    <div className="text-center align-items-center">
-                    <Card className={classes.card}>
-                        <CardMedia
-                          className={classes.cover}
-                          image="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                          title="Live from space album cover"
-                        />
-                    </Card>
+                      <h1 className="h4 text-gray-900 mb-1">Digital Badge</h1>
                     </div>
 
+                    <small className="d-block text-muted inline-block mt-1 mb-1">
+                      ID : {match.params.id}
+                    </small>
+                    <img
+                      className="shadow img-profile rounded-circle mx-1 mt-2"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_4XtzuMxsKKa7pro9ySNUnob2o2gFD92NVA&usqp=CAU"
+                      style={{ width: "115px", height: "115px" }}
+                    />
+                    <br />
+                    {/* <p className="h3">David Fauzi</p> */}
+                    <p className="h4 text-dark mt-3 mb-0">David Fauzi</p>
+                    <hr />
+                    <TableContainer
+                      component={Paper}
+                      style={{ width: "315x" }}
+                      className="mb-3"
+                    >
+                      <Table aria-label="simple table">
+                        <TableBody>
+                          <TableRow key={0}>
+                            <TableCell component="th" scope="row">
+                              Visitee's Name
+                            </TableCell>
+                            <TableCell align="right">David</TableCell>
+                          </TableRow>
+                          <TableRow key={1}>
+                            <TableCell component="th" scope="row">
+                              Ward's Number
+                            </TableCell>
+                            <TableCell align="right">R102</TableCell>
+                          </TableRow>
+                          <TableRow key={2}>
+                            <TableCell component="th" scope="row">
+                              Visit Date
+                            </TableCell>
+                            <TableCell align="right">10-10-2020</TableCell>
+                          </TableRow>
+                          <TableRow key={3}>
+                            <TableCell component="th" scope="row">
+                              Session
+                            </TableCell>
+                            <TableCell align="right">1 (08.00-11.00)</TableCell>
+                          </TableRow>
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
+
+                    <QRCode
+                      className="shadow-sm border border-light rounded"
+                      level="Q"
+                      style={{ width: 130 }}
+                      value={JSON.stringify({
+                        id: 928328,
+                        name: "Jane Doe",
+                        insider: true,
+                      })}
+                    />
                   </div>
-                  {/* <div
-                    className="col-lg-4 d-none d-lg-block bg-login-image"
-                    style={{ height: "600px" }}
-                  ></div> */}
                 </div>
               </div>
             </div>

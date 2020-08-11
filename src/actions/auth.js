@@ -5,7 +5,6 @@ import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 
 // Load User pas web loading
 export const loadUser = () => async (dispatch) => {
-  console.log("LoadUser Dispatched");
   try {
     dispatch(getAttributes());
     const user = UserPool.getCurrentUser();
@@ -130,7 +129,6 @@ export const logOut = () => async(dispatch)=> {
 // get User Attributes
 
 export const getAttributes = () => async (dispatch) =>{
-  console.log("Get Attributes Triggered !");
   const user =  UserPool.getCurrentUser();
   if(user){
    user.getSession(async (err,session)=>{
@@ -158,6 +156,5 @@ export const getAttributes = () => async (dispatch) =>{
     });
    })
   }
-  console.log("here",user);
 
 };

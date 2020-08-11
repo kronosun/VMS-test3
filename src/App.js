@@ -1,10 +1,9 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { Fragment, useEffect ,useState} from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+//React
+import React, { Fragment, useEffect } from 'react';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
-
 // Components
 import Landing from './components/landing/Landing';
 import Login from './components/auth/Login';
@@ -19,11 +18,15 @@ import Regulation from './components/dashboard/Regulation';
 import Visitor from './components/dashboard/Visitor';
 import Schedules from './components/dashboard/Schedules';
 // Actions 
+import {loadUser} from './actions/auth';
 
 const App= ()=>{
-  useEffect(()=>{
-    console.log("App !");
-},[]);
+  useEffect(() => {
+    const dispatchFunction = async () =>{
+      await store.dispatch(loadUser());
+    }
+    dispatchFunction();
+    }, []);
   return (
     <Provider store={store}>
     <Router>
@@ -43,5 +46,5 @@ const App= ()=>{
     </Provider>
   );
 }
-
 export default App;
+

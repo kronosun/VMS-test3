@@ -5,7 +5,7 @@ const initialState ={
     isAuthenticated:null,
     loading: true,
     user: null,
-    attributes:false
+    attributes:false,
 }
 
 export default function(state=initialState,action){
@@ -16,7 +16,7 @@ export default function(state=initialState,action){
             return {
                 ...state,
                 isAuthenticated:true, 
-                user:payload
+                user:payload,
             }
         case Action.ATTRIBUTES_LOADED:
             return {

@@ -3,7 +3,8 @@ import React, {useState,useEffect, Fragment} from 'react';
 import {Helmet} from 'react-helmet';
 // Import CSS
 import './assets/css/sb-admin-2.css';
-import './assets/vendor/fontawesome-free/css/all.min.css';
+import "./assets/vendor/fontawesome-free/css/all.min.css";
+
 //Redux 
 import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -29,12 +30,7 @@ const ForgotPassword= ({})=>{
                 <Helmet>
                 <style>{'body { background-color: #4E73DF }'}</style>
             </Helmet>
-        {/* <h1>Login</h1>
-        <form onSubmit= {onSubmit}>
-        <input value={email} onChange={e=>setEmail(e.target.value)} />
-        <input type="password" value={password} onChange={e=>setPassword(e.target.value)} />
-        <button type="submit" className="btn btn-dark">Login</button>
-        </form> */}
+
         <div className="container">
 
 <div className="row justify-content-center">
