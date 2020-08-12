@@ -88,9 +88,6 @@ const Login = ({ loginCognito, isAdmin, isAuthenticated }) => {
                             Login
                           </button>
                           { pressed ?                          <div className="spinner-border visible mb-3" role="status">
-                            <span span className="sr-only">
-                              Loading...
-                            </span>
                           </div> : null
 
                 }

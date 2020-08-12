@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import SidePanel from "./SidePanel";
 import TopBar from "./TopBar";
 import TabelSchedule from './schedule/TabelSchedule';
+import Footer from './Footer';
+
 const Schedules = () => {
   return (
     <div id="wrapper">
@@ -17,6 +19,7 @@ const Schedules = () => {
         </div>
 
         </div>
+        <Footer />
       </div>
     </div>
   );

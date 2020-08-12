@@ -44,7 +44,7 @@ const TopBar = ({ message ,burger,logOut,userName,profilePicture}) => {
           Schedules
         </Link>
       </div>
-      <h1 className="h4 mb-0 text-gray-800 mx-2">{message}</h1>
+      <h1 className="h3 mb-0 text-gray-800 mx-1">{message}</h1>
 
       {/* <!-- Topbar Navbar --> */}
       <ul className="navbar-nav ml-auto" >
@@ -70,7 +70,7 @@ const TopBar = ({ message ,burger,logOut,userName,profilePicture}) => {
             </span>
           </a>
         </li>
-        <div className="topbar-divider  d-sm-block mx-1"></div>
+        <div className="topbar-divider  d-sm-block mr-1"></div>
         <li className="nav-item dropdown no-arrow">
           <Link
             className="nav-link"
@@ -101,8 +101,6 @@ const TopBar = ({ message ,burger,logOut,userName,profilePicture}) => {
 
 TopBar.propTypes = {
   logOut :PropTypes.func.isRequired,
-  userName:PropTypes.string.isRequired, 
-  profilePicture: PropTypes.string.isRequired
 }
 
 const mapStateToProps = state => ({
