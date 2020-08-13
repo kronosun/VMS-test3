@@ -86,55 +86,24 @@ function createData(name, calories) {
 }
 
 const rows = [
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
+  // createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
+  createData(101,2),
+  createData(102,2),
+  createData(103,2),
+  createData(104,2),
+  createData(105,2),
+  createData(106,2),
+  createData(107,2),
+  // createData(108,2),
+  // createData(109,2),
+  // createData(110,2),
+  // createData(111,2),
+  // createData(112,2),
+  // createData(113,2),
+  // createData(114,2),
+  // createData(115,2),
+  // createData(116,2),
+
 
 ].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
@@ -144,30 +113,23 @@ const useStyles2 = makeStyles({
   },
 });
 
-export default function TableBed() {
+const TableBed = ({}) =>{
   const classes = useStyles2();
-  const [page, setPage] = React.useState(0);
-  const [direction,setDirection]=React.useState(1);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(4);
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
-    // console.log('page',page);
-    // console.log('rowperpage',rowsPerPage);
-    // console.log('emptyrow',emptyRows);
-    // console.log(Math.ceil(rows.length/rowsPerPage));
-    useEffect(()=>{
-                const getData = async ()=>{
-                    // if(page===(Math.ceil(rows.length/rowsPerPage)-1)&&(Math.ceil(rows.length/rowsPerPage)-1)!==0) setDirection(-1);
-                    // if(page===0 &&(Math.ceil(rows.length/rowsPerPage)-1)!==0) setDirection(1);
-                    // const length=(Math.ceil(rows.length/rowsPerPage)-1);
-                    // if(page<length)setPage(page+1);
-                    // if(page===length+1)setPage(0);
-                    // console.log(page);
-                    console.log(performance.now());
-                    setPage(page+2);
-        }
-        const interval = setInterval(getData,2000);
-        return ()=>clearInterval(interval);
-    },[])
+  const maxPage=(Math.ceil(rows.length/rowsPerPage));
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // console.log("maxPage",maxPage);
+      // console.log((Math.ceil((new Date()).getSeconds()/2)%maxPage));
+      setPage(((Math.ceil((new Date()).getSeconds()/2)%maxPage)));
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -178,11 +140,11 @@ export default function TableBed() {
   };
 
   return (
-    <TableContainer component={Paper} className="shadow-sm p-2 border border-dark rounded-lg">
+    <TableContainer component={Paper} className="shadow-sm p-1 border border-dark rounded-lg">
       <Table  aria-label="custom pagination table">
       <TableHead>
                 <TableRow>
-                  <TableCell component="th" scope="row" key={0} align="left">
+                  <TableCell   component="th" scope="row" key={0} align="left">
                     Bed
                   </TableCell>
                   <TableCell component="th" scope="row" key={1} align="right">
@@ -195,7 +157,7 @@ export default function TableBed() {
             ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : rows
           ).map((row) => (
-            <TableRow key={row.name}>
+            <TableRow key={row.name}  >
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
@@ -211,19 +173,21 @@ export default function TableBed() {
             </TableRow>
           )}
         </TableBody>
-        <TableFooter>
+        {/* <TableFooter>
           <TableRow>
-            {/* <TablePagination
+            <TablePagination
               rowsPerPageOptions={[5, 10, 25]}
               count={rows.length}
               rowsPerPage={rowsPerPage}
               page={page}
               onChangePage={handleChangePage}
               onChangeRowsPerPage={handleChangeRowsPerPage}
-            /> */}
+            />
           </TableRow>
-        </TableFooter>
+        </TableFooter> */}
       </Table>
     </TableContainer>
   );
 }
+
+export default TableBed;

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import SidePanel from "./SidePanel";
 import TopBar from "./TopBar";
 import Footer from "./Footer";
+import SetSession from './regulations/SetSession';
 
 const Regulation = (props) => {
   return (
@@ -12,6 +13,9 @@ const Regulation = (props) => {
       <div id="content-wrapper" className="d-flex flex-column">
         <div id="content">
           <TopBar message="Regulation" burger={true} userName="" profilePicture="" />
+          <div className="container-fluid">
+            <SetSession />
+          </div>
         </div>
         <Footer />
       </div>
