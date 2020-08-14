@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import SidePanel from "./SidePanel";
-import TopBar from "./TopBar";
-import Footer from "./Footer";
+import SidePanel from "./layout/SidePanel";
+import TopBar from "./layout/TopBar";
+import Footer from "./layout/Footer";
 import ChartAll from './dashboard/ChartAll';
 const Dashboard = (props) => {
   return (
     <div id="wrapper">
-      <SidePanel />
+      <SidePanel msg="dashboard"/>
       <div id="content-wrapper" className="d-flex flex-column">
         <div id="content">
           <TopBar

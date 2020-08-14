@@ -1,5 +1,5 @@
 import React from "react";
-import "../auth/assets/css/sb-admin-2.css";
+import "../../auth/assets/css/sb-admin-2.css";
 //Redux
 import { Link,  } from "react-router-dom";
 

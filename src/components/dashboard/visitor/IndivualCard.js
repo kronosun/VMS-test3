@@ -1,27 +1,26 @@
 import React, { Fragment,useState } from "react";
-import PropTypes from "prop-types";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableRow from "@material-ui/core/TableRow";
-import TableHead from '@material-ui/core/TableHead'
-import Paper from "@material-ui/core/Paper";
-import TableBed from "./TableBed";
-import { v4 as uuidv4 } from 'uuid';
 
-const IndivualCard = (props) => {
-  const [current,setCurrent] = useState(0);
+import TableBed from "./TableBed";
+
+const IndivualCard = ({rows,max,ward}) => {
+  // console.log(rows);
   return (
     <Fragment>
-      <div className="card border-secondary shadow border-bottom-primary p-3">
-        <div className="card-body p-0">
-          <h2 className="card-title text-center">Ward <br   /> 101</h2>
+    <div className="col p-0 ">
+      
+      <div className="card border-secondary shadow border-bottom-primary p-4 mx-3 my-3">
+        <div className="card-body p-0 mx-2">
+          <h2 className="card-title text-center">Ward <br   /> {ward}</h2>
 
           <hr className="mt-0 mb-2 border"/>
-          <TableBed  />
+          <div className="container-fluid p-2">
+          <TableBed rows={rows} max={max} />
+            
+          </div>
         </div>
       </div>
+    </div>
+
     </Fragment>
   );
 };

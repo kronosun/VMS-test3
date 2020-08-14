@@ -1,24 +1,16 @@
 import React, {useState,useEffect, Fragment} from 'react';
 import PropTypes from "prop-types";
-import "../auth/assets/css/sb-admin-2.css";
+import "../../auth/assets/css/sb-admin-2.css";
 //Redux 
 import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {logOut} from '../../actions/auth';
+import {logOut} from '../../../actions/auth';
 
 const TopBar = ({ message ,burger,logOut,userName,profilePicture}) => {
+  const [isShown, setIsShown] = useState(false);
   return (
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-      {/* <!-- Sidebar Toggle (Topbar) --> */}
-      {/* <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
-            <i className="fa fa-bars"></i>
-          </button> */}
-      {/* <button
-        id="sidebarToggleTop"
-        className="btn btn-link d-md-none rounded-circle mr-3"
-      >
-        
-      </button> */}
+      
       {burger ? (      <button
         className="btn btn-link d-md-none dropdown-toggle"
         type="button"
@@ -29,7 +21,7 @@ const TopBar = ({ message ,burger,logOut,userName,profilePicture}) => {
       >
         <i className="fa fa-bars"></i>
       </button>) :(null)}
-
+        
       <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <Link className="dropdown-item" to="/dashboard">
           Dashboard
@@ -45,7 +37,12 @@ const TopBar = ({ message ,burger,logOut,userName,profilePicture}) => {
         </Link>
       </div>
       <h1 className="h3 mb-0 text-gray-800 mx-1">{message}</h1>
-
+      <div  style={{width:'75px',height:"50px"}} className="mr-auto border-0 bg-white d-flex justify-content-center"  onMouseEnter={() => setIsShown(true)}
+        onMouseLeave={() => setIsShown(false)}>
+        {isShown &&
+          <i className="btn mx-auto fas fa-eye fa-2x d-lg-inline d-none text-primary " style={{fontSize:"2.5rem"}} data-toggle="collapse" href="#sidebarcollapse" ></i>
+        }
+      </div>
       {/* <!-- Topbar Navbar --> */}
       <ul className="navbar-nav ml-auto" >
         {/* <!-- Nav Item - User Information --> */}

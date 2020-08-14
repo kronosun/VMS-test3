@@ -23,7 +23,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 //Components
-import TopBar from "../dashboard/TopBar";
+import TopBar from "../dashboard/layout/TopBar";
 //Redux
 import { Link } from "react-router-dom";
 // Actions

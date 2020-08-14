@@ -5,8 +5,6 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
@@ -15,6 +13,7 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import TableHead from '@material-ui/core/TableHead';
+import { v4 as uuidv4 } from 'uuid';
 
 const useStyles1 = makeStyles((theme) => ({
   root: {
@@ -74,38 +73,13 @@ function TablePaginationActions(props) {
   );
 }
 
-TablePaginationActions.propTypes = {
-  count: PropTypes.number.isRequired,
-  onChangePage: PropTypes.func.isRequired,
-  page: PropTypes.number.isRequired,
-  rowsPerPage: PropTypes.number.isRequired,
-};
+// TablePaginationActions.propTypes = {
+//   count: PropTypes.number.isRequired,
+//   onChangePage: PropTypes.func.isRequired,
+//   page: PropTypes.number.isRequired,
+//   rowsPerPage: PropTypes.number.isRequired,
+// };
 
-function createData(name, calories) {
-  return { name, calories };
-}
-
-const rows = [
-  // createData(Math.ceil(Math.random()*100),Math.ceil(Math.random()*10)),
-  createData(101,2),
-  createData(102,2),
-  createData(103,2),
-  createData(104,2),
-  createData(105,2),
-  createData(106,2),
-  createData(107,2),
-  // createData(108,2),
-  // createData(109,2),
-  // createData(110,2),
-  // createData(111,2),
-  // createData(112,2),
-  // createData(113,2),
-  // createData(114,2),
-  // createData(115,2),
-  // createData(116,2),
-
-
-].sort((a, b) => (a.calories < b.calories ? -1 : 1));
 
 const useStyles2 = makeStyles({
   table: {
@@ -113,19 +87,31 @@ const useStyles2 = makeStyles({
   },
 });
 
-const TableBed = ({}) =>{
+const TableBed = ({rows,max}) =>{
+  // const [rows,setRows]=useState([]);
+  // const rows=rowsOut;
   const classes = useStyles2();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(4);
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+  // const [emptyRows,setEmpty] = useState(rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage));
+  const emptyRows=rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
   const maxPage=(Math.ceil(rows.length/rowsPerPage));
   
+  
   useEffect(() => {
-    const interval = setInterval(() => {
-      // console.log("maxPage",maxPage);
-      // console.log((Math.ceil((new Date()).getSeconds()/2)%maxPage));
+    const processRow= () => {
+      // setRows(rowsOut);
+      // console.log(rowsOut);
       setPage(((Math.ceil((new Date()).getSeconds()/2)%maxPage)));
-    }, 2000);
+      // setEmpty(rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage));
+      // setMax(Math.ceil(rows.length/rowsPerPage));
+      // console.log("rowpage",rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage));
+      // console.log("row",rows);
+      // console.log("emptyrow",emptyRows);
+      // console.log("maxPage",maxPage);
+    }
+    const interval = setInterval(processRow, 2);
+    processRow();
     return () => clearInterval(interval);
   }, []);
 
@@ -144,10 +130,10 @@ const TableBed = ({}) =>{
       <Table  aria-label="custom pagination table">
       <TableHead>
                 <TableRow>
-                  <TableCell   component="th" scope="row" key={0} align="left">
+                  <TableCell   component="th" scope="row" key={uuidv4()} align="left">
                     Bed
                   </TableCell>
-                  <TableCell component="th" scope="row" key={1} align="right">
+                  <TableCell component="th" scope="row" key={uuidv4()} align="right">
                     Visitors
                   </TableCell>
                 </TableRow>
@@ -157,22 +143,29 @@ const TableBed = ({}) =>{
             ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : rows
           ).map((row) => (
-            <TableRow key={row.name}  >
-              <TableCell component="th" scope="row">
-                {row.name}
+            <TableRow key={uuidv4()} selected={row.visitor>max ?true:false} >
+              <TableCell component="th" scope="row" key={uuidv4()}>
+                {row.bed}
               </TableCell>
-              <TableCell align="right">
-                {row.calories}
+              <TableCell align="right" key={uuidv4()}>
+                {`${row.visitor}/${max}`}
               </TableCell>
             </TableRow>
           ))}
-
           {emptyRows > 0 && (
             <TableRow style={{ height: 53 * emptyRows }}>
-              <TableCell colSpan={6} />
+              <TableCell key={uuidv4()} colSpan={6} />
             </TableRow>
           )}
         </TableBody>
+
+      </Table>
+    </TableContainer>
+  );
+}
+
+export default TableBed;
+// Logo dibawah , tapi gak kepake lagi
         {/* <TableFooter>
           <TableRow>
             <TablePagination
@@ -185,9 +178,3 @@ const TableBed = ({}) =>{
             />
           </TableRow>
         </TableFooter> */}
-      </Table>
-    </TableContainer>
-  );
-}
-
-export default TableBed;

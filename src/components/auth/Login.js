@@ -8,7 +8,7 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import TopBarGuest from "../dashboard/TopBarGuest";
+import TopBarGuest from "../dashboard/layout/TopBarGuest";
 // Actions
 import { loadUser, loginCognito } from "../../actions/auth";
 

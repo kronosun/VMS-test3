@@ -18,7 +18,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 // Actions
 import { signupCognito } from "../../actions/auth";
-import TopBarGuest from "../dashboard/TopBarGuest";
+import TopBarGuest from "../dashboard/layout/TopBarGuest";
 
 function getSteps() {
   return ["Login Details", "Personal Details", "Upload Pictures"];

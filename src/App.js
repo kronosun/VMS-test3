@@ -19,6 +19,7 @@ import Visitor from './components/dashboard/Visitor';
 import Schedules from './components/dashboard/Schedules';
 // Actions 
 import {loadUser} from './actions/auth';
+import LiveStream from './components/dashboard/LiveStream';
 
 const App= ()=>{
   useEffect(() => {
@@ -39,6 +40,7 @@ const App= ()=>{
       <PrivateAdmin exact path="/regulation" component={Regulation} />
       <PrivateAdmin exact path="/visitor" component={Visitor} />
       <PrivateAdmin exact path="/schedules" component={Schedules} />
+      <PrivateAdmin exact path="/livestream" component={LiveStream} />
       <PrivateRoute exact path="/book" component={Book} />
       <PrivateRoute exact path="/book/:id" component={BookId} />
       </Fragment>

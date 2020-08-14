@@ -20,34 +20,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import FilterListIcon from '@material-ui/icons/FilterList';
+import Moment from 'react-moment'
+import { v4 as uuidv4 } from 'uuid';
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
-  
-  const rows = [
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Donut', 452, 25.0, 51, 4.9),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Honeycomb', 408, 3.2, 87, 6.5),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Jelly Bean', 375, 0.0, 94, 0.0),
-    createData('KitKat', 518, 26.0, 65, 7.0),
-    createData('Lollipop', 392, 0.2, 98, 0.0),
-    createData('Marshmallow', 318, 0, 81, 2.0),
-    createData('Nougat', 360, 19.0, 9, 37.0),
-    createData('Oreo', 437, 18.0, 63, 4.0),
-    createData(Math.random().toString(36).substring(7), Math.random(), Math.random(), Math.random(), Math.random()),
-    createData(Math.random().toString(36).substring(7), Math.random(), Math.random(), Math.random(), Math.random()),
-    createData(Math.random().toString(36).substring(7), Math.random(), Math.random(), Math.random(), Math.random()),
-    createData(Math.random().toString(36).substring(7), Math.random(), Math.random(), Math.random(), Math.random()),
-    createData(Math.random().toString(36).substring(7), Math.random(), Math.random(), Math.random(), Math.random()),
-    createData(Math.random().toString(36).substring(7), Math.random(), Math.random(), Math.random(), Math.random()),
-    createData(Math.random().toString(36).substring(7), Math.random(), Math.random(), Math.random(), Math.random()),
-    createData(Math.random().toString(36).substring(7), Math.random(), Math.random(), Math.random(), Math.random()),
-  ];
+
+ 
   
   function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -75,16 +52,9 @@ function createData(name, calories, fat, carbs, protein) {
     return stabilizedThis.map((el) => el[0]);
   }
   
-  const headCells = [
-    { id: 'name', numeric: false, disablePadding: true, label: 'Dessert (100g serving)' },
-    { id: 'calories', numeric: true, disablePadding: false, label: 'Calories' },
-    { id: 'fat', numeric: true, disablePadding: false, label: 'Fat (g)' },
-    { id: 'carbs', numeric: true, disablePadding: false, label: 'Carbs (g)' },
-    { id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
-  ];
-  
+ 
   function EnhancedTableHead(props) {
-    const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
+    const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort,headCells } = props;
     const createSortHandler = (property) => (event) => {
       onRequestSort(event, property);
     };
@@ -92,18 +62,19 @@ function createData(name, calories, fat, carbs, protein) {
     return (
       <TableHead>
         <TableRow>
-          <TableCell padding="checkbox">
+          {/* <TableCell padding="checkbox">
             <Checkbox
               indeterminate={numSelected > 0 && numSelected < rowCount}
               checked={rowCount > 0 && numSelected === rowCount}
               onChange={onSelectAllClick}
               inputProps={{ 'aria-label': 'select all desserts' }}
             />
-          </TableCell>
+          </TableCell> */}
           {headCells.map((headCell) => (
             <TableCell
               key={headCell.id}
-              align={headCell.numeric ? 'right' : 'left'}
+              align= 'left'
+              // {headCell.numeric ? 'right' : 'left'}
               padding={headCell.disablePadding ? 'none' : 'default'}
               sortDirection={orderBy === headCell.id ? order : false}
             >
@@ -172,7 +143,7 @@ function createData(name, calories, fat, carbs, protein) {
           </Typography>
         ) : (
           <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-            Nutrition
+            Visitation Table
           </Typography>
         )}
   
@@ -221,14 +192,24 @@ function createData(name, calories, fat, carbs, protein) {
     },
   }));
   
-const TabelSchedule=()=> {
+const TabelSchedule=({rows})=> {
+  const headCells = [
+    { id: 'visitId', numeric: false, disablePadding: false, label: 'Visit ID' },
+    { id: 'ward', numeric: true, disablePadding: false, label: 'Ward Number' },
+    { id: 'visitee', numeric: false, disablePadding: false, label: 'Visitee' },
+    { id: 'visitor', numeric: false, disablePadding: false, label: 'Visitor' },
+    { id: 'date', numeric: false, disablePadding: false, label: 'Date' },
+    { id: 'session', numeric: true, disablePadding: false, label: 'Sessions' },
+  ];
+
+  
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
-    const [orderBy, setOrderBy] = React.useState('calories');
+    const [orderBy, setOrderBy] = React.useState('date');
     const [selected, setSelected] = React.useState([]);
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(false);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [rowsPerPage, setRowsPerPage] = React.useState(10);
   
     const handleRequestSort = (event, property) => {
       const isAsc = orderBy === property && order === 'asc';
@@ -298,6 +279,7 @@ const TabelSchedule=()=> {
                 onSelectAllClick={handleSelectAllClick}
                 onRequestSort={handleRequestSort}
                 rowCount={rows.length}
+                headCells={headCells}
               />
               <TableBody>
                 {stableSort(rows, getComparator(order, orderBy))
@@ -316,25 +298,30 @@ const TabelSchedule=()=> {
                         key={row.name}
                         selected={isItemSelected}
                       >
-                        <TableCell padding="checkbox">
-                          <Checkbox
+                        {/* <TableCell padding="checkbox" key={uuidv4()}>
+                          <Checkbox 
+                          key={uuidv4()}
                             checked={isItemSelected}
                             inputProps={{ 'aria-labelledby': labelId }}
                           />
+                        </TableCell> */}
+                        <TableCell component="th" id={labelId} scope="row"  key={uuidv4()}>
+                        {row.visitId}
                         </TableCell>
-                        <TableCell component="th" id={labelId} scope="row" padding="none">
-                          {row.name}
+                        <TableCell align="left" key={uuidv4()}>{row.ward}</TableCell>
+                        <TableCell align="left" key={uuidv4()}>{row.visitee}</TableCell>
+                        <TableCell align="left" key={uuidv4()}>{row.visitor}</TableCell>
+                        <TableCell align="left" key={uuidv4()}>
+                        <Moment key={uuidv4()} format="YYYY/MM/DD">{Date.parse(row.date.substring(0,10))}</Moment>
+                        {/* {row.date} */}
                         </TableCell>
-                        <TableCell align="right">{row.calories}</TableCell>
-                        <TableCell align="right">{row.fat}</TableCell>
-                        <TableCell align="right">{row.carbs}</TableCell>
-                        <TableCell align="right">{row.protein}</TableCell>
+                        <TableCell align="left" key={uuidv4()}>{row.session}</TableCell>
                       </TableRow>
                     );
                   })}
                 {emptyRows > 0 && (
-                  <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
-                    <TableCell colSpan={6} />
+                  <TableRow key={uuidv4()} style={{ height: (dense ? 33 : 53) * emptyRows }}>
+                    <TableCell key={uuidv4()} colSpan={6} />
                   </TableRow>
                 )}
               </TableBody>
