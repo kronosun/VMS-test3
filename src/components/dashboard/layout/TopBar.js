@@ -6,7 +6,7 @@ import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {logOut} from '../../../actions/auth';
 
-const TopBar = ({ message ,burger,logOut,userName,profilePicture}) => {
+const TopBar = ({ message ,burger,logOut,userName,profilePicture,isLock,userId}) => {
   const [isShown, setIsShown] = useState(false);
   return (
     <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -37,35 +37,44 @@ const TopBar = ({ message ,burger,logOut,userName,profilePicture}) => {
         </Link>
       </div>
       <h1 className="h3 mb-0 text-gray-800 mx-1">{message}</h1>
-      <div  style={{width:'75px',height:"50px"}} className="mr-auto border-0 bg-white d-flex justify-content-center"  onMouseEnter={() => setIsShown(true)}
+      <div  style={{width:'150px',height:"50px"}} className="mr-auto border-0 bg-white d-flex justify-content-center"  onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}>
         {isShown &&
-          <i className="btn mx-auto fas fa-eye fa-2x d-lg-inline d-none text-primary " style={{fontSize:"2.5rem"}} data-toggle="collapse" href="#sidebarcollapse" ></i>
+          (<Fragment><i className="btn mx-auto fas fa-eye fa-2x d-lg-inline d-none text-secondary ml-4" style={{fontSize:"2.5rem"}} data-toggle="collapse" href="#sidebarcollapse" ></i>
+          </Fragment>)
+        }       
+         {isShown && isLock &&
+          (<Fragment>
+          <i className="btn mx-auto fas fa-user-lock fa-2x d-lg-inline d-none text-secondary ml-4" style={{fontSize:"2.5rem"}} data-toggle="collapse" href="#lockWard" ></i> </Fragment>)
         }
+
       </div>
       {/* <!-- Topbar Navbar --> */}
       <ul className="navbar-nav ml-auto" >
         {/* <!-- Nav Item - User Information --> */}
 
         <li className="nav-item dropdown no-arrow">
-          <a
+          <Link
             className="nav-link dropdown-toggle"
-            href="#"
+            to={`/user/${userId}`}
             id="userDropdown"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
+            // role="button"
+            // data-toggle="dropdown"
+            // aria-haspopup="true"
+            // aria-expanded="false"
           >
+          
             <img
               className="img-profile rounded-circle mx-1"
               src={profilePicture}
               style={{width:"32px",height:"32px"}}
+              
             />
+
             <span className="mx-1 d-lg-inline d-none text-gray-600 small">
               {userName}
             </span>
-          </a>
+          </Link>
         </li>
         <div className="topbar-divider  d-sm-block mr-1"></div>
         <li className="nav-item dropdown no-arrow">
@@ -102,7 +111,8 @@ TopBar.propTypes = {
 
 const mapStateToProps = state => ({
   userName: state.auth.attributes.name,
-  profilePicture:state.auth.attributes.profile
+  profilePicture:state.auth.attributes.profile,
+  userId:state.auth.attributes.userId
 });
 
 export default connect(mapStateToProps,{logOut})(TopBar);

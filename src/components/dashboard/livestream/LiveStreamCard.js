@@ -13,7 +13,7 @@ const LiveStreamCard = ({bed,visitors,max}) => {
                   Bed {bed}
                 </div>
                 <div className="text-xs font-weight-bold text-secondary mb-1" style={{fontSize:"1.5rem"}}>
-                 <span style={{fontSize:"1.8rem"}} >{visitors}/4</span>  Visitors
+                 <span style={{fontSize:"1.8rem"}} >{visitors}/{max}</span>  Visitors
                 </div>
               </div>
               <div className="col-auto">

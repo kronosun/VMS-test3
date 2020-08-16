@@ -56,7 +56,7 @@ const Schedules = () => {
       <SidePanel msg="schedules"/>
       <div id="content-wrapper" className="d-flex flex-column">
         <div id="content">
-          <TopBar message="Schedules" burger={true}  userName="" profilePicture=""/>
+          <TopBar message="Schedules" burger={true}  userName="" profilePicture="" isLock={false}/>
         <div className="container-fluid mx-auto px-5 py-2" >
         <TabelSchedule rows={rows} />
 

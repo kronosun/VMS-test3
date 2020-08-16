@@ -1,16 +1,34 @@
-import React, { Fragment,useState } from "react";
-
+import React, { Fragment,useState,useEffect } from "react";
+import {updateAccess, getAllBed} from '../../../actions/api';
 import TableBed from "./TableBed";
 
-const IndivualCard = ({rows,max,ward}) => {
-  // console.log(rows);
+const IndivualCard = ({rows,max,ward,access,floorNumber}) => {
+  const [currentAccess,setCurrentAccess]=useState(access=="true");
+  const akses=access=="true";
+  const changeAccess= async() =>{
+    // setCurrentAccess(!currentAccess);
+    await updateAccess(floorNumber);
+  }
   return (
     <Fragment>
     <div className="col p-0 ">
-      
-      <div className="card border-secondary shadow border-bottom-primary p-4 mx-3 my-3">
-        <div className="card-body p-0 mx-2">
-          <h2 className="card-title text-center">Ward <br   /> {ward}</h2>
+
+      <div className={`card border-secondary shadow border-bottom-${akses?"primary":"danger"} p-4 mx-3 my-3`}>
+
+        <div className="card-body p-0 mx-2 text-center">
+          <h2 className="card-title text-center">Ward {ward}</h2>
+          {akses &&<i className="btn fas fa-unlock fa-2x text-primary collapse show" id="lockWard" onClick={changeAccess}></i>}
+          {!akses &&<i className="btn fas fa-lock fa-2x text-danger collapse show" id="lockWard" onClick={changeAccess}></i>}
+  
+
+   {/* <h3 className="text-secondary collapse show">
+  {access=="true"?"true":"false"}
+  </h3> */}
+
+          {/* <h2 className="card-title text-center">Ward <br   /> {ward}</h2> */}
+          <div className="mx-auto" >
+
+          </div>
 
           <hr className="mt-0 mb-2 border"/>
           <div className="container-fluid p-2">

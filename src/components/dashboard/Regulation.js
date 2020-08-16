@@ -12,7 +12,7 @@ const Regulation = (props) => {
       <SidePanel msg="regulation" />
       <div id="content-wrapper" className="d-flex flex-column">
         <div id="content">
-          <TopBar message="Regulation" burger={true} userName="" profilePicture="" />
+          <TopBar message="Regulation" burger={true} userName="" profilePicture="" isLock={false}/>
           <div className="container-fluid">
             <SetSession />
           </div>

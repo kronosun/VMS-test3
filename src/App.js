@@ -20,7 +20,7 @@ import Schedules from './components/dashboard/Schedules';
 // Actions 
 import {loadUser} from './actions/auth';
 import LiveStream from './components/dashboard/LiveStream';
-
+import ProfileUser from './components/auth/ProfileUser';
 const App= ()=>{
   useEffect(() => {
     const dispatchFunction = async () =>{
@@ -43,6 +43,7 @@ const App= ()=>{
       <PrivateAdmin exact path="/livestream" component={LiveStream} />
       <PrivateRoute exact path="/book" component={Book} />
       <PrivateRoute exact path="/book/:id" component={BookId} />
+      <PrivateRoute exact path="/user/:id" component={ProfileUser} />
       </Fragment>
     </Router>
     </Provider>

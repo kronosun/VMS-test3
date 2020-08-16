@@ -16,6 +16,7 @@ const Dashboard = (props) => {
             burger={true}
             userName=""
             profilePicture=""
+            isLock={false}
           />
           <div className="container-fluid ">
           

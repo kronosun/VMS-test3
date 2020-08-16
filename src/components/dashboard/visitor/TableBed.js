@@ -145,10 +145,10 @@ const TableBed = ({rows,max}) =>{
           ).map((row) => (
             <TableRow key={uuidv4()} selected={row.visitor>max ?true:false} >
               <TableCell component="th" scope="row" key={uuidv4()}>
-                {row.bed}
+                {row.BedNumber}
               </TableCell>
               <TableCell align="right" key={uuidv4()}>
-                {`${row.visitor}/${max}`}
+                {`${row.visitorCount}/${max}`}
               </TableCell>
             </TableRow>
           ))}
