@@ -11,50 +11,26 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+//Redux
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-const useStyles = makeStyles((theme) => ({
-  card: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    [theme.breakpoints.down("xs")]: {
-      alignItems: "center",
-      flexDirection: "column",
-    },
+const ProfileUser = ({
+  match,
+  attributes: {
+    userId,
+    address,
+    birthdate,
+    phone,
+    gender,
+    admin,
+    profile,
+    name,
+    email,
+    ektp,
   },
-  details: {
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-  },
-  content: {
-    flex: "1 0 auto",
-    alignSelf: "flex-start",
-  },
-  cover: {
-    width: 150,
-    height: 150,
-    alignItems: "center",
-  },
-  controls: {
-    display: "flex",
-    alignItems: "center",
-    paddingLeft: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-  },
-  playIcon: {
-    height: 38,
-    width: 38,
-  },
-  cardContainer: {
-    paddingTop: "20px",
-  },
-}));
-
-const ProfileUser = ({ match }) => {
-  const classes = useStyles();
-  const theme = useTheme();
-
+}) => {
   return (
     <Fragment>
       <Helmet>
@@ -68,69 +44,103 @@ const ProfileUser = ({ match }) => {
               <div className="card-body ">
                 <div className="row justify-content-center">
                   <div
-                    className="col-lg-8 col-sm-5 align-items-center text-center "
-                    style={{ height: "615px" }}
+                    className="col-lg-8 col-sm-8 align-items-center text-center px-1 "
+                    style={{ height: "auto" }}
                   >
                     <div className="text-center">
-                      <h1 className="h4 text-gray-900 mb-1">Profile</h1>
+                      <h1 className="h4 text-gray-900 mb-1">
+                        Visitor's Profile
+                      </h1>
                     </div>
-
-                    <small className="d-block text-muted inline-block mt-1 mb-1">
-                      ID : {match.params.id}
-                    </small>
                     <img
                       className="shadow img-profile rounded-circle mx-1 mt-2"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_4XtzuMxsKKa7pro9ySNUnob2o2gFD92NVA&usqp=CAU"
+                      src={profile}
                       style={{ width: "115px", height: "115px" }}
                     />
                     <br />
-                    {/* <p className="h3">David Fauzi</p> */}
-                    <p className="h4 text-dark mt-3 mb-0">David Fauzi</p>
-                    <hr />
+                    <p className="h4 text-dark mt-3 mb-0">{name}</p>
+                    <hr className="border-bottom-primary" />
                     <TableContainer
                       component={Paper}
-                      style={{ width: "315x" }}
-                      className="mb-3"
+                      style={{ width: "600x" }}
+                      className="mb-3 mx-0"
                     >
                       <Table aria-label="simple table">
                         <TableBody>
                           <TableRow key={0}>
                             <TableCell component="th" scope="row">
-                              Visitee's Name
+                              Email
                             </TableCell>
-                            <TableCell align="right">David</TableCell>
+                            <TableCell
+                              align="right"
+                              style={{ fontSize: "0.8rem" }}
+                            >
+                              {email}
+                            </TableCell>
                           </TableRow>
-                          <TableRow key={1}>
+                          <TableRow key={4}>
                             <TableCell component="th" scope="row">
-                              Ward's Number
+                              Birth Date
                             </TableCell>
-                            <TableCell align="right">R102</TableCell>
-                          </TableRow>
-                          <TableRow key={2}>
-                            <TableCell component="th" scope="row">
-                              Visit Date
+                            <TableCell
+                              align="right"
+                              style={{ fontSize: "0.8rem" }}
+                            >
+                              {birthdate}
                             </TableCell>
-                            <TableCell align="right">10-10-2020</TableCell>
                           </TableRow>
                           <TableRow key={3}>
                             <TableCell component="th" scope="row">
-                              Session
+                              Gender
                             </TableCell>
-                            <TableCell align="right">1 (08.00-11.00)</TableCell>
+                            <TableCell
+                              align="right"
+                              style={{ fontSize: "0.8rem" }}
+                            >
+                              {gender}
+                            </TableCell>
+                          </TableRow>
+                          <TableRow key={5}>
+                            <TableCell component="th" scope="row">
+                              Address
+                            </TableCell>
+                            <TableCell
+                              align="right"
+                              style={{ fontSize: "0.8rem" }}
+                            >
+                              {address}
+                            </TableCell>
+                          </TableRow>
+                          <TableRow key={6}>
+                            <TableCell component="th" scope="row">
+                              Phone Number
+                            </TableCell>
+                            <TableCell
+                              align="right"
+                              style={{ fontSize: "0.8rem" }}
+                            >
+                              {phone}
+                            </TableCell>
+                          </TableRow>
+                          <TableRow key={1}>
+                            <TableCell component="th" scope="row">
+                              Status
+                            </TableCell>
+                            <TableCell
+                              align="right"
+                              style={{ fontSize: "0.8rem" }}
+                            >
+                              {admin ? "Admin" : "Visitor"}
+                            </TableCell>
                           </TableRow>
                         </TableBody>
                       </Table>
                     </TableContainer>
 
-                    <QRCode
-                      className="shadow-sm border border-light rounded"
-                      level="Q"
-                      style={{ width: 130 }}
-                      value={JSON.stringify({
-                        id: 928328,
-                        name: "Jane Doe",
-                        insider: true,
-                      })}
+                    <img
+                      className="shadow-sm border border-light rounded img-profile mx-1 mt-2"
+                      src={ektp}
+                      style={{ width: "250px", height: "130px" }}
                     />
                   </div>
                 </div>
@@ -143,4 +153,12 @@ const ProfileUser = ({ match }) => {
   );
 };
 
-export default ProfileUser;
+ProfileUser.propTypes = {
+  attributes: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  attributes: state.auth.attributes,
+});
+
+export default connect(mapStateToProps, {})(ProfileUser);

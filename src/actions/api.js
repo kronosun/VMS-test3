@@ -1,4 +1,3 @@
-import * as Action from "./types";
 import axios from "axios";
 
 export const dummyApi = async () => {

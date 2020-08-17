@@ -4,7 +4,6 @@ import "./Signup.css";
 import { QRCode } from "react-qr-svg";
 import "./assets/vendor/fontawesome-free/css/all.min.css";
 
-import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -12,7 +11,6 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 //Redux
-import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -63,7 +61,7 @@ const BookId = ({ match,profile }) => {
                     <br />
                     {/* <p className="h3">David Fauzi</p> */}
                     <p className="h4 text-dark mt-3 mb-0">{form.visitor}</p>
-                    <hr />
+                    <hr className="border-bottom-primary" />
                     <TableContainer
                       component={Paper}
                       style={{ width: "315x" }}
@@ -119,7 +117,7 @@ const BookId = ({ match,profile }) => {
 BookId.propTypes = {
   profile: PropTypes.string.isRequired,
 };
-
+  
 const mapStateToProps = (state) => ({
   profile: state.auth.attributes.profile,
 });

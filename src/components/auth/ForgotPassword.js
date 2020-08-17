@@ -6,12 +6,12 @@ import './assets/css/sb-admin-2.css';
 import "./assets/vendor/fontawesome-free/css/all.min.css";
 
 //Redux 
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 // Actions
-import {loadUser,loginCognito} from '../../actions/auth';
+import {loadUser} from '../../actions/auth';
 
 
 const ForgotPassword= ({})=>{

@@ -31,7 +31,6 @@ const Landing = ({loadUser}) => {
           <nav id="nav-menu-container">
             <ul className="nav-menu">
               <li >
-              {/* className="menu-active"  -> kalo mau aktifin*/}
               <Links
                   activeClass="active"
                   to="hero"

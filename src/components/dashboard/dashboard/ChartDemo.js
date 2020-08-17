@@ -82,7 +82,6 @@ const ChartAll = (props) => {
     <div className="col-6">
       <Line
         data={dataChart}
-        
       />
     </div>
     <div className="col-6">

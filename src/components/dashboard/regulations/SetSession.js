@@ -30,45 +30,45 @@ const SetSession = (props) => {
   const [updateEnd, setUpdateEnd] = useState(-1);
   const [editDay, setEditDay] = useState({
     sessionDay: updateDay,
-    fromDay: "10:10",
-    toDay: "10:10",
+    fromDay: "00:00",
+    toDay: "00:00",
   });
   const [editEnd, setEditEnd] = useState({
     sessionEnd: updateEnd,
-    fromEnd: "10:10",
-    toEnd: "10:10",
+    fromEnd: "00:00",
+    toEnd: "00:00",
   });
   const [weekDaySession, setweekDaySession] = useState([
     {
       session_number: 1,
-      session_from: "08:00",
-      session_to: "10:00",
+      session_from: "00:00",
+      session_to: "00:00",
     },
     {
       session_number: 2,
-      session_from: "11:00",
-      session_to: "13:00",
+      session_from: "00:00",
+      session_to: "00:00",
     },
   ]);
 
   const [weekEndSession, setweekEndSession] = useState([
     {
       session_number: 1,
-      session_from: "08:00",
-      session_to: "10:00",
+      session_from: "00:00",
+      session_to: "00:00",
     },
     {
       session_number: 2,
-      session_from: "11:00",
-      session_to: "13:00",
+      session_from: "00:00",
+      session_to: "00:00",
     },
   ]);
   const [formData, setFormData] = useState({
-    maxVisitor: 5,
+    maxVisitor: 0,
     maxVisitorStatus: true,
-    maxTime: 2,
+    maxTime: 0,
     maxTimeStatus: true,
-    rules: ["1", "2", "3", "4"],
+    rules: [],
   });
   const fetchRules = async() => {
     const newData = await getRules();
@@ -169,8 +169,8 @@ const SetSession = (props) => {
 
     const newInput = {
       session_number: updateDay,
-      session_from: editDay.fromDay,
-      session_to: editDay.toDay,
+      session_from: editDay.fromDay.concat(":00"),
+      session_to: editDay.toDay.concat(":00"),
     };
     console.log(newInput);
     if (idx !== -1) newData.splice(idx, 1, newInput);
@@ -184,8 +184,8 @@ const SetSession = (props) => {
     const newData = [...weekEndSession];
     const newInput = {
       session_number: updateEnd,
-      session_from: editEnd.fromEnd,
-      session_to: editEnd.toEnd,
+      session_from: editEnd.fromEnd.concat(":00"),
+      session_to: editEnd.toEnd.concat(":00"),
     };
     console.log(newInput);
     if (idx !== -1) newData.splice(idx, 1, newInput);
@@ -196,8 +196,8 @@ const SetSession = (props) => {
     const newData = [...weekDaySession];
     const newInput = {
       session_number: weekDaySession.length + 1,
-      session_from: editDay.fromDay,
-      session_to: editDay.toDay,
+      session_from: editDay.fromDay.concat(":00"),
+      session_to: editDay.toDay.concat(":00"),
     };
     newData.push(newInput);
     setweekDaySession(newData);
@@ -206,8 +206,8 @@ const SetSession = (props) => {
     const newData = [...weekEndSession];
     const newInput = {
       session_number: weekEndSession.length + 1,
-      session_from: editEnd.fromEnd,
-      session_to: editEnd.toEnd,
+      session_from: editEnd.fromEnd.concat(":00"),
+      session_to: editEnd.toEnd.concat(":00"),
     };
     newData.push(newInput);
     console.log(newData);
