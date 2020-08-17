@@ -102,12 +102,25 @@ export const getRules = async () => {
       maxTimeStatus: data[0].maximum_visitor.max_time_status,
       rules: data[0].general,
     };
-    console.log(newData);
     return newData;
   } catch (error) {
     console.error(error);
   }
 };
+
+// update Rules
+
+export const updateRules = async(formData)=>{
+    try {
+        const res = await axios.put("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/rules/update",JSON.stringify(formData));
+        console.log(res.data.statusCode);
+        return res.data.statusCode;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
 
 // Get Written Rules only
 
@@ -175,3 +188,4 @@ export const getBookId= async (visitId) =>{
         console.error(error);
     }
 }
+

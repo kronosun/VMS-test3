@@ -20,9 +20,12 @@ const axios=require('axios');
 // }
 const getData= async () =>{
     try {
-        const res = await axios.get("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/get/eeb39ea0e4135bd8cb0bc7cd075c3739");
-    const data= res.data.body
-    console.log(data);
+        const res = await axios.get("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/rules/get");
+    const data= res.data.body;
+    console.log(data[0].session_rules);
+    
+
+
     } catch (error) {
         console.error(error);
     }
@@ -31,3 +34,24 @@ const getData= async () =>{
 getData();
 
 // console.log((new Date("2020-08-20")).getDay());
+// const newSessionDay={
+//     session_day: 'weekday',
+//     sessions:[]
+// }
+
+// const newSessionEnd={
+//     session_day: 'weekend',
+//     sessions:[]
+// }
+
+// const newFormat={
+//     Rules: 'RULES',
+//     session_rules:[newSessionDay,newSessionEnd],
+//     maximum_visitor:{
+//         max_visitor,
+//         max_time,
+//         max_time_status,
+//         max_visitor_status
+//     },
+//     general:[...rules]
+// }

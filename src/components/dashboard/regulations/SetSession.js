@@ -5,7 +5,7 @@ import { Button } from "react-scroll";
 import { TextField, Fab } from "@material-ui/core";
 import Switch from "@material-ui/core/Switch";
 import AddIcon from "@material-ui/icons/Add";
-import {getRules, dummyApi} from '../../../actions/api';
+import {getRules, updateRules} from '../../../actions/api';
 
 
 const dataDummy = async ()=>{
@@ -70,28 +70,28 @@ const SetSession = (props) => {
     maxTimeStatus: true,
     rules: ["1", "2", "3", "4"],
   });
-
+  const fetchRules = async() => {
+    const newData = await getRules();
+    const freshFormData={
+      maxVisitor: Number(newData.maxVisitor),
+      maxVisitorStatus: String(newData.maxVisitorStatus)==='true',
+      maxTime: Number(newData.maxTime),
+      maxTimeStatus: String(newData.maxTimeStatus)==='true',
+      rules: newData.rules
+    }
+    const freshWeekDay=[...newData.weekDaySession];
+    const freshWeekEnd=[...newData.weekEndSession];
+    const test= await dataDummy();
+    console.log("formData",freshFormData);
+    console.log("weekday",freshWeekDay);
+    console.log("weekend",freshWeekEnd);
+    console.log("test",test);
+    setFormData(freshFormData);
+    setweekDaySession(freshWeekDay);
+    setweekEndSession(freshWeekEnd);
+  };
   useEffect(() => {
-    const fetchRules = async() => {
-      const newData = await getRules();
-      const freshFormData={
-        maxVisitor: Number(newData.maxVisitor),
-        maxVisitorStatus: String(newData.maxVisitorStatus)==='true',
-        maxTime: Number(newData.maxTime),
-        maxTimeStatus: String(newData.maxTimeStatus)==='true',
-        rules: newData.rules
-      }
-      const freshWeekDay=[...newData.weekDaySession];
-      const freshWeekEnd=[...newData.weekEndSession];
-      const test= await dataDummy();
-      console.log("formData",freshFormData);
-      console.log("weekday",freshWeekDay);
-      console.log("weekend",freshWeekEnd);
-      console.log("test",test);
-      setFormData(freshFormData);
-      setweekDaySession(freshWeekDay);
-      setweekEndSession(freshWeekEnd);
-    };
+
     fetchRules();
     // const interval = setInterval(fetchRules, 8000);
     // return () => clearInterval(interval);
@@ -108,11 +108,36 @@ const SetSession = (props) => {
     setFormData(newForm);
     console.log(newForm);
   };
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
     console.log(weekDaySession);
     console.log(weekEndSession);
+    const newSessionDay={
+      session_day: 'weekday',
+      sessions:[...weekDaySession]
+  }
+  
+  const newSessionEnd={
+      session_day: 'weekend',
+      sessions:[...weekEndSession]
+  }
+  
+  const newFormat={
+      Rules: 'RULES',
+      session_rules:[newSessionDay,newSessionEnd],
+      maximum_visitor:{
+          max_visitor:formData.maxVisitor,
+          max_time:formData.maxTime,
+          max_time_status:formData.maxTimeStatus,
+          max_visitor_status:formData.maxVisitorStatus
+      },
+      general:[...formData.rules]
+  }
+  console.log("SEND",JSON.stringify(newFormat));
+    const code =await updateRules(newFormat);
+    if (code===200)console.log("Update SUCCESS");
+    await fetchRules();
   };
 
   const deleteSessionDay = (e) => {
