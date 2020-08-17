@@ -1,29 +1,32 @@
 import React, { Fragment,useState,useEffect } from "react";
-import {updateAccess, getAllBed} from '../../../actions/api';
+import {updateAccess, getAllBed,dummyFetch} from '../../../actions/api';
 import TableBed from "./TableBed";
+//Redux
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-const IndivualCard = ({rows,max,ward,access,floorNumber}) => {
+const IndivualCard = ({rows,max,ward,access,floorNumber,fetchData,top}) => {
   const [currentAccess,setCurrentAccess]=useState(access=="true");
   const akses=access=="true";
   const changeAccess= async() =>{
     // setCurrentAccess(!currentAccess);
-    await updateAccess(floorNumber);
+    await updateAccess(String(floorNumber),String(ward),akses);
+    // await dummyFetch();
+    await fetchData();
   }
   return (
     <Fragment>
-    <div className="col p-0 ">
-
-      <div className={`card border-secondary shadow border-bottom-${akses?"primary":"danger"} p-4 mx-3 my-3`}>
+    <div className="col y-2 ">
+      <div className={`card border-secondary shadow border-bottom-secondary px-4 py-2 mx-3 my-3`}>
 
         <div className="card-body p-0 mx-2 text-center">
-          <h2 className="card-title text-center">Ward {ward}</h2>
-          {akses &&<i className="btn fas fa-unlock fa-2x text-primary collapse show" id="lockWard" onClick={changeAccess}></i>}
-          {!akses &&<i className="btn fas fa-lock fa-2x text-danger collapse show" id="lockWard" onClick={changeAccess}></i>}
+          <h2 className="card-title text-center text-dark">Ward {ward}</h2>
+
+          {akses &&<i className="btn fas fa-unlock fa-2x text-success collapse show " id="lockWard" onClick={changeAccess}></i>}
+          {!akses &&<i className="btn fas fa-lock fa-2x text-danger collapse show " id="lockWard" onClick={changeAccess}></i>}
   
 
-   {/* <h3 className="text-secondary collapse show">
-  {access=="true"?"true":"false"}
-  </h3> */}
 
           {/* <h2 className="card-title text-center">Ward <br   /> {ward}</h2> */}
           <div className="mx-auto" >
@@ -33,19 +36,32 @@ const IndivualCard = ({rows,max,ward,access,floorNumber}) => {
           <hr className="mt-0 mb-2 border"/>
           <div className="container-fluid p-2">
           <TableBed rows={rows} max={max} />
-            
+
+
+          <h5 className={`text-${access=="true"?"success":"danger"} collapse show mt-2`} id="lockWard">
+          {access=="true"?"Access: Allowed":"Access: Denied"}
+        </h5>
+         
+
           </div>
-        </div>
-      </div>
+          
+        </div></div>
     </div>
 
     </Fragment>
   );
 };
 
-IndivualCard.propTypes = {};
+IndivualCard.propTypes = {
+top:PropTypes.bool.isRequired,
+};
 
-export default IndivualCard;
+const mapStateToProps = (state) => ({
+top:state.auth.top
+});
+
+export default connect(mapStateToProps, {})(IndivualCard);
+
 
           {/* <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
           <p className="card-text">

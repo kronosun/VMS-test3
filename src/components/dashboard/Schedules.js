@@ -5,6 +5,7 @@ import SidePanel from "./layout/SidePanel";
 import TopBar from "./layout/TopBar";
 import TabelSchedule from './schedule/TabelSchedule';
 import Footer from './layout/Footer';
+import {getSchedule} from '../../actions/api';
 
 const rowsdemo = [
   createData(Math.random().toString(36).substring(7),Math.ceil( Math.random()*200+100), Math.random().toString(36).substring(7),Math.random().toString(36).substring(7), '2020/08/11/1',1),
@@ -30,21 +31,26 @@ function createData(visitId, ward, visitee, visitor, date,session) {
   return { visitId, ward, visitee, visitor, date,session };
 }
 
+const fetchRowArtificical = async () => {
+  const data =Array.from({length: 40}, () =>{
+    const newVisit=Math.random().toString(36).substring(7);
+    const newWard=Math.ceil(Math.random()*2)*100+(Math.ceil(Math.random()*2));
+    const newVisitee=Math.random().toString(36).substring(7)
+    const newVisitor= Math.random().toString(36).substring(7)
+    const newSession=Math.ceil(Math.random()*3);
+    const newDay=Math.ceil(Math.random()*5+10);
+    const newDate=`2020/08/${newDay}/${newSession}/${newWard}`
+
+     return createData(newVisit,newWard,newVisitee,newVisitor,newDate ,newSession)
+  });
+  return data;
+}
+
 const Schedules = () => {
-  const [rows,setRows]=useState(rowsdemo);
+  const [rows,setRows]=useState([]);
   useEffect(() => {
     const fetchRows= async () => {
-      const newRows= Array.from({length: 40}, () =>{
-        const newVisit=Math.random().toString(36).substring(7);
-        const newWard=Math.ceil(Math.random()*2)*100+(Math.ceil(Math.random()*2));
-        const newVisitee=Math.random().toString(36).substring(7)
-        const newVisitor= Math.random().toString(36).substring(7)
-        const newSession=Math.ceil(Math.random()*3);
-        const newDay=Math.ceil(Math.random()*5+10);
-        const newDate=`2020/08/${newDay}/${newSession}/${newWard}`
-
-         return createData(newVisit,newWard,newVisitee,newVisitor,newDate ,newSession)
-      });
+      const newRows= await getSchedule();
       setRows(newRows);
     };
     fetchRows();

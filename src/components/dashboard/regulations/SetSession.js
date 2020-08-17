@@ -5,6 +5,24 @@ import { Button } from "react-scroll";
 import { TextField, Fab } from "@material-ui/core";
 import Switch from "@material-ui/core/Switch";
 import AddIcon from "@material-ui/icons/Add";
+import {getRules, dummyApi} from '../../../actions/api';
+
+
+const dataDummy = async ()=>{
+  const data ={
+    maxVisitor: Math.ceil(Math.random() * 10),
+    maxVisitorStatus: true,
+    maxTime: Math.ceil(Math.random() * 3),
+    maxTimeStatus: true,
+    rules: [
+      Math.random().toString(36).substring(8),
+      Math.random().toString(36).substring(8),
+      Math.random().toString(36).substring(8),
+      Math.random().toString(36).substring(8),
+    ],
+  };
+  return data;
+}
 
 const SetSession = (props) => {
   const [newRules, setNewRules] = useState("");
@@ -22,27 +40,27 @@ const SetSession = (props) => {
   });
   const [weekDaySession, setweekDaySession] = useState([
     {
-      session: 1,
-      from: "08:00",
-      to: "10:00",
+      session_number: 1,
+      session_from: "08:00",
+      session_to: "10:00",
     },
     {
-      session: 2,
-      from: "11:00",
-      to: "13:00",
+      session_number: 2,
+      session_from: "11:00",
+      session_to: "13:00",
     },
   ]);
 
   const [weekEndSession, setweekEndSession] = useState([
     {
-      session: 1,
-      from: "08:00",
-      to: "10:00",
+      session_number: 1,
+      session_from: "08:00",
+      session_to: "10:00",
     },
     {
-      session: 2,
-      from: "11:00",
-      to: "13:00",
+      session_number: 2,
+      session_from: "11:00",
+      session_to: "13:00",
     },
   ]);
   const [formData, setFormData] = useState({
@@ -54,24 +72,29 @@ const SetSession = (props) => {
   });
 
   useEffect(() => {
-    const fetchRules = () => {
-      const newData = {
-        maxVisitor: Math.ceil(Math.random() * 10),
-        maxVisitorStatus: true,
-        maxTime: Math.ceil(Math.random() * 3),
-        maxTimeStatus: true,
-        rules: [
-          Math.random().toString(36).substring(8),
-          Math.random().toString(36).substring(8),
-          Math.random().toString(36).substring(8),
-          Math.random().toString(36).substring(8),
-        ],
-      };
-      setFormData(newData);
+    const fetchRules = async() => {
+      const newData = await getRules();
+      const freshFormData={
+        maxVisitor: Number(newData.maxVisitor),
+        maxVisitorStatus: String(newData.maxVisitorStatus)==='true',
+        maxTime: Number(newData.maxTime),
+        maxTimeStatus: String(newData.maxTimeStatus)==='true',
+        rules: newData.rules
+      }
+      const freshWeekDay=[...newData.weekDaySession];
+      const freshWeekEnd=[...newData.weekEndSession];
+      const test= await dataDummy();
+      console.log("formData",freshFormData);
+      console.log("weekday",freshWeekDay);
+      console.log("weekend",freshWeekEnd);
+      console.log("test",test);
+      setFormData(freshFormData);
+      setweekDaySession(freshWeekDay);
+      setweekEndSession(freshWeekEnd);
     };
     fetchRules();
-    const interval = setInterval(fetchRules, 8000);
-    return () => clearInterval(interval);
+    // const interval = setInterval(fetchRules, 8000);
+    // return () => clearInterval(interval);
   }, []);
 
   const onChange = (e) => {
@@ -88,12 +111,15 @@ const SetSession = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
+    console.log(weekDaySession);
+    console.log(weekEndSession);
   };
 
   const deleteSessionDay = (e) => {
     const idx = weekDaySession.findIndex(
-      (x) => Number(x.session) === Number(e.target.value)
+      (x) => Number(x.session_number) === Number(e.target.value)
     );
+
     const newData = [...weekDaySession];
     if (idx !== -1) newData.splice(idx, 1);
     setweekDaySession(newData);
@@ -101,7 +127,7 @@ const SetSession = (props) => {
 
   const deleteSessionEnd = (e) => {
     const idx = weekEndSession.findIndex(
-      (x) => Number(x.session) === Number(e.target.value)
+      (x) => Number(x.session_number) === Number(e.target.value)
     );
     const newData = [...weekEndSession];
     if (idx !== -1) newData.splice(idx, 1);
@@ -110,16 +136,16 @@ const SetSession = (props) => {
 
   const updateSessionDay = (e) => {
     const idx = weekDaySession.findIndex(
-      (x) => Number(x.session) === Number(updateDay)
+      (x) => Number(x.session_number) === Number(updateDay)
     );
     console.log(idx);
     const newData = [...weekDaySession];
     console.log(newData);
 
     const newInput = {
-      session: updateDay,
-      from: editDay.fromDay,
-      to: editDay.toDay,
+      session_number: updateDay,
+      session_from: editDay.fromDay,
+      session_to: editDay.toDay,
     };
     console.log(newInput);
     if (idx !== -1) newData.splice(idx, 1, newInput);
@@ -128,13 +154,13 @@ const SetSession = (props) => {
   const updateSessionEnd = (e) => {
     console.log(updateEnd);
     const idx = weekDaySession.findIndex(
-      (x) => Number(x.session) === Number(updateEnd)
+      (x) => Number(x.session_number) === Number(updateEnd)
     );
     const newData = [...weekEndSession];
     const newInput = {
-      session: updateEnd,
-      from: editEnd.fromEnd,
-      to: editEnd.toEnd,
+      session_number: updateEnd,
+      session_from: editEnd.fromEnd,
+      session_to: editEnd.toEnd,
     };
     console.log(newInput);
     if (idx !== -1) newData.splice(idx, 1, newInput);
@@ -144,9 +170,9 @@ const SetSession = (props) => {
   const addWeekDaySession = () => {
     const newData = [...weekDaySession];
     const newInput = {
-      session: weekDaySession.length + 1,
-      from: editDay.fromDay,
-      to: editDay.toDay,
+      session_number: weekDaySession.length + 1,
+      session_from: editDay.fromDay,
+      session_to: editDay.toDay,
     };
     newData.push(newInput);
     setweekDaySession(newData);
@@ -154,9 +180,9 @@ const SetSession = (props) => {
   const addWeekEndSession = () => {
     const newData = [...weekEndSession];
     const newInput = {
-      session: weekEndSession.length + 1,
-      from: editEnd.fromEnd,
-      to: editEnd.toEnd,
+      session_number: weekEndSession.length + 1,
+      session_from: editEnd.fromEnd,
+      session_to: editEnd.toEnd,
     };
     newData.push(newInput);
     console.log(newData);
@@ -165,7 +191,7 @@ const SetSession = (props) => {
 
   const onChangeDay = (e) => {
     const newData = { ...editDay, [e.target.name]: e.target.value };
-    console.log(newData);
+    // console.log(newData);
     setEditDay(newData);
   };
   const onChangeEnd = (e) => {
@@ -208,15 +234,15 @@ const SetSession = (props) => {
                   <div className="row no-gutters align-items-center p-0">
                     <div className="col mr-2">
                       <div className="text-sm font-weight-bold text-dark text-uppercase mb-1">
-                        Session {x.session}
+                        Session {x.session_number}
                       </div>
                       <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                        {x.from} - {x.to}
+                        {x.session_from} - {x.session_to}
                       </div>
                     </div>
                     <div className="col-auto">
                       <button
-                        value={x.session}
+                        value={Number(x.session_number)}
                         className="btn fas fa-edit fa-2x text-danger-300 p-0 ml-2"
                         style={{ fontSize: "2.2em", color: "orange" }}
                         data-toggle="modal"
@@ -232,7 +258,7 @@ const SetSession = (props) => {
                       <button
                         className="btn fas fa-times fa-2x text-danger-300 p-0 ml-2"
                         style={{ fontSize: "2.5em", color: "red" }}
-                        value={x.session}
+                        value={Number(x.session_number)}
                         onClick={deleteSessionDay}
                       ></button>
                     </div>
@@ -679,15 +705,15 @@ const SetSession = (props) => {
                   <div className="row no-gutters align-items-center p-0">
                     <div className="col mr-2">
                       <div className="text-sm font-weight-bold text-dark text-uppercase mb-1">
-                        Session {x.session}
+                        Session {x.session_number}
                       </div>
                       <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                        {x.from} - {x.to}
+                        {x.session_from} - {x.session_to}
                       </div>
                     </div>
                     <div className="col-auto">
                       <button
-                        value={x.session}
+                        value={Number(x.session_number)}
                         className="btn fas fa-edit fa-2x text-danger-300 p-0 ml-2"
                         style={{ fontSize: "2.2em", color: "orange" }}
                         data-toggle="modal"
@@ -701,7 +727,7 @@ const SetSession = (props) => {
                         }}
                       ></button>
                       <button
-                        value={x.session}
+                        value={Number(x.session_number)}
                         onClick={deleteSessionEnd}
                         className="btn fas fa-times fa-2x text-danger-300 p-0 ml-2"
                         style={{ fontSize: "2.5em", color: "red" }}
@@ -915,7 +941,7 @@ const SetSession = (props) => {
             {formData.rules &&
               formData.rules.map((x, i) => (
                 <Fragment>
-                  <div class="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between">
                     <li
                       className="list-group-item my-1 "
                       style={{ width: "900px" }}
@@ -926,7 +952,6 @@ const SetSession = (props) => {
                       className="btn fas fa-times text-danger-300 p-0 m-auto"
                       style={{ fontSize: "2em", color: "red" }}
                       onClick={() => deleteRules(x)}
-                      button
                     />
                   </div>{" "}
                 </Fragment>
@@ -936,7 +961,7 @@ const SetSession = (props) => {
         <div className="col-auto">
           <Fab
             aria-label="add"
-            className="btn mx-auto text-light bg-success"
+            className="btn mx-auto text-light bg-success "
             data-toggle="modal"
             data-target="#addRules"
           >
@@ -945,7 +970,7 @@ const SetSession = (props) => {
         </div>
       </div>
       <div className="d-sm-flex align-items-center justify-content-center mb-3">
-        <button className="btn btn-success my-3">Update Regulation</button>
+        <button className="btn btn-success my-3" onClick={onSubmit}>Update Regulation</button>
       </div>
       {/* <button className="btn btn-primary d-sm-flex align-items-center my-2 mx-1 ">
         {" "}

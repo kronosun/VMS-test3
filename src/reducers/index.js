@@ -3,6 +3,6 @@ import auth from './auth';
 
 
 const func=combineReducers({
-    auth
+    auth,
 });
 export default func;

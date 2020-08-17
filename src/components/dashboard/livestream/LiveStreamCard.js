@@ -18,7 +18,7 @@ const LiveStreamCard = ({bed,visitors,max}) => {
               </div>
               <div className="col-auto">
                 <i
-                  className={`btn fas fa-bed fa-2x text-${visitors>max?"danger":"primary"} p-0`}
+                  className={`fas fa-bed fa-2x text-${visitors>max?"danger":"primary"} p-0`}
                   style={{ fontSize: "3.5em"}}
                 ></i>
               </div>

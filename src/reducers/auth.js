@@ -5,13 +5,14 @@ const initialState ={
     isAuthenticated:null,
     loading: true,
     user: null,
-    attributes:false,
+    attributes:false
 }
 
 export default function(state=initialState,action){
     const {type,payload} = action;
     switch(type)
     {
+
         case Action.USER_LOADED:
             return {
                 ...state,

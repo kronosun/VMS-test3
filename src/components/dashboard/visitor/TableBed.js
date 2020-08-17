@@ -148,7 +148,7 @@ const TableBed = ({rows,max}) =>{
                 {row.BedNumber}
               </TableCell>
               <TableCell align="right" key={uuidv4()}>
-                {`${row.visitorCount}/${max}`}
+                {`${row.visitorCount}`}{max!==100?`/${max}`:null}
               </TableCell>
             </TableRow>
           ))}
