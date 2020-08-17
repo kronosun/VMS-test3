@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment,useState,useEffect } from "react";
 import { Helmet } from "react-helmet";
 import "./Signup.css";
 import { QRCode } from "react-qr-svg";
@@ -11,48 +11,26 @@ import TableCell from "@material-ui/core/TableCell";
 import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+//Redux
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-const useStyles = makeStyles((theme) => ({
-  card: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    [theme.breakpoints.down("xs")]: {
-      alignItems: "center",
-      flexDirection: "column",
-    },
-  },
-  details: {
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-  },
-  content: {
-    flex: "1 0 auto",
-    alignSelf: "flex-start",
-  },
-  cover: {
-    width: 150,
-    height: 150,
-    alignItems: "center",
-  },
-  controls: {
-    display: "flex",
-    alignItems: "center",
-    paddingLeft: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-  },
-  playIcon: {
-    height: 38,
-    width: 38,
-  },
-  cardContainer: {
-    paddingTop: "20px",
-  },
-}));
-const BookId = ({ match }) => {
-  const classes = useStyles();
-  const theme = useTheme();
+
+import {getBookId} from '../../actions/api';
+
+
+const BookId = ({ match,profile }) => {
+  const [form,setForm]= useState({});
+  const fetchBook= async () =>{
+    const res= await getBookId(match.params.id);
+    setForm(res);
+    console.log("dataform",res);
+  }
+  useEffect(()=>{
+
+    fetchBook();
+  },[])
 
   return (
     <Fragment>
@@ -75,16 +53,16 @@ const BookId = ({ match }) => {
                     </div>
 
                     <small className="d-block text-muted inline-block mt-1 mb-1">
-                      ID : {match.params.id}
+                      {match.params.id}
                     </small>
                     <img
                       className="shadow img-profile rounded-circle mx-1 mt-2"
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_4XtzuMxsKKa7pro9ySNUnob2o2gFD92NVA&usqp=CAU"
+                      src={profile}
                       style={{ width: "115px", height: "115px" }}
                     />
                     <br />
                     {/* <p className="h3">David Fauzi</p> */}
-                    <p className="h4 text-dark mt-3 mb-0">David Fauzi</p>
+                    <p className="h4 text-dark mt-3 mb-0">{form.visitor}</p>
                     <hr />
                     <TableContainer
                       component={Paper}
@@ -97,25 +75,25 @@ const BookId = ({ match }) => {
                             <TableCell component="th" scope="row">
                               Visitee's Name
                             </TableCell>
-                            <TableCell align="right">David</TableCell>
+                            <TableCell align="right">{form.visitee}</TableCell>
                           </TableRow>
                           <TableRow key={1}>
                             <TableCell component="th" scope="row">
                               Ward's Number
                             </TableCell>
-                            <TableCell align="right">R102</TableCell>
+                            <TableCell align="right">{form.room}</TableCell>
                           </TableRow>
                           <TableRow key={2}>
                             <TableCell component="th" scope="row">
                               Visit Date
                             </TableCell>
-                            <TableCell align="right">10-10-2020</TableCell>
+                            <TableCell align="right">{form.date}</TableCell>
                           </TableRow>
                           <TableRow key={3}>
                             <TableCell component="th" scope="row">
                               Session
                             </TableCell>
-                            <TableCell align="right">1 (08.00-11.00)</TableCell>
+                            <TableCell align="right">{form.session}</TableCell>
                           </TableRow>
                         </TableBody>
                       </Table>
@@ -125,11 +103,7 @@ const BookId = ({ match }) => {
                       className="shadow-sm border border-light rounded"
                       level="Q"
                       style={{ width: 130 }}
-                      value={JSON.stringify({
-                        id: 928328,
-                        name: "Jane Doe",
-                        insider: true,
-                      })}
+                      value={form.id}
                     />
                   </div>
                 </div>
@@ -142,4 +116,12 @@ const BookId = ({ match }) => {
   );
 };
 
-export default BookId;
+BookId.propTypes = {
+  profile: PropTypes.string.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  profile: state.auth.attributes.profile,
+});
+
+export default connect(mapStateToProps, {})(BookId);

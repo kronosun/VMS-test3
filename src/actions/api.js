@@ -157,3 +157,21 @@ export const bookSchedule = async(data)=>{
         console.error(error);
     }
 }
+
+// Fetch data to render Digital Badge
+
+export const getBookId= async (visitId) =>{
+    try {
+        const url=`https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/get/${String(visitId)}`;
+        console.log(url);
+        const res= await axios.get(url);
+        const data= res.data;
+        console.log(data);
+
+        // return res.data.body
+        return data;
+        
+    } catch (error) {
+        console.error(error);
+    }
+}
