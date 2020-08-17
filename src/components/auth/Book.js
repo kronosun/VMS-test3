@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import "./Signup.css";
 import "./assets/vendor/fontawesome-free/css/all.min.css";
@@ -25,8 +25,16 @@ import Paper from "@material-ui/core/Paper";
 //Components
 import TopBar from "../dashboard/layout/TopBar";
 //Redux
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
 // Actions
+import {
+  getWrittenRules,
+  getAvailableSessions,
+  bookSchedule,
+} from "../../actions/api";
 
 const useStyles = makeStyles({
   root: {
@@ -87,11 +95,14 @@ function StyledRadio(props) {
   );
 }
 function getSteps() {
-  return ["Check Availibity", "Confirm"];
+  return ["Pick the Date", "Choose Session", "Confirm"];
 }
 
-const Book = () => {
+const Book = ({ userId, name }) => {
   // State
+  const [appointment, setAppointment] = useState("");
+  const [rules, SetRules] = useState([]);
+  const [sessions, setSessions] = useState([]);
   const [formData, setFormData] = useState({
     visitee: "",
     ward: "",
@@ -99,15 +110,36 @@ const Book = () => {
     session: "",
   });
   const { visitee, ward, date, session } = formData;
+  const fetchRules = async () => {
+    const data = await getWrittenRules();
+    console.log("Written Rules !", data);
+    SetRules(data);
+  };
+  const fetchSession = async (x) => {
+    console.log("FETCH SESSION", x);
+    if (x === "") return;
+    const sessionFetch = await getAvailableSessions(x);
+    console.log("Sessions !", sessionFetch);
+    setSessions(sessionFetch);
+  };
+  useEffect(() => {
+    fetchRules();
+    // fetchSession();
+    // const interval = setInterval(fetchSession, 10000);
+    // return () => clearInterval(interval);
+  }, []);
 
-  const onChange = (e) =>
+  const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    fetchSession(date);
   };
 
   const handleBack = () => {
@@ -118,10 +150,24 @@ const Book = () => {
     setActiveStep(0);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     handleNext();
-    console.log(formData);
+    const dataSent = {
+      visitor: name,
+      userid: userId,
+      visitee: visitee,
+      room: String(ward),
+      date: date,
+      session: String(session),
+    };
+    console.log(dataSent);
+    const res = await bookSchedule(dataSent);
+    if (res) {
+      setAppointment(res.body);
+    } else {
+      setAppointment("false");
+    }
   };
 
   return (
@@ -130,7 +176,12 @@ const Book = () => {
         <style>{"body { background-color: #4E73DF }"}</style>
       </Helmet>
       <div className="wrapper">
-        <TopBar message="Obscura" burger={false} userName="" profilePicture="" />
+        <TopBar
+          message="Obscura"
+          burger={false}
+          userName=""
+          profilePicture=""
+        />
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-xl-10 col-lg-12 col-md-9">
@@ -154,15 +205,33 @@ const Book = () => {
                       </Stepper>
                       {activeStep === steps.length ? (
                         <div className="text-center">
-                          <Typography className="my-5 p-3">
-                            Book Successfull, please keep this link to generate
-                            QR Digital Badge :
-                          </Typography>
+                          {appointment !== "" && (
+                            <Fragment>
+                              {" "}
+                              <Typography className="my-5 p-3">
+                                Book Successfull, please keep this link to
+                                generate QR Digital Badge :
+                              </Typography>
+                              <Link to={`/book/${appointment}`}>
+                                Click Here !
+                              </Link>
+                            </Fragment>
+                          )}
+                          {appointment === "" && (
+                            <div className="spinner-border" role="status">
+                              <span className="sr-only">Loading...</span>
+                            </div>
+                          )}
+                          {/* {String(appointment)==='false' && <h3 className="text-danger">
+                              Book Failed, Please reconfirm your input !
+                          </h3>} */}
                           {/* target="_blank" */}
-                          <Link to="/book/102832923">Click Here !</Link>
                         </div>
                       ) : (
-                        <div className="mx-3 p-2 text-center h-100 ">
+                        <div
+                          className="mx-3 p-2 text-center"
+                          style={{ height: "300px" }}
+                        >
                           {activeStep === 0 ? (
                             <Fragment>
                               <TextField
@@ -201,12 +270,15 @@ const Book = () => {
                                 }}
                               />
                               <br />
-
+                            </Fragment>
+                          ) : null}
+                          {activeStep === 1 ? (
+                            <Fragment>
                               <FormControl
                                 component="fieldset"
                                 style={{ width: "250px" }}
                               >
-                                <FormLabel component="legend">
+                                <FormLabel component="legend" className="my-4">
                                   Available Sessions
                                 </FormLabel>
                                 <RadioGroup
@@ -216,23 +288,25 @@ const Book = () => {
                                   value={session}
                                   onChange={(e) => onChange(e)}
                                 >
-                                  <FormControlLabel
-                                    className="my-1"
-                                    value="1"
-                                    control={<StyledRadio />}
-                                    label="Session 1 (09.00 - 12.00)"
-                                  />
-                                  <FormControlLabel
-                                    className="my-1"
-                                    value="2"
-                                    control={<StyledRadio />}
-                                    label="Session 2 (14.00 - 17.00)"
-                                  />
+                                  {sessions.map((x, i) => (
+                                    <FormControlLabel
+                                      className="my-1"
+                                      key={i}
+                                      value={String(x.session_number)}
+                                      control={<StyledRadio />}
+                                      label={`Session ${
+                                        i + 1
+                                      } (${x.session_from.substring(
+                                        0,
+                                        5
+                                      )} - ${x.session_to.substring(0, 5)})`}
+                                    />
+                                  ))}
                                 </RadioGroup>
                               </FormControl>
                             </Fragment>
                           ) : null}
-                          {activeStep === 1 ? (
+                          {activeStep === 2 ? (
                             <Fragment>
                               <p className="h4 my-4">Visit Confirmation</p>
                               <div className="d-flex justify-content-center mb-3">
@@ -283,41 +357,6 @@ const Book = () => {
                           ) : null}
 
                           <div className="my-4 mx-1 ">
-                            <Button
-                              disabled={activeStep === 0}
-                              onClick={handleBack}
-                            >
-                              Back
-                            </Button>
-
-                            {activeStep === steps.length - 1 ? (
-                              <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={onSubmit}
-                              >
-                                Book
-                              </Button>
-                            ) : (
-                              <Button
-                                variant="contained"
-                                color="primary"
-                                onClick={handleNext}
-                              >
-                                Next
-                              </Button>
-                            )}
-                          </div>
-                          <div className="my-4 mx-1 ">
-                            <button
-                              type="button"
-                              className="btn btn-secondary"
-                              data-toggle="modal"
-                              data-target="#exampleModalScrollable"
-                            >
-                              Read Regulations
-                            </button>
-
                             <div
                               className="modal fade"
                               id="exampleModalScrollable"
@@ -350,33 +389,16 @@ const Book = () => {
                                   <div className="modal-body">
                                     {/* ISI */}
                                     <ul className="list-group">
-                                      <li className="list-group-item">
-                                        Limit visitors to two per patient at one
-                                        time.
-                                      </li>
-                                      <li className="list-group-item">
-                                        Maintain low voice tones in all areas of
-                                        the hospital.
-                                      </li>
-                                      <li className="list-group-item">
-                                        Adhere to visiting hours.
-                                      </li>
-                                      <li className="list-group-item">
-                                        Restrict calls to patient rooms after 9
-                                        p.m.
-                                      </li>
-                                      <li className="list-group-item">
-                                        Avoid visiting in hallways in patient
-                                        care areas.
-                                      </li>
-                                      <li className="list-group-item">
-                                        If you notice an area for improvement
-                                        regarding noise levels in the hospital,
-                                        please notify the nursing staff,
-                                        Department Director or Coordinator. We
-                                        thank you for your understanding and
-                                        cooperation.
-                                      </li>
+                                      {rules &&
+                                        rules.length !== 0 &&
+                                        rules.map((x, i) => (
+                                          <li
+                                            className="list-group-item"
+                                            key={i}
+                                          >
+                                            {i + 1}. {x}
+                                          </li>
+                                        ))}
                                     </ul>
                                   </div>
                                   <div className="modal-footer">
@@ -392,9 +414,50 @@ const Book = () => {
                               </div>
                             </div>
                           </div>
-                          {/* <div className="spinner-border" role="status">
-                            <span className="sr-only">Loading...</span>
-                          </div> */}
+                        </div>
+                        //Before this
+                      )}
+                      {(activeStep === 0 ||
+                        activeStep === 1 ||
+                        activeStep === 2) && (
+                        <div className="container-fluid text-center">
+                          <div className="mt-3 mb-2 mx-1 ">
+                            <Button
+                              disabled={activeStep === 0}
+                              onClick={handleBack}
+                            >
+                              Back
+                            </Button>
+
+                            {activeStep === steps.length - 1 ? (
+                              <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={onSubmit}
+                                className="mx-2"
+                              >
+                                Book
+                              </Button>
+                            ) : (
+                              <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={handleNext}
+                                className="mx-2"
+
+                              >
+                                Next
+                              </Button>
+                            )}
+                          </div>
+                          <button
+                            type="button"
+                            className="btn btn-secondary my-2"
+                            data-toggle="modal"
+                            data-target="#exampleModalScrollable"
+                          >
+                            Regulations
+                          </button>
                         </div>
                       )}
                     </div>
@@ -413,4 +476,14 @@ const Book = () => {
   );
 };
 
-export default Book;
+Book.propTypes = {
+  userId: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  userId: state.auth.attributes.userId,
+  name: state.auth.attributes.name,
+});
+
+export default connect(mapStateToProps, {})(Book);

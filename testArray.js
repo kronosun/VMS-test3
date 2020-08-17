@@ -3,7 +3,7 @@ const axios=require('axios');
 const getData= async () =>{
     try {
         const res = await axios.get("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/rules/get");
-
+        console.log(res.data);
     const data= res.data.body
     const newData= {
         weekDaySession:data[0].session_rules,
@@ -20,3 +20,5 @@ const getData= async () =>{
 }
 
 getData();
+
+// console.log((new Date("2020-08-20")).getDay());
