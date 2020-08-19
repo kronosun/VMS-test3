@@ -55,6 +55,19 @@ export const updateAccess = async (FloorNumber, WardNumber, WardAccess) => {
   }
 };
 
+// Get User History
+export const getHistory = async (userId) => {
+  try {
+    const res = await axios.get(
+      `https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/filter/${userId}`
+    );
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
 // Get All Schedule
 
 export const getSchedule = async () => {

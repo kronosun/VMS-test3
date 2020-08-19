@@ -872,7 +872,7 @@ const SetSession = (props) => {
             <h1 className="h4 mb-0 text-gray-800">Max Visitor</h1>
           </div>
           {/* 3rd Row Start */}
-          <div className="row justify-content-start">
+          <div className=" row justify-content-start ml-2" >
             <div className="col-3 mt-2">
               <div className="d-sm-flex align-items-center justify-content-start mb-4">
                 {formData.maxVisitorStatus ? (
@@ -893,9 +893,9 @@ const SetSession = (props) => {
             </div>
             <div className="col-5">
               <div
-                className={`ml-4 ${!formData.maxVisitorStatus && "invisible"}`}
+                className={`ml-4 ${!formData.maxVisitorStatus && "invisible"}`} style={{width:"260px"}}
               >
-                <div className="d-flex flex-row bd-highlight mt-3 ">
+                <div className="d-flex flex-row bd-highlight mt-3 ml-2">
                   <h5>Max Visitor per bed :</h5>
                   <TextField
                     id="standard-basic"
@@ -917,7 +917,7 @@ const SetSession = (props) => {
             <h1 className="h4 mb-0 text-gray-800">Max Visit Time limit</h1>
           </div>
           {/* 3rd Row Start */}
-          <div className="row justify-content-start">
+          <div className=" row justify-content-start " >
             <div className="col-3 mt-2">
               <div className="d-sm-flex align-items-center justify-content-start mb-4">
                 {formData.maxTimeStatus ? (
@@ -935,8 +935,8 @@ const SetSession = (props) => {
               </div>
             </div>
             <div className="col-5">
-              <div className={`ml-4 ${!formData.maxTimeStatus && "invisible"}`}>
-                <div className="d-flex flex-row bd-highlight mt-3 ">
+              <div className={`ml-4 ${!formData.maxTimeStatus && "invisible"}`} style={{width:"210px"}}>
+                <div className="ml-2 d-flex flex-row bd-highlight mt-3" >
                   <h5>Max time limit :</h5>
                   <TextField
                     id="standard-basic"
@@ -956,7 +956,7 @@ const SetSession = (props) => {
         {/* end  */}
       </div>
 
-      <div className="d-sm-flex align-items-center justify-content-start mb-2">
+      <div className="d-sm-flex align-items-center justify-content-start mb-2 mt-2">
         <h1 className="h4 mb-0 text-gray-800">Written Rules</h1>
       </div>    
 

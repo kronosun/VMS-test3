@@ -1,9 +1,9 @@
-import React, { Fragment, Profile } from "react";
+import React, { Fragment, useEffect,useState } from "react";
 import { Helmet } from "react-helmet";
 import "./Signup.css";
 import { QRCode } from "react-qr-svg";
 import "./assets/vendor/fontawesome-free/css/all.min.css";
-
+// import 'bootstrap/dist/css/bootstrap.css';
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -15,7 +15,10 @@ import Paper from "@material-ui/core/Paper";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { v4 as uuidv4 } from 'uuid';
+import { TableHead } from "@material-ui/core";
 
+import {getHistory} from '../../actions/api';
 const ProfileUser = ({
   match,
   attributes: {
@@ -31,6 +34,18 @@ const ProfileUser = ({
     ektp,
   },
 }) => {
+  const [data,setData]= useState(
+    []
+  );
+  useEffect(()=>{
+    const fetchHistory= async ()=>{
+      const res= await getHistory(userId);
+      console.log(res);
+    }
+    fetchHistory();
+    const interval = setInterval(fetchHistory,2000);
+    return ()=>clearInterval(interval);
+  },[])
   return (
     <Fragment>
       <Helmet>
@@ -142,6 +157,67 @@ const ProfileUser = ({
                       src={ektp}
                       style={{ width: "250px", height: "130px" }}
                     />
+                    <button
+                      className="btn btn-primary mt-2"
+                      type="button"
+                      data-toggle="collapse"
+                      data-target="#collapseExample"
+                      aria-expanded="false"
+                      aria-controls="collapseExample"
+                    >
+                      My History
+                    </button>
+                    <div className="collapse mt-2" id="collapseExample">
+                      <div className="shadow-sm">
+                      <TableContainer
+                      component={Paper}
+                      style={{ width: "600x" }}
+                      className="mb-3 mx-0"
+                    >
+                      <Table aria-label="simple table">
+                      <TableHead>
+                <TableRow>
+                  <TableCell   component="th" scope="row" key={uuidv4()} align="left">
+                    Date
+                  </TableCell>
+                  <TableCell component="th" scope="row" key={uuidv4()} align="right">
+                    Visitee
+                  </TableCell>                  
+                  <TableCell component="th" scope="row" key={uuidv4()} align="right">
+                    Link
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+                        <TableBody>
+                        {data &&data.length!==0 && data.map(x=><Fragment>
+                          <TableRow key={uuidv4()}>
+
+                          <TableCell component="th" scope="row">
+                          {x.date}
+                            </TableCell>
+                            <TableCell
+                            key={uuidv4()}
+                              align="right"
+                              style={{ fontSize: "0.8rem" }}
+                            >
+                              {x.visitee}
+                            </TableCell>
+                            <TableCell
+                            key={uuidv4()}
+                              align="right"
+                              style={{ fontSize: "0.8rem" }}
+                            >
+                              <Link to={`/book/${x.id}`}>Click Here!</Link>
+                            </TableCell>
+                          </TableRow>
+
+                        </Fragment>)}
+                           
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import SidePanel from "./layout/SidePanel";
 import TopBar from "./layout/TopBar";
 import Footer from "./layout/Footer";
-import ChartAll from './dashboard/ChartAll';
 import ChartData from './dashboard/ChartData';
+
 const Dashboard = (props) => {
   return (
     <div id="wrapper">

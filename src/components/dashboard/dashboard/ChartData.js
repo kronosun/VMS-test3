@@ -137,7 +137,7 @@ const ChartAll = (props) => {
           <div class="card mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">
-                Development Approach
+                Visitor
               </h6>
             </div>
             <div class="card-body">
@@ -160,10 +160,10 @@ const ChartAll = (props) => {
       <div className="row">
         <div className="col-sm-4">
           <div className="py-2 p-3">
-            <div class="card mb-4">
+            <div class="card mb-4 h-100">
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">
-                  Development Approach
+                  Visitor per Floor
                 </h6>
               </div>
               <div class="card-body">
@@ -185,10 +185,10 @@ const ChartAll = (props) => {
         </div>
         <div className="col-sm-4">
           <div className="py-2 p-3">
-            <div class="card mb-4">
-              <div class="card-header py-3">
+            <div class="card mb-4 ">
+              <div class="card-header py-3 ">
                 <h6 class="m-0 font-weight-bold text-primary">
-                  Development Approach
+                  Available Sessions Today
                 </h6>
               </div>
               <div class="card-body">

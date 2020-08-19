@@ -54,8 +54,8 @@ const Gantt = props => {
               "session2",
               "Session 2",
               "Session Weekday",
-              new Date(1597339452000),
-              new Date(fastForward(1597339452000,2)),
+              new Date(1597349552000),
+              new Date(fastForward(1597349552000,2)),
               null,
               100,
               null
@@ -64,8 +64,8 @@ const Gantt = props => {
               "session3",
               "Session 3",
               "Session Weekday",
-              new Date(1597348452000),
-              new Date(fastForward(1597348452000,2)),
+              new Date(1597359552000),
+              new Date(fastForward(1597359552000,2)),
               null,
               100,
               null
