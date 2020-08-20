@@ -27,7 +27,7 @@ return test ;
 const Gantt = ({sessionArray}) => {
     return (
       <Fragment>
-        <div className="px-1 py-0">
+      {sessionArray && sessionArray.length !==0 &&<div className="px-1 py-3 mt-3">
                     <Chart
         //   width={"100%"}
         //   height={"400px"}
@@ -47,54 +47,24 @@ const Gantt = ({sessionArray}) => {
             ...sessionArray.map(x=>[
               String(x.session_number),
               String(x.session_number),
-              "Session Weekday",
+              "Session",
               new Date(fromTimetoMilliseconds(String(x.session_from))),
               new Date(fromTimetoMilliseconds(String(x.session_to))),
               null,
               100,
               null
             ])
-            // [
-            //   "session1",
-            //   "Session 1",
-            //   "Session Weekday",
-            //   fromTimetoMilliseconds("02:00:00"),
-            //   fromTimetoMilliseconds("05:00:00"),
-            //   null,
-            //   100,
-            //   null
-            // ],
-            // [
-            //   "session2",
-            //   "Session 2",
-            //   "Session Weekday",
-            //   new Date(1597349552000),
-            //   new Date(fastForward(1597349552000,2)),
-            //   null,
-            //   100,
-            //   null
-            // ],
-            // [
-            //   "session3",
-            //   "Session 3",
-            //   "Session Weekday",
-            //   new Date(1597359552000),
-            //   new Date(fastForward(1597359552000,2)),
-            //   null,
-            //   100,
-            //   null
-            // ],
-
           ]}
           options={{
-            height: "auto",
+            title: 'Company Performance',
             gantt: {
               trackHeight: 50
-            }
+            },
           }}
         //   rootProps={{ "data-testid": "2" }}
         />
-        </div>
+        </div> }
+        
         </Fragment>
     )
 }

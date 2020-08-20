@@ -95,7 +95,7 @@ const plotRender = (x) =>{
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: x.map(item=>item.visitorToday),
+        data: x.map(item=>item.visitorToday).reverse(),
         backgroundColor: [
           "rgba(255, 99, 132, 0.6)",
           "rgba(54, 162, 235, 0.6)",
@@ -135,7 +135,7 @@ const ChartData = (props) => {
         Math.ceil(Math.random() * 100),
       ];
       const dataNew = chartRender(res.VisitorPerFloor.map(x=>x.FloorNumber),res.VisitorPerFloor.map(x=>x.VisitorCount));
-      const plotNew= plotRender(plotData);
+      const plotNew= plotRender(plotData.sort((a,b)=>(a.date>b.date?1:-1)));
       setDataChart(dataNew);
       setGeneral(res);
       setSession(ses);
@@ -166,13 +166,13 @@ const ChartData = (props) => {
               color="danger"
               colorlogo="danger"
             /> 
-            {/* <CardDesign
-              title="Visitation Made"
-              value="3"
+            <CardDesign
+              title="Floors"
+              value={general.TotalFloors}
               logo="hospital"
               color="primary"
               colorlogo="primary"
-            /> */}
+            />
             <CardDesign
               title="Wards Access Blocked"
               value={general.SumOfBlockedWards}
@@ -247,7 +247,7 @@ const ChartData = (props) => {
             </div>
           </div>
         </div>
-        <div className="col-sm-4">
+        <div className="col-sm-5">
           <div className="py-2 p-3">
             <div class="card mb-4 ">
               <div class="card-header py-3 ">
@@ -261,7 +261,7 @@ const ChartData = (props) => {
             </div>
           </div>
         </div>
-        <div className="col-sm-4">
+        <div className="col-sm-3">
           <TextBox />
         </div>
       </div>

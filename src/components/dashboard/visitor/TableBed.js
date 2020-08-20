@@ -94,7 +94,8 @@ const TableBed = ({rows,max}) =>{
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(4);
   // const [emptyRows,setEmpty] = useState(rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage));
-  const emptyRows=rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+  const calc= rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage)
+  const emptyRows=((calc >=4 )? 4 : calc ) ;
   const maxPage=(Math.ceil(rows.length/rowsPerPage));
   
   
@@ -127,6 +128,7 @@ const TableBed = ({rows,max}) =>{
 
   return (
     <TableContainer component={Paper} className="shadow-sm p-1 border border-dark rounded-lg">
+    <small className="text-secondary">{page+1}</small>
       <Table  aria-label="custom pagination table">
       <TableHead>
                 <TableRow>
@@ -143,7 +145,7 @@ const TableBed = ({rows,max}) =>{
             ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : rows
           ).map((row) => (
-            <TableRow key={uuidv4()} selected={row.visitor>=max ?true:false} >
+            <TableRow key={uuidv4()} selected={Number(row.visitorCount)===Number(max) ?true:false} >
               <TableCell component="th" scope="row" key={uuidv4()}>
                 {row.BedNumber}
               </TableCell>
@@ -153,7 +155,7 @@ const TableBed = ({rows,max}) =>{
             </TableRow>
           ))}
           {emptyRows > 0 && (
-            <TableRow style={{ height: 53 * emptyRows }}>
+            <TableRow style={{height: 53 * emptyRows }}>
               <TableCell key={uuidv4()} colSpan={6} />
             </TableRow>
           )}

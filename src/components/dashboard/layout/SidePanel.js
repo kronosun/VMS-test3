@@ -43,26 +43,6 @@ const SidePanel = ({msg}) => {
           </Link>
         </li>
         <br />
-
-        <li className="nav-item active">
-          <Link className="nav-link" to="/regulation">
-            <i style={{fontSize:'2rem'}} className="fas fa-fw fa-sliders-h "></i>
-            <br />
-            {msg==='regulation'?<u style={{fontSize:'0.8rem'}}>Set Rules</u> : <span style={{fontSize:'0.8rem'}}>Set Rules</span> }
-          </Link>
-        </li>
-
-        <br />
-        <li className="nav-item active">
-          <Link className="nav-link" to="/livestream">
-            <i style={{fontSize:'2rem'}} className="fas fa-fw fa-bed"></i>
-            <br />
-
-            {msg==='livestream'?<u style={{fontSize:'0.8rem'}}>Livestream</u> : <span style={{fontSize:'0.8rem'}}>Livestream</span> }
-
-          </Link>
-        </li>
-        <br />
         <li className="nav-item active">
           <Link className="nav-link" to="/visitor">
             <i style={{fontSize:'2rem'}} className="fas fa-fw fa-user-friends"></i>
@@ -73,6 +53,27 @@ const SidePanel = ({msg}) => {
           </Link>
         </li>
         <br />
+        <li className="nav-item active">
+          <Link className="nav-link" to="/livestream">
+            <i style={{fontSize:'2rem'}} className="fas fa-fw fa-bed"></i>
+            <br />
+
+            {msg==='livestream'?<u style={{fontSize:'0.8rem'}}>Livestream</u> : <span style={{fontSize:'0.8rem'}}>Livestream</span> }
+
+          </Link>
+        </li>
+
+        <br />
+        <li className="nav-item active">
+          <Link className="nav-link" to="/regulation">
+            <i style={{fontSize:'2rem'}} className="fas fa-fw fa-sliders-h "></i>
+            <br />
+            {msg==='regulation'?<u style={{fontSize:'0.8rem'}}>Set Rules</u> : <span style={{fontSize:'0.8rem'}}>Set Rules</span> }
+          </Link>
+        </li>
+
+        <br />
+
 
         <li className="nav-item active">
           <Link className="nav-link" to="/schedules">

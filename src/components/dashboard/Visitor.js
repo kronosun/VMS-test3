@@ -9,7 +9,7 @@ import { Button } from "@material-ui/core";
 import IndivualCard from "./visitor/IndivualCard";
 import {getAllBed,getMax} from '../../actions/api';
 
-
+import { v4 as uuidv4 } from 'uuid';
 // MAIN COMPONENT
 
 const Visitor = (props) => {
@@ -66,6 +66,7 @@ const Visitor = (props) => {
                         access={ward.WardAccess}
                         floorNumber={floorFilter}
                         fetchData={fetchData}
+                        key={uuidv4()}
                       />)}
             </div>
           </div>
