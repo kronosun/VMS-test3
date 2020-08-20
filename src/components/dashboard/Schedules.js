@@ -51,7 +51,9 @@ const Schedules = () => {
   useEffect(() => {
     const fetchRows= async () => {
       const newRows= await getSchedule();
-      setRows(newRows);
+      // console.log(newRows);
+      const newDataSet= newRows.map(item=>({...item,date:`${item.date}/${item.session}`}));
+      setRows(newDataSet);
     };
     fetchRows();
     const interval = setInterval(fetchRows, 3500);
