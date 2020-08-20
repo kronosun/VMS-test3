@@ -143,7 +143,7 @@ const TableBed = ({rows,max}) =>{
             ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : rows
           ).map((row) => (
-            <TableRow key={uuidv4()} selected={row.visitor>max ?true:false} >
+            <TableRow key={uuidv4()} selected={row.visitor>=max ?true:false} >
               <TableCell component="th" scope="row" key={uuidv4()}>
                 {row.BedNumber}
               </TableCell>

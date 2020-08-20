@@ -3,13 +3,17 @@ import PropTypes from 'prop-types'
 import ReactDOM from "react-dom";
 import Chart from "react-google-charts";
 
-function daysToMilliseconds(days) {
-    return days * 24 * 60 * 60 * 1000;
+const fromTimetoMilliseconds = (time) =>{
+  function zeroPad(numberStr) {
+    return ("0" + numberStr).slice(-2);
   }
+  
+const formattedtime= `${zeroPad(Number(time.substring(0,2)))}:${time.substring(3,8)}`;
+const format = `${((new Date(Date.now())).getFullYear())}-${zeroPad((new Date(Date.now())).getMonth()+1)}-${zeroPad((new Date(Date.now())).getDate())}T${formattedtime}.000Z`
+const test= (new Date(format)).getTime()-7*3600000;
+return test ;
 
-function fastForward(time,hours){
-  return time + hours*3600*1000;
-}  
+}
   const columns = [
     { type: "string", label: "Task ID" },
     { type: "string", label: "Task Name" },
@@ -20,7 +24,7 @@ function fastForward(time,hours){
     { type: "string", label: "Dependencies" }
   ];
 
-const Gantt = props => {
+const Gantt = ({sessionArray}) => {
     return (
       <Fragment>
         <div className="px-1 py-0">
@@ -40,36 +44,47 @@ const Gantt = props => {
               { type: "number", label: "Percent Complete" },
               { type: "string", label: "Dependencies" }
             ],
-            [
-              "session1",
-              "Session 1",
+            ...sessionArray.map(x=>[
+              String(x.session_number),
+              String(x.session_number),
               "Session Weekday",
-              new Date(1597338452000),
-              new Date(fastForward(1597338452000,2)),
+              new Date(fromTimetoMilliseconds(String(x.session_from))),
+              new Date(fromTimetoMilliseconds(String(x.session_to))),
               null,
               100,
               null
-            ],
-            [
-              "session2",
-              "Session 2",
-              "Session Weekday",
-              new Date(1597349552000),
-              new Date(fastForward(1597349552000,2)),
-              null,
-              100,
-              null
-            ],
-            [
-              "session3",
-              "Session 3",
-              "Session Weekday",
-              new Date(1597359552000),
-              new Date(fastForward(1597359552000,2)),
-              null,
-              100,
-              null
-            ]
+            ])
+            // [
+            //   "session1",
+            //   "Session 1",
+            //   "Session Weekday",
+            //   fromTimetoMilliseconds("02:00:00"),
+            //   fromTimetoMilliseconds("05:00:00"),
+            //   null,
+            //   100,
+            //   null
+            // ],
+            // [
+            //   "session2",
+            //   "Session 2",
+            //   "Session Weekday",
+            //   new Date(1597349552000),
+            //   new Date(fastForward(1597349552000,2)),
+            //   null,
+            //   100,
+            //   null
+            // ],
+            // [
+            //   "session3",
+            //   "Session 3",
+            //   "Session Weekday",
+            //   new Date(1597359552000),
+            //   new Date(fastForward(1597359552000,2)),
+            //   null,
+            //   100,
+            //   null
+            // ],
+
           ]}
           options={{
             height: "auto",

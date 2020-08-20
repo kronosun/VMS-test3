@@ -41,6 +41,7 @@ const ProfileUser = ({
     const fetchHistory= async ()=>{
       const res= await getHistory(userId);
       console.log(res);
+      setData(res);
     }
     fetchHistory();
     const interval = setInterval(fetchHistory,2000);
@@ -161,13 +162,13 @@ const ProfileUser = ({
                       className="btn btn-primary mt-2"
                       type="button"
                       data-toggle="collapse"
-                      data-target="#collapseExample"
+                      data-target="#hist"
                       aria-expanded="false"
                       aria-controls="collapseExample"
                     >
                       My History
                     </button>
-                    <div className="collapse mt-2" id="collapseExample">
+                    <div className="collapse mt-2" id="hist">
                       <div className="shadow-sm">
                       <TableContainer
                       component={Paper}

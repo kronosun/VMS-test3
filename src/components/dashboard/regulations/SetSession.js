@@ -262,7 +262,7 @@ const SetSession = (props) => {
                         Session {x.session_number}
                       </div>
                       <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                        {x.session_from} - {x.session_to}
+                        {x.session_from.substring(0,5)} - {x.session_to.substring(0,5)}
                       </div>
                     </div>
                     <div className="col-auto">
@@ -733,7 +733,7 @@ const SetSession = (props) => {
                         Session {x.session_number}
                       </div>
                       <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                        {x.session_from} - {x.session_to}
+                        {x.session_from.substring(0,5)} - {x.session_to.substring(0,5)}
                       </div>
                     </div>
                     <div className="col-auto">
@@ -893,7 +893,7 @@ const SetSession = (props) => {
             </div>
             <div className="col-5">
               <div
-                className={`ml-4 ${!formData.maxVisitorStatus && "invisible"}`} style={{width:"260px"}}
+                className={`ml-4 ${!formData.maxVisitorStatus && "invisible"}`} style={{width:"350px"}}
               >
                 <div className="d-flex flex-row bd-highlight mt-3 ml-2">
                   <h5>Max Visitor per bed :</h5>
@@ -905,8 +905,9 @@ const SetSession = (props) => {
                     style={{ width: "25px" }}
                     value={formData.maxVisitor}
                     onChange={(e) => onChange(e)}
-                    className="ml-3 mb-2"
+                    className="ml-3 mb-3"
                   />
+                  <h5>visitors</h5>
                 </div>
               </div>
             </div>
@@ -935,7 +936,7 @@ const SetSession = (props) => {
               </div>
             </div>
             <div className="col-5">
-              <div className={`ml-4 ${!formData.maxTimeStatus && "invisible"}`} style={{width:"210px"}}>
+              <div className={`ml-4 ${!formData.maxTimeStatus && "invisible"}`} style={{width:"280px"}}>
                 <div className="ml-2 d-flex flex-row bd-highlight mt-3" >
                   <h5>Max time limit :</h5>
                   <TextField
@@ -948,6 +949,7 @@ const SetSession = (props) => {
                     onChange={(e) => onChange(e)}
                     className="ml-3 mb-2"
                   />
+                  <h5>Hours</h5>
                 </div>
               </div>
             </div>

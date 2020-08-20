@@ -159,7 +159,7 @@ export const getAvailableSessions = async (date) => {
     const sessionWeekDay = data[0].session_rules.map((x) => x.sessions)[0];
     const sessionWeekEnd = data[0].session_rules.map((x) => x.sessions)[1];
     const now = new Date(date).getDay();
-    console.log("NOW :",now);
+    // console.log("NOW :",now);
     
     if (now >= 1 && now <= 5) {
       return sessionWeekDay;
@@ -201,3 +201,27 @@ export const getBookId= async (visitId) =>{
     }
 }
 
+// Get Dashboard quantified variable data
+
+export const getGeneral = async ()=>{
+  try {
+    const res= await axios.get("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/dashboard/general");
+    console.log(res.data.body);
+    return res.data.body;
+  } catch (error) {
+    console.error();
+  }
+}
+
+
+// Get Visitor Data 
+
+export const getVisitorData = async() =>{
+  try {
+    const res= await axios.get("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/dashboard/visitortoday/getall");
+    console.log(res.data.body);
+    return res.data.body;
+  } catch (error) {
+    console.error();
+  }
+}
