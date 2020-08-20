@@ -119,6 +119,8 @@ const ChartData = (props) => {
     SumVisitor: "",
     SumOfBlockedWards: "",
     VisitorPerFloor: [],
+    FullBed:'',
+    TotalBooks:''
   });
   const [plot,setPlot] = useState([]);
   const [session,setSession]= useState([]);
@@ -163,8 +165,8 @@ const ChartData = (props) => {
               title="Wards"
               value={general.TotalWards}
               logo="clinic-medical"
-              color="danger"
-              colorlogo="danger"
+              color="dark"
+              colorlogo="dark"
             /> 
             <CardDesign
               title="Floors"
@@ -180,20 +182,20 @@ const ChartData = (props) => {
               color="warning"
               colorlogo="warning"
             />
-            {/* <CardDesign
-              title="Wards Access Blocked"
-              value="3"
-              logo="shield-alt"
-              color="warning"
-              colorlogo="warning"
+            <CardDesign
+              title="Full Beds"
+              value={general.FullBed}
+              logo="bed"
+              color="danger"
+              colorlogo="danger"
             />
             <CardDesign
-              title="Wards Access Blocked"
-              value="3"
-              logo="shield-alt"
-              color="warning"
-              colorlogo="warning"
-            /> */}
+              title="Books Made"
+              value={general.TotalBooks}
+              logo="scroll"
+              color="info"
+              colorlogo="info"
+            />
             <h2>
               {/* {JSON.stringify(general.VisitorPerFloor.map(x=>x.FloorNumber))} */}
             </h2>
