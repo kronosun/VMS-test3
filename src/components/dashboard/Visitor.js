@@ -45,7 +45,7 @@ const Visitor = (props) => {
           />
           <div className="container-fluid" >
             <div className="text-center">
-              <div className="btn-group" role="group" aria-label="Basic example">
+              <div className="btn-group collapse show" role="group" aria-label="Basic example" id="sidebarcollapse">
 
               
               {floors && floors.length !==0 && floors.map(floor=>Number(floor.FloorNumber)) &&floors.map(floor=>Number(floor.FloorNumber)).sort((a,b)=>a>b?1:-1).map(x=><button type="button" className="btn btn-secondary" onClick={() => setFloorFilter(x)}>
