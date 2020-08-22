@@ -14,17 +14,22 @@ import Select from "@material-ui/core/Select";
 import axios from "axios";
 
 //Redux
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 // Actions
 import { signupCognito } from "../../actions/auth";
 import TopBarGuest from "../dashboard/layout/TopBarGuest";
+import {setAlert} from "../../actions/alert";
 
 function getSteps() {
   return ["Login Details", "Personal Details", "Upload Pictures"];
 }
 
-const Signup = () => {
+const Signup = ({setAlert,alert}) => {
   // State
+  const [uploadA,setUploadA] = useState(false);
+  const [uploadB,setUploadB] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -50,6 +55,29 @@ const Signup = () => {
     ektp,
   } = formData;
 
+function hasUpperCase(str) {
+    return str.toLowerCase() != str;
+}
+function hasNumber(myString) {
+  return /\d/.test(myString);
+}
+function hasLength(str){
+  return str.length>=8;
+}
+  const checkEmpty=()=>{
+    return ((email==="")|| (password==="")|| (passwordConfirm==="")|| (fullName==="")|| (gender==="")|| (address==="")|| (birthDate==="")||(phone==="")||(profilePicture==="")||(ektp===""));
+  }
+  const checkPass= ()=>{
+   return password !== passwordConfirm;
+  }
+  const validateForm = () =>{
+    if(checkEmpty()) setAlert("Fill every field !","danger");
+    if(checkPass()) setAlert("Password doesn't match !","danger");
+    if(!hasUpperCase(password)) setAlert("Password must have uppercase letter !","danger");
+    if(!hasNumber(password)) setAlert("Password must include Number !","danger");
+    if(!hasLength(password)) setAlert("Password length must be 8 or longer !","danger");
+    return (checkEmpty() || checkPass() || !hasUpperCase(password) ||!hasNumber(password) ||!hasLength(password) );
+  }
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -70,10 +98,10 @@ const Signup = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    // console.log(formData);
+    if (validateForm()) return;
     handleNext();
-    console.log(formData);
-    if (password === passwordConfirm) {
-      signupCognito(
+    signupCognito(
         email,
         password,
         fullName,
@@ -84,10 +112,11 @@ const Signup = () => {
         profilePicture,
         ektp
       );
-    }
   };
 
   const uploadprofile = async (e) => {
+    setUploadA(true);
+
     console.log("Image Upload Started !");
     const files = e.target.files;
     console.log(files);
@@ -101,9 +130,11 @@ const Signup = () => {
     );
     //Upload
     console.log(res.data.url);
+    setUploadA(false);
     setFormData({ ...formData, profilePicture: res.data.url });
   };
   const uploadektp = async (e) => {
+    setUploadB(true);
     console.log("Image Upload Started !");
     const files = e.target.files;
     console.log(files);
@@ -117,8 +148,10 @@ const Signup = () => {
     );
     //Upload
     console.log(res.data.url);
+    setUploadB(false);
     setFormData({ ...formData, ektp: res.data.url });
   };
+
   return (
     <Fragment>
       <Helmet>
@@ -142,6 +175,9 @@ const Signup = () => {
                       className="col-lg-5 align-items-center p-2 "
                       style={{ height: "650px" }}
                     >
+                        {alert && alert.map(x=>              <div className={`alert alert-${x.alertType} mx-3`} role="alert">
+  {x.msg}
+</div>)}
                       <div className="text-center">
                         <h1 className="h4 text-gray-900 my-2">
                           Account Registration
@@ -173,8 +209,8 @@ const Signup = () => {
                             Home
                           </Link>
                         </Fragment>
-                      ) : (
-                        <div className="mx-5 p-1 text-center h-70">
+                      ) : (<Fragment>
+                        <div className="mx-5 p-1 text-center h-70" style={{height:"315px"}}>
                           {activeStep === 0 ? (
                             <div>
                               <TextField
@@ -292,7 +328,9 @@ const Signup = () => {
                           {activeStep === 2 ? (
                             <Fragment>
                               <h6 className="mb-2 mt-3">
-                                Upload Profile Picture !
+                              {uploadA  && <div className="spinner-border visible mb-1 mr-1" role="status" style={{height:"15px",width:"15px"}}>
+                          </div>}
+                               {profilePicture ? "Profile Picture Uploaded !": "Upload your Profile Picture !"}
                               </h6>
                               <input
                                 type="file"
@@ -302,7 +340,11 @@ const Signup = () => {
                                 className="form-control-file mb-4"
                                 style={{ width: "230px" }}
                               />
-                              <h6 className="mb-2 mt-3">Upload your E-KTP !</h6>
+                              <h6 className="mb-2 mt-3">
+                              {uploadB && <div className="spinner-border visible mb-1 mr-1" role="status" style={{height:"15px",width:"15px"}}>
+                          </div>}
+                          {ektp ? "E-KTP Uploaded !": "Upload your E-KTP !"}
+                              </h6>
                               <input
                                 type="file"
                                 name="file"
@@ -313,7 +355,8 @@ const Signup = () => {
                               />
                             </Fragment>
                           ) : null}
-                          <div className="my-4 mx-1 text-center ">
+                        </div>
+                        <div className="my-4 mx-1 text-center ">
                             <Button
                               disabled={activeStep === 0}
                               onClick={handleBack}
@@ -339,8 +382,9 @@ const Signup = () => {
                               </Button>
                             )}
                           </div>
-                        </div>
+                          </Fragment>
                       )}
+
                     </div>
                   </div>
                 </div>
@@ -353,4 +397,13 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+Signup.propTypes = {
+  alert: PropTypes.array.isRequired,
+  setAlert:PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  alert: state.alert
+});
+
+export default connect(mapStateToProps, {setAlert})(Signup);
