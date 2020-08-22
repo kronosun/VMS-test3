@@ -1,12 +1,15 @@
 import React, { Fragment, useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import SessionCard from "./SessionCard";
 import { Button } from "react-scroll";
 import { TextField, Fab } from "@material-ui/core";
 import Switch from "@material-ui/core/Switch";
 import AddIcon from "@material-ui/icons/Add";
 import {getRules, updateRules} from '../../../actions/api';
-
+//Redux
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import {setAlert} from '../../../actions/alert';
 
 const dataDummy = async ()=>{
   const data ={
@@ -24,7 +27,7 @@ const dataDummy = async ()=>{
   return data;
 }
 
-const SetSession = (props) => {
+const SetSession = ({alert,setAlert}) => {
   const [state,setState] = useState(false);
   const [newRules, setNewRules] = useState("");
   const [updateDay, setUpdateDay] = useState(-1);
@@ -142,6 +145,8 @@ const SetSession = (props) => {
     const code =await updateRules(newFormat);
     if (code===200)console.log("Update SUCCESS");
     await fetchRules();
+    setAlert("Rules Updated !","success");
+
   };
 
   const deleteSessionDay = (e) => {
@@ -152,6 +157,8 @@ const SetSession = (props) => {
     const newData = [...weekDaySession];
     if (idx !== -1) newData.splice(idx, 1);
     setweekDaySession(newData);
+    setAlert("Session Deleted !","danger");
+
   };
 
   const deleteSessionEnd = (e) => {
@@ -161,6 +168,8 @@ const SetSession = (props) => {
     const newData = [...weekEndSession];
     if (idx !== -1) newData.splice(idx, 1);
     setweekEndSession(newData);
+    setAlert("Session Deleted !","danger");
+
   };
 
   const updateSessionDay = (e) => {
@@ -179,6 +188,8 @@ const SetSession = (props) => {
     console.log(newInput);
     if (idx !== -1) newData.splice(idx, 1, newInput);
     setweekDaySession(newData);
+    setAlert("Session Updated !","success");
+
   };
   const updateSessionEnd = (e) => {
     console.log(updateEnd);
@@ -194,6 +205,8 @@ const SetSession = (props) => {
     console.log(newInput);
     if (idx !== -1) newData.splice(idx, 1, newInput);
     setweekEndSession(newData);
+    setAlert("Session Updated !","success");
+
   };
 
   const addWeekDaySession = () => {
@@ -205,6 +218,8 @@ const SetSession = (props) => {
     };
     newData.push(newInput);
     setweekDaySession(newData);
+    setAlert("Session Added !","success");
+
   };
   const addWeekEndSession = () => {
     const newData = [...weekEndSession];
@@ -216,6 +231,8 @@ const SetSession = (props) => {
     newData.push(newInput);
     console.log(newData);
     setweekEndSession(newData);
+    setAlert("Session Added !","success");
+
   };
 
   const onChangeDay = (e) => {
@@ -245,9 +262,13 @@ const SetSession = (props) => {
     const newInput={...formData,rules:list};
     console.log(newInput);
     setFormData(newInput);
+    setAlert("Rules Deleted !","danger");
   }
   return (
     <Fragment>
+    {alert && alert.map(x=>              <div class={`alert alert-${x.alertType}`} role="alert">
+  {x.msg}
+</div>)}
 {state ? (    <Fragment>
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 className="h4 mb-0 text-gray-800">Available Weekday Sessions</h1>
@@ -1028,6 +1049,13 @@ const SetSession = (props) => {
   );
 };
 
-SetSession.propTypes = {};
+SetSession.propTypes = {
+  alert: PropTypes.array.isRequired,
+  setAlert:PropTypes.func.isRequired,
+};
 
-export default SetSession;
+const mapStateToProps = (state) => ({
+  alert: state.alert
+});
+
+export default connect(mapStateToProps, {setAlert})(SetSession);

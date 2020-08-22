@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 // Import Component
 import SidePanel from "./layout/SidePanel";
 import TopBar from "./layout/TopBar";
@@ -8,11 +7,14 @@ import Footer from "./layout/Footer";
 import { Button } from "@material-ui/core";
 import IndivualCard from "./visitor/IndivualCard";
 import {getAllBed,getMax} from '../../actions/api';
-
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
+import {setAlert} from '../../actions/alert';
+
 // MAIN COMPONENT
 
-const Visitor = (props) => {
+const Visitor = ({alert,setAlert}) => {
   const [max, setMax] = useState(5);
   const [floors, setFloors] = useState([]);
   const [floorFilter,setFloorFilter]= useState(1);
@@ -44,7 +46,9 @@ const Visitor = (props) => {
             isLock={true}
           />
           <div className="container-fluid" >
-
+          {alert && alert.map(x=>              <div class={`alert alert-${x.alertType}`} role="alert">
+  {x.msg}
+</div>)}
             <div className="text-center">
             {floors.length ===0 && <div className="spinner-border mx-auto" role="status">
   <span className="sr-only">Loading...</span>
@@ -81,6 +85,13 @@ const Visitor = (props) => {
   );
 };
 
-Visitor.propTypes = {};
+Visitor.propTypes = {
+  alert: PropTypes.array.isRequired,
+  setAlert:PropTypes.func.isRequired,
+};
 
-export default Visitor;
+const mapStateToProps = (state) => ({
+  alert: state.alert
+});
+
+export default connect(mapStateToProps, {setAlert})(Visitor);

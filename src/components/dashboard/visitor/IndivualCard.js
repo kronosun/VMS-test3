@@ -5,8 +5,9 @@ import TableBed from "./TableBed";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import {setAlert} from '../../../actions/alert';
 
-const IndivualCard = ({rows,max,ward,access,floorNumber,fetchData,top}) => {
+const IndivualCard = ({rows,max,ward,access,floorNumber,fetchData,alert,setAlert}) => {
   const [currentAccess,setCurrentAccess]=useState(access=="true");
   const akses=access=="true";
   const changeAccess= async() =>{
@@ -14,6 +15,7 @@ const IndivualCard = ({rows,max,ward,access,floorNumber,fetchData,top}) => {
     await updateAccess(String(floorNumber),String(ward),akses);
     // await dummyFetch();
     await fetchData();
+    setAlert("Access Changed !","success");
   }
   return (
     <Fragment>
@@ -53,15 +55,15 @@ const IndivualCard = ({rows,max,ward,access,floorNumber,fetchData,top}) => {
 };
 
 IndivualCard.propTypes = {
-top:PropTypes.bool.isRequired,
+  alert: PropTypes.array.isRequired,
+  setAlert:PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-top:state.auth.top
+  alert: state.alert
 });
 
-export default connect(mapStateToProps, {})(IndivualCard);
-
+export default connect(mapStateToProps, {setAlert})(IndivualCard);
 
           {/* <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
           <p className="card-text">
