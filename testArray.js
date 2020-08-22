@@ -1,9 +1,36 @@
-function zeroPad(numberStr) {
-    return ("0" + numberStr).slice(-2);
+
+const getBookId= async (visitId) =>{
+  try {
+      const url=`https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/${String(visitId)}`;
+      console.log(url);
+      const res= await axios.get(url);
+      const data= res.data;
+      console.log(data);
+
+      // return res.data.body
+      return data;
+      
+  } catch (error) {
+      console.error(error);
   }
-  
-const time = "02:00:00"
-const formattedtime= `${zeroPad(Number(time.substring(0,2))+4)}:${time.substring(3,8)}`;
-const format = `${((new Date(Date.now())).getFullYear())}-${zeroPad((new Date(Date.now())).getMonth())}-${zeroPad((new Date(Date.now())).getDate())}T${formattedtime}.000Z`
-const test= new Date(format);
-console.log(test);
+}
+
+// Get User History
+const getHistory = async (userId) => {
+  try {
+    const res = await axios.get(
+      `https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/filter/${userId}`
+    );
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// Coba getbookId
+const fetch = async () =>{
+  const resp= await getBookId("9eeb01b80bcb2e4c7daaad21160074f2");
+console.log(resp);
+} 
+
+fetch();

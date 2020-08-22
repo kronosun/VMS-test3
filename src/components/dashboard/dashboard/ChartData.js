@@ -233,7 +233,7 @@ const ChartData = (props) => {
                 </h6>
               </div>
               <div class="card-body">
-                <Pie
+              {dataChart ?                 <Pie
                   data={dataChart}
                   options={{
                     legend: {
@@ -244,7 +244,10 @@ const ChartData = (props) => {
                       // }
                     },
                   }}
-                />
+                /> : <div className="spinner-border" role="status">
+  <span className="sr-only">Loading...</span>
+</div>}
+
               </div>
             </div>
           </div>

@@ -44,7 +44,11 @@ const Visitor = (props) => {
             isLock={true}
           />
           <div className="container-fluid" >
+
             <div className="text-center">
+            {floors.length ===0 && <div className="spinner-border mx-auto" role="status">
+  <span className="sr-only">Loading...</span>
+</div>}
               <div className="btn-group collapse show" role="group" aria-label="Basic example" id="sidebarcollapse">
 
               

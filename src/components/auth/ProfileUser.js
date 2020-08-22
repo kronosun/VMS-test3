@@ -39,12 +39,12 @@ const ProfileUser = ({
   );
   useEffect(()=>{
     const fetchHistory= async ()=>{
-      const res= await getHistory(userId);
+      const res= await getHistory(match.params.id);
       console.log(res);
       setData(res);
     }
     fetchHistory();
-    const interval = setInterval(fetchHistory,2000);
+    const interval = setInterval(fetchHistory,4500);
     return ()=>clearInterval(interval);
   },[])
   return (
@@ -68,7 +68,7 @@ const ProfileUser = ({
                         Visitor's Profile
                       </h1>
                     </div>
-                    <img
+{name ? (           <Fragment>         <img
                       className="shadow img-profile rounded-circle mx-1 mt-2"
                       src={profile}
                       style={{ width: "115px", height: "115px" }}
@@ -158,7 +158,7 @@ const ProfileUser = ({
                       src={ektp}
                       style={{ width: "250px", height: "130px" }}
                     />
-                    <button
+                    {/* <button
                       className="btn btn-primary mt-2"
                       type="button"
                       data-toggle="collapse"
@@ -167,8 +167,11 @@ const ProfileUser = ({
                       aria-controls="collapseExample"
                     >
                       My History
-                    </button>
-                    <div className="collapse mt-2" id="hist">
+                    </button>  */}
+                    {data &&data.length!==0 && (                    
+  
+  <div className="collapse show mt-4" id="hist">
+  <h5 className="text-secondary my-2">My Book History</h5>
                       <div className="shadow-sm">
                       <TableContainer
                       component={Paper}
@@ -218,7 +221,11 @@ const ProfileUser = ({
                       </Table>
                     </TableContainer>
                       </div>
-                    </div>
+                    </div>)}
+                    </Fragment>) : <div class="spinner-border" role="status">
+  <span class="sr-only">Loading...</span>
+</div>}
+
                   </div>
                 </div>
               </div>

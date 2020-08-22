@@ -259,7 +259,9 @@ const TabelSchedule = ({ rows }) => {
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <EnhancedTableToolbar numSelected={selected.length} />
-        <TableContainer>
+        {rows.length===0 ? <div className="text-center"><div className="spinner-border" role="status">
+                              <span className="sr-only">Loading...</span>
+                            </div></div> :<TableContainer>
           <Table
             className={classes.table}
             aria-labelledby="tableTitle"
@@ -276,7 +278,9 @@ const TabelSchedule = ({ rows }) => {
               rowCount={rows.length}
               headCells={headCells}
             />
+            
             <TableBody>
+
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
@@ -344,7 +348,8 @@ const TabelSchedule = ({ rows }) => {
               )}
             </TableBody>
           </Table>
-        </TableContainer>
+        </TableContainer>}
+        
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"

@@ -304,6 +304,12 @@ const Book = ({ userId, name }) => {
                                   ))}
                                 </RadioGroup>
                               </FormControl>
+                              {sessions.length ===0 &&
+                              (<Fragment>
+                              <br />
+                              <div className="spinner-border" role="status">
+  <span className="sr-only">Loading...</span>
+</div></Fragment>)}
                             </Fragment>
                           ) : null}
                           {activeStep === 2 ? (

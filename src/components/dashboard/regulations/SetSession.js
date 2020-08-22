@@ -25,6 +25,7 @@ const dataDummy = async ()=>{
 }
 
 const SetSession = (props) => {
+  const [state,setState] = useState(false);
   const [newRules, setNewRules] = useState("");
   const [updateDay, setUpdateDay] = useState(-1);
   const [updateEnd, setUpdateEnd] = useState(-1);
@@ -89,6 +90,7 @@ const SetSession = (props) => {
     setFormData(freshFormData);
     setweekDaySession(freshWeekDay);
     setweekEndSession(freshWeekEnd);
+    setState(true);
   };
   useEffect(() => {
 
@@ -134,6 +136,8 @@ const SetSession = (props) => {
       },
       general:[...formData.rules]
   }
+  setState(false);
+
   console.log("SEND",JSON.stringify(newFormat));
     const code =await updateRules(newFormat);
     if (code===200)console.log("Update SUCCESS");
@@ -244,6 +248,7 @@ const SetSession = (props) => {
   }
   return (
     <Fragment>
+{state ? (    <Fragment>
       <div className="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 className="h4 mb-0 text-gray-800">Available Weekday Sessions</h1>
         <h1 className="h4 mb-0 text-gray-800">{}</h1>
@@ -1016,6 +1021,9 @@ const SetSession = (props) => {
       {/* <div className="row">
         <Button >Add More</Button>
         </div> */}
+    </Fragment>):                           ( <div className="text-center"><div className="spinner-border" role="status">
+                              <span className="sr-only">Loading...</span>
+                            </div></div>)}
     </Fragment>
   );
 };

@@ -53,7 +53,7 @@ const LiveStream = (props) => {
             isLock={false}
           />
           <div className="container-fluid" style={{ height: "100vh" }}>
-            <div
+{floors.length!==0 ?(            <div
               className="collapse show mt-1 mx-auto border-bottom-primary"
               id="sidebarcollapse"
             >
@@ -107,7 +107,9 @@ const LiveStream = (props) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div>) : <div className="text-center"> <div className="spinner-border" role="status">
+  <span className="sr-only">Loading...</span>
+</div></div>}
             {/* Content */}
             <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-5 justify-content-start">
               {floors &&

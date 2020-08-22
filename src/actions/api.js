@@ -1,4 +1,9 @@
 import axios from "axios";
+let config = {
+  headers: {
+    'Content-Type': 'application/json',
+  }
+}
 
 export const dummyApi = async () => {
   try {
@@ -58,10 +63,17 @@ export const updateAccess = async (FloorNumber, WardNumber, WardAccess) => {
 // Get User History
 export const getHistory = async (userId) => {
   try {
-    const res = await axios.get(
-      `https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/filter/${userId}`
+    // const res = await axios.get(
+    //   `https://cors-anywhere.herokuapp.com/https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/filter/${userId}`,config
+    // );
+    const body={
+      "userid":String(userId)
+    }
+    const res = await axios.put(
+      `https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/filter/userid2`,body,config
     );
-    return res.data;
+
+    return res.data.body;
   } catch (error) {
     console.error(error);
   }
@@ -152,6 +164,7 @@ export const getWrittenRules = async () => {
 
 export const getAvailableSessions = async (date) => {
   try {
+
     const res = await axios.get(
       "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/rules/get"
     );
@@ -187,14 +200,19 @@ export const bookSchedule = async(data)=>{
 
 export const getBookId= async (visitId) =>{
     try {
-        const url=`https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/get/${String(visitId)}`;
+        // const url=`https://cors-anywhere.herokuapp.com/https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/${String(visitId)}`;
+        // const url=`https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/${String(visitId)}`;
+        const url="https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/get/id2"
         console.log(url);
-        const res= await axios.get(url);
-        const data= res.data;
-        console.log(data);
+        const body={
+          "id":String(visitId)
+        }
+        // const res= await axios.get(url,config);
+        const res= await axios.put(url,body,config);
+        console.log(res.data.body);
 
         // return res.data.body
-        return data;
+        return res.data.body;
         
     } catch (error) {
         console.error(error);

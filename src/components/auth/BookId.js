@@ -20,10 +20,12 @@ import {getBookId} from '../../actions/api';
 
 const BookId = ({ match,profile }) => {
   const [form,setForm]= useState({});
+  const [state,setState]=  useState(false);
   const fetchBook= async () =>{
     const res= await getBookId(match.params.id);
     setForm(res);
-    console.log("dataform",res);
+    console.log("dataform",res.data);
+    setState(true);
   }
   useEffect(()=>{
 
@@ -53,7 +55,7 @@ const BookId = ({ match,profile }) => {
                     <small className="d-block text-muted inline-block mt-1 mb-1">
                       {match.params.id}
                     </small>
-                    <img
+{(form && state) ?   <Fragment>                 <img
                       className="shadow img-profile rounded-circle mx-1 mt-2"
                       src={profile}
                       style={{ width: "115px", height: "115px" }}
@@ -102,7 +104,9 @@ const BookId = ({ match,profile }) => {
                       level="Q"
                       style={{ width: 130 }}
                       value={form.id}
-                    />
+                    /></Fragment> : (<div className="spinner-border" role="status">
+  <span className="sr-only">Loading...</span>
+</div>)}
                   </div>
                 </div>
               </div>

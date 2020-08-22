@@ -5,13 +5,14 @@ import { Link as Links } from "react-scroll";
 import ReactPlayer from 'react-player';
 // Main CSS style
 import "./assets/css/style.css";
-
+import 'bootstrap/dist/css/bootstrap.css';
 const Landing = ({loadUser}) => {
   return (
     <Fragment>
       <header id="header" className="header-transparent">
         <div className="container">
           <div id="logo" className="pull-left">
+
             {/* <a href="index.html"><img src="assets/img/logo.png" alt=""></a> */}
             <h1>
             <Links
@@ -389,7 +390,6 @@ const Landing = ({loadUser}) => {
             </div>
           </div>
         </section>
-
         <section id="portfolio" className="portfolio" name="portofolio">
           <div className="container" data-aos="fade-up">
             <div className="section-header">
@@ -682,9 +682,7 @@ const Landing = ({loadUser}) => {
                   <h4>Walter White</h4>
                   <span>Chief Executive Officer</span>
                   <div className="social">
-                    <a href="">
                       <i className="fa fa-twitter"></i>
-                    </a>
                     <a href="">
                       <i className="fa fa-facebook"></i>
                     </a>
@@ -785,110 +783,13 @@ const Landing = ({loadUser}) => {
           </div>
 
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22864.11283411948!2d-73.96468908098944!3d40.630720240038435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sbg!4v1540447494452"
+            src="https://maps.google.com/maps?q=jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed"
             width="100%"
             height="380"
             frameBorder="0"
             style={{ border: "0" }}
             allowFullScreen
           ></iframe>
-
-          <div className="container mt-5">
-            <div className="row justify-content-center">
-              <div className="col-lg-3 col-md-4">
-                <div className="info">
-                  <div>
-                    <i className="fa fa-map-marker"></i>
-                    <p>
-                      A108 Adam Street
-                      <br />
-                      New York, NY 535022
-                    </p>
-                  </div>
-
-                  <div>
-                    <i className="fa fa-envelope"></i>
-                    <p>info@example.com</p>
-                  </div>
-
-                  <div>
-                    <i className="fa fa-phone"></i>
-                    <p>+1 5589 55488 55s</p>
-                  </div>
-                </div>
-
-              </div>
-
-              <div className="col-lg-5 col-md-8">
-                <div className="form">
-                  <form
-                    action="forms/contact.php"
-                    method="post"
-                    role="form"
-                    className="php-email-form"
-                  >
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        name="name"
-                        className="form-control"
-                        id="name"
-                        placeholder="Your Name"
-                        data-rule="minlen:4"
-                        data-msg="Please enter at least 4 chars"
-                      />
-                      <div className="validate"></div>
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="email"
-                        className="form-control"
-                        name="email"
-                        id="email"
-                        placeholder="Your Email"
-                        data-rule="email"
-                        data-msg="Please enter a valid email"
-                      />
-                      <div className="validate"></div>
-                    </div>
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="subject"
-                        id="subject"
-                        placeholder="Subject"
-                        data-rule="minlen:4"
-                        data-msg="Please enter at least 8 chars of subject"
-                      />
-                      <div className="validate"></div>
-                    </div>
-                    <div className="form-group">
-                      <textarea
-                        className="form-control"
-                        name="message"
-                        rows="5"
-                        data-rule="required"
-                        data-msg="Please write something for us"
-                        placeholder="Message"
-                      ></textarea>
-                      <div className="validate"></div>
-                    </div>
-                    <div className="mb-3">
-                      <div className="loading">Loading</div>
-                      <div className="error-message"></div>
-                      <div className="sent-message">
-                        Your message has been sent. Thank you!
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <button type="submit">Send Message</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
         </section>
       </main>
       <footer id="footer">
