@@ -243,3 +243,38 @@ export const getVisitorData = async() =>{
     console.error();
   }
 }
+
+// Update schedule access 
+
+export const changeAccess = async(id,current) =>{
+  try {
+    const body = 
+      {
+        "id": String(id),
+        "access": String(current)
+      }
+    
+    const res= await axios.put("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/updateaccess",body,config);
+    console.log(res.data);
+    // return res.data.body;
+  } catch (error) {
+    console.error();
+  }
+}
+
+// Delete book data
+
+export const deleteBook = async(id) =>{
+  try {
+    const body = 
+      {
+        "id": String(id)
+      }
+    
+    const res= await axios.put("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/delete",body,config);
+    console.log(res.data.body);
+    // return res.data.body;
+  } catch (error) {
+    console.error();
+  }
+}

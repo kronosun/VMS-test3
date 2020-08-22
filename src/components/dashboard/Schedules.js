@@ -48,17 +48,22 @@ const fetchRowArtificical = async () => {
 
 const Schedules = () => {
   const [rows,setRows]=useState([]);
+  const fetchRows= async () => {
+    const newRows= await getSchedule();
+    // console.log(newRows);
+    const newDataSet= newRows.map(item=>({...item,date:`${item.date}/${item.session}`}));
+    setRows(newDataSet);
+  };
   useEffect(() => {
-    const fetchRows= async () => {
-      const newRows= await getSchedule();
-      // console.log(newRows);
-      const newDataSet= newRows.map(item=>({...item,date:`${item.date}/${item.session}`}));
-      setRows(newDataSet);
-    };
+
     fetchRows();
-    const interval = setInterval(fetchRows, 3500);
+    const interval = setInterval(fetchRows, 1000);
     return () => clearInterval(interval);
   }, []);
+  const trigger = async()=>{
+    console.log("Trigger Triggered !");
+    await fetchRows();
+  }
   return (
     <div id="wrapper">
       <SidePanel msg="schedules"/>
@@ -66,7 +71,7 @@ const Schedules = () => {
         <div id="content">
           <TopBar message="Schedules" burger={true}  userName="" profilePicture="" isLock={false}/>
         <div className="container-fluid mx-auto px-5 py-2" >
-        <TabelSchedule rows={rows} />
+        <TabelSchedule rows={rows} trigger={trigger}/>
 
         </div>
 

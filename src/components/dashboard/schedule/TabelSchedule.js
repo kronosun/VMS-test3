@@ -13,16 +13,14 @@ import TableSortLabel from "@material-ui/core/TableSortLabel";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-import Checkbox from "@material-ui/core/Checkbox";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Switch from "@material-ui/core/Switch";
-import DeleteIcon from "@material-ui/icons/Delete";
-import FilterListIcon from "@material-ui/icons/FilterList";
+//Redux
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+
 import Moment from "react-moment";
 import { v4 as uuidv4 } from "uuid";
-
+import {changeAccess,deleteBook} from '../../../actions/api';
+import {setAlert} from '../../../actions/alert';
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -52,7 +50,6 @@ function stableSort(array, comparator) {
 function EnhancedTableHead(props) {
   const {
     classes,
-    onSelectAllClick,
     order,
     orderBy,
     numSelected,
@@ -106,7 +103,6 @@ EnhancedTableHead.propTypes = {
   classes: PropTypes.object.isRequired,
   numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
   order: PropTypes.oneOf(["asc", "desc"]).isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
@@ -132,9 +128,8 @@ const useToolbarStyles = makeStyles((theme) => ({
   },
 }));
 
-const EnhancedTableToolbar = (props) => {
+const EnhancedTableToolbar = ({numSelected,deleteRow}) => {
   const classes = useToolbarStyles();
-  const { numSelected } = props;
 
   return (
     <Toolbar
@@ -147,12 +142,14 @@ const EnhancedTableToolbar = (props) => {
         >
           Visitation Table
         </Typography>
-
+{/* 
       <Tooltip title="Filter list">
           <IconButton aria-label="filter list">
             <FilterListIcon />
           </IconButton>
-        </Tooltip>
+        </Tooltip> */}
+
+        <i className="btn fa fa-trash-alt text-secondary" style={{fontSize:"1.4rem"}} onClick={deleteRow}/>
     </Toolbar>
   );
 };
@@ -185,7 +182,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TabelSchedule = ({ rows }) => {
+const TabelSchedule = ({ rows,trigger,setAlert,alert }) => {
   const headCells = [
     { id: "id", numeric: false, disablePadding: false, label: "Visit ID" },
     { id: "room", numeric: true, disablePadding: false, label: "Ward Number" },
@@ -223,6 +220,9 @@ const TabelSchedule = ({ rows }) => {
 
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
+    console.log(selectedIndex);
+    console.log(name);
+    console.log(selected);
     let newSelected = [];
 
     if (selectedIndex === -1) {
@@ -241,6 +241,14 @@ const TabelSchedule = ({ rows }) => {
     setSelected(newSelected);
   };
 
+  const sliceSelected = (name)=>{
+    const selectedIndex = selected.indexOf(name);
+    let newselected=[...selected];
+    newselected.splice(selectedIndex,1);
+    setSelected(newselected);
+
+  }
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -252,13 +260,33 @@ const TabelSchedule = ({ rows }) => {
 
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
+  const deleteRow = async ()=>{
+    console.log("selected",selected);
+    await selected.map(x=>deleteBook(x));
+    await selected.map(x=>console.log("Deleted",x));
+    await trigger();
+    setAlert("Visit Row Deleted !","danger");
+  }
+
+  const accessToggle = async(access,id)=>{
+    console.log("Toggled",access);
+    console.log("Id",id);
+    await changeAccess(id,access);
+    sliceSelected(id);
+    console.log("Change Access Success !");
+    setAlert("Access Changed Successfully !","success");
+    trigger();
+  }
   const emptyRows =
     rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   return (
     <div className={classes.root}>
+{alert && alert.map(x=>              <div class={`alert alert-${x.alertType}`} role="alert">
+  {x.msg}
+</div>)}
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar numSelected={selected.length} deleteRow={deleteRow} />
         {rows.length===0 ? <div className="text-center"><div className="spinner-border" role="status">
                               <span className="sr-only">Loading...</span>
                             </div></div> :<TableContainer>
@@ -273,7 +301,7 @@ const TabelSchedule = ({ rows }) => {
               numSelected={selected.length}
               order={order}
               orderBy={orderBy}
-              onSelectAllClick={handleSelectAllClick}
+              // onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
               headCells={headCells}
@@ -284,18 +312,18 @@ const TabelSchedule = ({ rows }) => {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.name);
+                  const isItemSelected = isSelected(row.id);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.name)}
+                      onClick={(event) => handleClick(event, row.id)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.name}
-                      // selected={isItemSelected}
+                      key={row.id}
+                      selected={isItemSelected}
                     >
 
                       <TableCell
@@ -332,7 +360,7 @@ const TabelSchedule = ({ rows }) => {
 
                       </TableCell>
                       <TableCell align="left" key={uuidv4()}>
-                      {row.access?<i className="fa fa-2x fa-user-check text-success" />:<i className="fa fa-2x fa-user-times text-danger" />}
+                      {row.access?<i className="btn fa fa-2x fa-user-check text-success" onClick={e=>accessToggle(false,row.id)} />:<i className="btn fa fa-2x fa-user-times text-danger" onClick={e=>accessToggle(true,row.id)} />}
 
                       </TableCell>
                     </TableRow>
@@ -364,4 +392,12 @@ const TabelSchedule = ({ rows }) => {
   );
 };
 
-export default TabelSchedule;
+TabelSchedule.propTypes = {
+  alert: PropTypes.array.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  alert: state.alert
+});
+
+export default connect(mapStateToProps, {setAlert})(TabelSchedule);
