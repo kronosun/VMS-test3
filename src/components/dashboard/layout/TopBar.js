@@ -63,17 +63,19 @@ const TopBar = ({ message ,burger,logOut,userName,profilePicture,isLock,userId})
             // aria-haspopup="true"
             // aria-expanded="false"
           >
-          
+{!userName?<div className="spinner-border mr-2 mb-1" role="status" style={{fontSize:"1rem",height:"15px",width:"15px"}}>
+  <span className="sr-only">Loading...</span>
+</div>:(          <Fragment>
             <img
               className="img-profile rounded-circle mx-1"
               src={profilePicture}
               style={{width:"32px",height:"32px"}}
               
             />
-
             <span className="mx-1 d-lg-inline d-none text-gray-600 small">
               {userName}
             </span>
+            </Fragment>)}
           </Link>
         </li>
         <div className="topbar-divider  d-sm-block mr-1"></div>

@@ -32,9 +32,9 @@ const Gantt = ({sessionArray}) => {
         //   width={"100%"}
         //   height={"400px"}
           chartType="Gantt"
-          loader={<div className="spinner-border mx-auto" role="status">
-  <span className="sr-only">Loading...</span>
-</div>}
+//           loader={<div className="spinner-border mx-auto" role="status">
+//   <span className="sr-only">Loading...</span>
+// </div>}
           data={[
             [
               { type: "string", label: "Task ID" },

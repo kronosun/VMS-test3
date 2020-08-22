@@ -261,11 +261,20 @@ const TabelSchedule = ({ rows,trigger,setAlert,alert }) => {
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
   const deleteRow = async ()=>{
-    console.log("selected",selected);
-    await selected.map(x=>deleteBook(x));
-    await selected.map(x=>console.log("Deleted",x));
-    await trigger();
-    setAlert("Visit Row Deleted !","danger");
+    try {
+      if(selected.length===0) {
+      setAlert("Please Select Row Rirst !","danger");
+      return;
+      };
+      console.log("selected",selected);
+      await selected.map(x=>deleteBook(x));
+      await selected.map(x=>console.log("Deleted",x));
+      await trigger();
+      setAlert("Visit Row Deleted Successfully !","success");
+    } catch (error) {
+      console.error(error);
+    }
+
   }
 
   const accessToggle = async(access,id)=>{

@@ -111,6 +111,7 @@ const plotRender = (x) =>{
 }
 
 const ChartData = (props) => {
+  const [loading,setLoading] = useState(true);
   const [dataChart, setDataChart] = useState({});
   const [plotChart,setPlotChart]=useState({});
   const [general, setGeneral] = useState({
@@ -142,6 +143,7 @@ const ChartData = (props) => {
       setGeneral(res);
       setSession(ses);
       setPlotChart(plotNew);
+      setLoading(false);
     };
     updateChart();
     const interval = setInterval(updateChart, 1500);
@@ -204,7 +206,9 @@ const ChartData = (props) => {
         <div className="col-sm-6 px-3 pt-0 pb-2">
           <div class="card mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Visitor</h6>
+              <h6 class="m-0 font-weight-bold text-primary">                {loading &&(                <div className="spinner-border mr-2 mb-1" role="status" style={{fontSize:"1rem",height:"15px",width:"15px"}}>
+  <span className="sr-only">Loading...</span>
+</div>)}Visitor</h6>
             </div>
             <div class="card-body">
               <Line
@@ -226,10 +230,13 @@ const ChartData = (props) => {
       <div className="row">
         <div className="col-sm-4">
           <div className="py-2 p-3">
-            <div class="card mb-4 h-100">
+            <div class="card mb-4" style={{height:"350px"}}>
               <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">
-                  Visitor per Floor
+{loading &&(                <div className="spinner-border mr-2 mb-1" role="status" style={{fontSize:"1rem",height:"15px",width:"15px"}}>
+  <span className="sr-only">Loading...</span>
+</div>)}
+                  Visitor per Floor 
                 </h6>
               </div>
               <div class="card-body">
@@ -254,9 +261,12 @@ const ChartData = (props) => {
         </div>
         <div className="col-sm-5">
           <div className="py-2 p-3">
-            <div class="card mb-4 ">
+            <div class="card mb-4 " style={{height:"350px"}}>
               <div class="card-header py-3 ">
                 <h6 class="m-0 font-weight-bold text-primary">
+                {loading &&(                <div className="spinner-border mr-2 mb-1" role="status" style={{fontSize:"1rem",height:"15px",width:"15px"}}>
+  <span className="sr-only">Loading...</span>
+</div>)}
                   Available Sessions Today
                 </h6>
               </div>
@@ -266,7 +276,7 @@ const ChartData = (props) => {
             </div>
           </div>
         </div>
-        <div className="col-sm-3">
+        <div className="col-sm-3" >
           <TextBox />
         </div>
       </div>

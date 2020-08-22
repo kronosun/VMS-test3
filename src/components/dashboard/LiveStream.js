@@ -54,12 +54,12 @@ const LiveStream = (props) => {
           />
           <div className="container-fluid" style={{ height: "100vh" }}>
 {floors.length!==0 ?(            <div
-              className="collapse show mt-1 mx-auto border-bottom-primary"
+              className="collapse show mt-1 mx-auto border-bottom-primary py-0"
               id="sidebarcollapse"
             >
-              <div className="card card-body" style={{ width: "auto" }}>
-                <div className="row justify-content-center">
-                  <div className="col-2">
+              <div className="card card-body py-0" style={{ width: "auto" }}>
+                <div className="row justify-content-center py-1" style={{height:"60px"}}>
+                  <div className="col-2 my-0 py-0" >
                     <FormControl>
                       <InputLabel id="input1">Floor</InputLabel>
                       <Select
@@ -79,7 +79,7 @@ const LiveStream = (props) => {
                       </Select>
                     </FormControl>
                   </div>
-                  <div className="col-2">
+                  <div className="col-2 my-0 py-0">
                     <FormControl>
                       <InputLabel id="input2">Ward</InputLabel>
                       <Select

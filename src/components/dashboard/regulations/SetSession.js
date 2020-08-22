@@ -188,7 +188,7 @@ const SetSession = ({alert,setAlert}) => {
     console.log(newInput);
     if (idx !== -1) newData.splice(idx, 1, newInput);
     setweekDaySession(newData);
-    setAlert("Session Updated !","success");
+    setAlert("Session Updated !","warning");
 
   };
   const updateSessionEnd = (e) => {
@@ -205,7 +205,7 @@ const SetSession = ({alert,setAlert}) => {
     console.log(newInput);
     if (idx !== -1) newData.splice(idx, 1, newInput);
     setweekEndSession(newData);
-    setAlert("Session Updated !","success");
+    setAlert("Session Updated !","warning");
 
   };
 
@@ -1003,7 +1003,7 @@ const SetSession = ({alert,setAlert}) => {
                     </li>
                     <button
                       className="btn fas fa-times text-danger-300 p-0 m-auto"
-                      style={{ fontSize: "2em", color: "red" }}
+                      style={{ fontSize: "1.3em", color: "red" }}
                       onClick={() => deleteRules(x)}
                     />
                   </div>{" "}
