@@ -41,31 +41,32 @@ const SetSession = ({alert,setAlert}) => {
     sessionEnd: updateEnd,
     fromEnd: "00:00",
     toEnd: "00:00",
-  });
+  }
+  );
   const [weekDaySession, setweekDaySession] = useState([
-    {
-      session_number: 1,
-      session_from: "00:00",
-      session_to: "00:00",
-    },
-    {
-      session_number: 2,
-      session_from: "00:00",
-      session_to: "00:00",
-    },
+    // {
+    //   session_number: 1,
+    //   session_from: "00:00",
+    //   session_to: "00:00",
+    // },
+    // {
+    //   session_number: 2,
+    //   session_from: "00:00",
+    //   session_to: "00:00",
+    // },
   ]);
 
   const [weekEndSession, setweekEndSession] = useState([
-    {
-      session_number: 1,
-      session_from: "00:00",
-      session_to: "00:00",
-    },
-    {
-      session_number: 2,
-      session_from: "00:00",
-      session_to: "00:00",
-    },
+    // {
+    //   session_number: 1,
+    //   session_from: "00:00",
+    //   session_to: "00:00",
+    // },
+    // {
+    //   session_number: 2,
+    //   session_from: "00:00",
+    //   session_to: "00:00",
+    // },
   ]);
   const [formData, setFormData] = useState({
     maxVisitor: 0,
@@ -95,12 +96,28 @@ const SetSession = ({alert,setAlert}) => {
     setweekEndSession(freshWeekEnd);
     setState(true);
   };
+  const reAdjust = () =>{
+    console.log("Readjusting");
+    console.log(weekDaySession);
+    console.log(weekEndSession);
+    if(weekDaySession.length===0) return;
+    const newDay= weekDaySession.map((x,i)=>({...x,session_number:(i+1)}));
+    console.log(newDay);
+    setweekDaySession(newDay);
+
+    if(weekEndSession.length===0) return;
+    const newEnd= weekEndSession.map((x,i)=>({...x,session_number:(i+1)}));
+    console.log(newEnd);
+    setweekEndSession(newEnd);
+  }
+
   useEffect(() => {
 
     fetchRules();
-    // const interval = setInterval(fetchRules, 8000);
+    // const interval = setInterval(reAdjust, 500);
     // return () => clearInterval(interval);
   }, []);
+
 
   const onChange = (e) => {
     const newForm = { ...formData, [e.target.name]: e.target.value };
@@ -156,7 +173,9 @@ const SetSession = ({alert,setAlert}) => {
 
     const newData = [...weekDaySession];
     if (idx !== -1) newData.splice(idx, 1);
-    setweekDaySession(newData);
+    const final=newData.map((x,i)=>({...x,session_number:(i+1)}))
+
+    setweekDaySession(final);
     setAlert("Session Deleted !","danger");
 
   };
@@ -167,7 +186,9 @@ const SetSession = ({alert,setAlert}) => {
     );
     const newData = [...weekEndSession];
     if (idx !== -1) newData.splice(idx, 1);
-    setweekEndSession(newData);
+    const final=newData.map((x,i)=>({...x,session_number:(i+1)}))
+
+    setweekEndSession(final);
     setAlert("Session Deleted !","danger");
 
   };
@@ -187,7 +208,10 @@ const SetSession = ({alert,setAlert}) => {
     };
     console.log(newInput);
     if (idx !== -1) newData.splice(idx, 1, newInput);
-    setweekDaySession(newData);
+
+    const final=newData.map((x,i)=>({...x,session_number:(i+1)}))
+
+    setweekDaySession(final);
     setAlert("Session Updated !","warning");
 
   };
@@ -204,7 +228,9 @@ const SetSession = ({alert,setAlert}) => {
     };
     console.log(newInput);
     if (idx !== -1) newData.splice(idx, 1, newInput);
-    setweekEndSession(newData);
+    const final=newData.map((x,i)=>({...x,session_number:(i+1)}))
+
+    setweekEndSession(final);
     setAlert("Session Updated !","warning");
 
   };
@@ -217,7 +243,8 @@ const SetSession = ({alert,setAlert}) => {
       session_to: editDay.toDay.concat(":00"),
     };
     newData.push(newInput);
-    setweekDaySession(newData);
+    const final=newData.map((x,i)=>({...x,session_number:(i+1)}))
+    setweekDaySession(final);
     setAlert("Session Added !","success");
 
   };
@@ -230,7 +257,8 @@ const SetSession = ({alert,setAlert}) => {
     };
     newData.push(newInput);
     console.log(newData);
-    setweekEndSession(newData);
+    const final=newData.map((x,i)=>({...x,session_number:(i+1)}))
+    setweekEndSession(final);
     setAlert("Session Added !","success");
 
   };
@@ -266,7 +294,7 @@ const SetSession = ({alert,setAlert}) => {
   }
   return (
     <Fragment>
-    {alert && alert.map(x=>              <div class={`alert alert-${x.alertType}`} role="alert">
+    {alert && alert.map(x=>              <div className={`alert alert-${x.alertType}`} role="alert">
   {x.msg}
 </div>)}
 {state ? (    <Fragment>

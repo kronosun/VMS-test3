@@ -155,7 +155,7 @@ const ChartData = (props) => {
     <Fragment>
       <div className="row">
         <div className="col-sm-6">
-          <div class="row row-cols-sm-2 p-2">
+          <div className="row row-cols-sm-2 p-2">
             <CardDesign
               title="Current Visitor"
               value={general.SumVisitor}
@@ -204,13 +204,13 @@ const ChartData = (props) => {
           </div>
         </div>
         <div className="col-sm-6 px-3 pt-0 pb-2">
-          <div class="card mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">                {loading &&(                <div className="spinner-border mr-2 mb-1" role="status" style={{fontSize:"1rem",height:"15px",width:"15px"}}>
+          <div className="card mb-4 shadow">
+            <div className="card-header py-3">
+              <h6 className="m-0 font-weight-bold text-primary">                {loading &&(                <div className="spinner-border mr-2 mb-1" role="status" style={{fontSize:"1rem",height:"15px",width:"15px"}}>
   <span className="sr-only">Loading...</span>
 </div>)}Visitor</h6>
             </div>
-            <div class="card-body">
+            <div className="card-body">
               <Line
                 data={plotChart}
                 options={{
@@ -230,16 +230,16 @@ const ChartData = (props) => {
       <div className="row">
         <div className="col-sm-4">
           <div className="py-2 p-3">
-            <div class="card mb-4" style={{height:"350px"}}>
-              <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">
+            <div className="card mb-4 shadow" style={{height:"350px"}}>
+              <div className="card-header py-3">
+                <h6 className="m-0 font-weight-bold text-primary">
 {loading &&(                <div className="spinner-border mr-2 mb-1" role="status" style={{fontSize:"1rem",height:"15px",width:"15px"}}>
   <span className="sr-only">Loading...</span>
 </div>)}
                   Visitor per Floor 
                 </h6>
               </div>
-              <div class="card-body">
+              <div className="card-body">
               {dataChart ?                 <Pie
                   data={dataChart}
                   options={{
@@ -260,17 +260,17 @@ const ChartData = (props) => {
           </div>
         </div>
         <div className="col-sm-5">
-          <div className="py-2 p-3">
-            <div class="card mb-4 " style={{height:"350px"}}>
-              <div class="card-header py-3 ">
-                <h6 class="m-0 font-weight-bold text-primary">
+          <div className="py-1 px-3">
+            <div className="card mb-4 shadow" style={{height:"350px"}}>
+              <div className="card-header ">
+                <h6 className="m-0 font-weight-bold text-primary">
                 {loading &&(                <div className="spinner-border mr-2 mb-1" role="status" style={{fontSize:"1rem",height:"15px",width:"15px"}}>
   <span className="sr-only">Loading...</span>
 </div>)}
                   Available Sessions Today
                 </h6>
               </div>
-              <div class="card-body">
+              <div className="card-body">
                 <Gantt sessionArray={session}/>
               </div>
             </div>

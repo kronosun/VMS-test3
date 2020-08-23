@@ -1,4 +1,4 @@
-  import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Helmet } from "react-helmet";
 // Import CSS
 import "./assets/css/sb-admin-2.css";
@@ -11,20 +11,18 @@ import PropTypes from "prop-types";
 import TopBarGuest from "../dashboard/layout/TopBarGuest";
 // Actions
 import { loadUser, loginCognito } from "../../actions/auth";
+import { setAlert } from "../../actions/alert";
 
-const Login = ({ loginCognito, isAdmin, isAuthenticated }) => {
+const Login = ({ loginCognito, isAdmin, isAuthenticated,setAlert,alert,loading }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [pressed,setPressed]=useState(false);
-  useEffect(() => {
-    setPressed(false);
-  }, []);
+  const [pressed, setPressed] = useState(false);
   //State
-
-  const onSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = async (e) => {
+    console.log("PRESSED");
     setPressed(true);
-    loginCognito(email, password);
+    e.preventDefault();
+    await loginCognito(email, password);
   };
   if (isAuthenticated && isAdmin !== null) {
     if (isAdmin) {
@@ -49,14 +47,20 @@ const Login = ({ loginCognito, isAdmin, isAuthenticated }) => {
                   <div className="row">
                     <div className="col-lg-6 d-none d-lg-block bg-login-image"></div>
 
-                    <div className="col-lg-6 text-center" style={{height:"650px"}}>
+                    <div
+                      className="col-lg-6 text-center"
+                      style={{ height: "650px" }}
+                    >
+                                            {alert && alert.map(x=>              <div className={`alert alert-${x.alertType} mx-1`} role="alert">
+  {x.msg}
+</div>)}
                       <div className="p-5">
                         <div className="text-center">
-                          <h1 className="h4 text-gray-900 mb-5 mt-5">
+                          <h1 className="h4 text-gray-900 mb-5 mt-1">
                             Welcome Back!
                           </h1>
                         </div>
-                        <form className="user" onSubmit={onSubmit}>
+                        <form className="user" >
                           <div className="form-group">
                             <input
                               value={email}
@@ -84,13 +88,16 @@ const Login = ({ loginCognito, isAdmin, isAuthenticated }) => {
                           <button
                             type="submit"
                             className="btn btn-primary btn-user btn-block mb-3 mt-0"
+                            onClick={onSubmit}
                           >
                             Login
                           </button>
-                          { pressed ?                          <div className="spinner-border visible mb-3" role="status">
-                          </div> : null
-
-                }
+                          {(pressed && !(!loading && !isAuthenticated)) ? (
+                            <div
+                              className="spinner-border visible mb-3"
+                              role="status"
+                            ></div>
+                          ) : null}
                         </form>
                         <hr className="mb-3" />
                         <div className="text-center my-4">
@@ -121,11 +128,16 @@ Login.propTypes = {
   loginCognito: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
   isAdmin: PropTypes.bool,
+  setAlert:PropTypes.func.isRequired,
+  alert:PropTypes.array.isRequired,
+  loading:PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  loading:state.auth.loading,
   isAdmin: state.auth.isAdmin,
+  alert: state.alert
 });
 
-export default connect(mapStateToProps, { loadUser, loginCognito })(Login);
+export default connect(mapStateToProps, { loadUser, loginCognito,setAlert })(Login);

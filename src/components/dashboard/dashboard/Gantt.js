@@ -27,7 +27,7 @@ return test ;
 const Gantt = ({sessionArray}) => {
     return (
       <Fragment>
-      {sessionArray && sessionArray.length !==0 &&<div className="px-1 py-3 mt-3">
+      {sessionArray && sessionArray.length !==0 &&<div className="px-2 py-1 mt-2">
                     <Chart
         //   width={"100%"}
         //   height={"400px"}
@@ -47,8 +47,8 @@ const Gantt = ({sessionArray}) => {
               { type: "string", label: "Dependencies" }
             ],
             ...sessionArray.map(x=>[
-              String(x.session_number),
-              String(x.session_number),
+              `Session ${String(x.session_number)}`,
+              `Session ${String(x.session_number)}`,
               "Session",
               new Date(fromTimetoMilliseconds(String(x.session_from))),
               new Date(fromTimetoMilliseconds(String(x.session_to))),

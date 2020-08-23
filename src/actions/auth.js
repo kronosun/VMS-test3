@@ -1,6 +1,7 @@
 import * as Action from "./types";
 import UserPool from "../UserPool";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
+import {setAlert} from './alert';
 // import axios from 'axios';
 
 // Load User pas web loading
@@ -42,18 +43,28 @@ export const loginCognito =  (email, password) => async (dispatch)=> {
     Username: email,
     Password: password,
   });
-  await user.authenticateUser(authDetails, {
-    onSuccess: (data) => {
-      console.log("Login Success : ", data);
-      dispatch(loadUser());
-    },
-    onFailure: (err) => {
-      console.log("Login Failed: ", err);
-    },
-    newPasswordRequired: (data) => {
-      console.log("newPasswordRequired: ", data);
-    },
-  });
+  try {
+    await user.authenticateUser(authDetails, {
+      onSuccess: (data) => {
+        console.log("Login Success : ", data.idToken.payload.name);
+        dispatch(loadUser());
+      },
+      onFailure: (err) => {
+        console.log("Login Failed: ", err);
+        dispatch(loadUser());
+        dispatch(setAlert("Invalid Credentials !","danger"));
+      },
+      newPasswordRequired: (data) => {
+        console.log("newPasswordRequired: ", data);
+        dispatch(loadUser());
+        dispatch(setAlert("Invalid Credentials !","danger"));
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
+
+
 };
 
 // Register pake Cognito
@@ -159,3 +170,6 @@ export const getAttributes = () => async (dispatch) =>{
 
 };
 
+
+
+// const resetPassword = ()
