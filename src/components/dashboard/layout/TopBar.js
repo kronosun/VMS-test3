@@ -26,15 +26,19 @@ const TopBar = ({ message ,burger,logOut,userName,profilePicture,isLock,userId})
         <Link className="dropdown-item" to="/dashboard">
           Dashboard
         </Link>
-        <Link className="dropdown-item" to="/regulation">
-          Regulation
-        </Link>
         <Link className="dropdown-item" to="/visitor">
-          Visitor
+          Visitor Number
+        </Link>
+        <Link className="dropdown-item" to="/livestream">
+          Livestream
         </Link>        
+        <Link className="dropdown-item" to="/regulation">
+          Set Rules
+        </Link>
         <Link className="dropdown-item" to="/schedules">
           Schedules
-        </Link>
+        </Link>        
+
       </div>
       <h1 className="h3 mb-0 text-gray-800 mx-1">{message}</h1>
       <div  style={{width:'150px',height:"50px"}} className="mr-auto border-0 bg-white d-flex justify-content-center"  onMouseEnter={() => setIsShown(true)}

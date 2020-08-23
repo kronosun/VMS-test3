@@ -146,7 +146,7 @@ const ChartData = (props) => {
       setLoading(false);
     };
     updateChart();
-    const interval = setInterval(updateChart, 1500);
+    const interval = setInterval(updateChart, 4500);
     return () => {
       clearInterval(interval);
     };

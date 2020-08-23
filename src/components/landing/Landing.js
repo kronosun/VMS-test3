@@ -39,7 +39,7 @@ const Landing = ({loadUser}) => {
                   smooth={true}
                   offset={-70}
                   duration={500}
-                  className="text-light"
+                  className="btn text-light"
                 >
               Home
               </Links>
@@ -54,7 +54,7 @@ const Landing = ({loadUser}) => {
                   smooth={true}
                   offset={-70}
                   duration={500}
-                  className="text-light"
+                  className="btn text-light"
                 >
              About
               </Links>
@@ -68,7 +68,7 @@ const Landing = ({loadUser}) => {
                   smooth={true}
                   offset={-70}
                   duration={500}
-                  className="text-light"
+                  className="btn text-light"
                 >
                 Services
               </Links>
@@ -83,7 +83,7 @@ const Landing = ({loadUser}) => {
                   smooth={true}
                   offset={-70}
                   duration={500}
-                  className="text-light"
+                  className="btn text-light"
                 >
                 Portfolio
               </Links>
@@ -97,7 +97,7 @@ const Landing = ({loadUser}) => {
                   smooth={true}
                   offset={-70}
                   duration={500}
-                  className="text-light"
+                  className="btn text-light"
                 >
                 Team
               </Links>
@@ -111,7 +111,7 @@ const Landing = ({loadUser}) => {
                   smooth={true}
                   offset={-70}
                   duration={500}
-                  className="text-light"
+                  className="btn text-light"
                 >
                 Contact Us
               </Links>
