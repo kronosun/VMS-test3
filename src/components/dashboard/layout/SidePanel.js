@@ -4,15 +4,11 @@ import "../../auth/assets/css/sb-admin-2.css";
 
 const SidePanel = ({msg}) => {
   return (
-    //   <!-- Page Wrapper -->
     <Fragment >
-      {/* <!-- Sidebar --> */}
-      {/* <div className="collapse show" id="sidebarcollapse"> */}
       <ul
         className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled collapse show"
         id="sidebarcollapse"
       >
-        {/* <!-- Sidebar - Brand --> */}
         <Link
           className="sidebar-brand d-flex align-items-center justify-content-center"
           to="/dashboard"

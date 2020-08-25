@@ -19,12 +19,10 @@ const Visitor = ({alert,setAlert}) => {
   const [floors, setFloors] = useState([]);
   const [floorFilter,setFloorFilter]= useState(1);
   const fetchData = async () => {
-    // const res = await fetchFloor();
     const res = await getAllBed();
     const maxData= await getMax();
     setFloors(res);
     setMax(maxData);
-    console.log("floors", JSON.stringify(res));
   };
   useEffect(() => {
     fetchData();

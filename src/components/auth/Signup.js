@@ -98,7 +98,6 @@ function hasLength(str){
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // console.log(formData);
     if (validateForm()) return;
     handleNext();
     signupCognito(
@@ -117,9 +116,7 @@ function hasLength(str){
   const uploadprofile = async (e) => {
     setUploadA(true);
 
-    console.log("Image Upload Started !");
     const files = e.target.files;
-    console.log(files);
     const data = new FormData();
     data.append("file", files[0]);
     data.append("upload_preset", "userimages");
@@ -129,15 +126,12 @@ function hasLength(str){
       body
     );
     //Upload
-    console.log(res.data.url);
     setUploadA(false);
     setFormData({ ...formData, profilePicture: res.data.url });
   };
   const uploadektp = async (e) => {
     setUploadB(true);
-    console.log("Image Upload Started !");
     const files = e.target.files;
-    console.log(files);
     const data = new FormData();
     data.append("file", files[0]);
     data.append("upload_preset", "userimages");
@@ -147,7 +141,6 @@ function hasLength(str){
       body
     );
     //Upload
-    console.log(res.data.url);
     setUploadB(false);
     setFormData({ ...formData, ektp: res.data.url });
   };

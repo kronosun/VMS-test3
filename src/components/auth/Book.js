@@ -35,6 +35,7 @@ import {
   getAvailableSessions,
   bookSchedule,
 } from "../../actions/api";
+import {setAlert} from '../../actions/alert';
 
 const useStyles = makeStyles({
   root: {
@@ -98,7 +99,7 @@ function getSteps() {
   return ["Pick the Date", "Choose Session", "Confirm"];
 }
 
-const Book = ({ userId, name }) => {
+const Book = ({ userId, name, setAlert, alert}) => {
   // State
   const [appointment, setAppointment] = useState("");
   const [rules, SetRules] = useState([]);
@@ -112,14 +113,11 @@ const Book = ({ userId, name }) => {
   const { visitee, ward, date, session } = formData;
   const fetchRules = async () => {
     const data = await getWrittenRules();
-    console.log("Written Rules !", data);
     SetRules(data);
   };
   const fetchSession = async (x) => {
-    console.log("FETCH SESSION", x);
     if (x === "") return;
     const sessionFetch = await getAvailableSessions(x);
-    console.log("Sessions !", sessionFetch);
     setSessions(sessionFetch);
   };
   useEffect(() => {
@@ -131,7 +129,6 @@ const Book = ({ userId, name }) => {
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log({ ...formData, [e.target.name]: e.target.value });
   };
 
   const [activeStep, setActiveStep] = React.useState(0);
@@ -161,12 +158,19 @@ const Book = ({ userId, name }) => {
       date: date,
       session: String(session),
     };
-    console.log(dataSent);
     const res = await bookSchedule(dataSent);
-    if (res) {
+    if (res.statusCode===200){
       setAppointment(res.body);
-    } else {
-      setAppointment("false");
+    }
+    else if (res.statusCode === 201) {
+    setAlert("Sessions is full !","danger");
+    setActiveStep((prevActiveStep) => prevActiveStep - 3);
+
+    }
+    else if (res.statusCode=== 202){
+      setAlert("Incorrect visitee or wards number","danger");
+    setActiveStep((prevActiveStep) => prevActiveStep - 3);
+
     }
   };
 
@@ -192,6 +196,9 @@ const Book = ({ userId, name }) => {
                       className="col-lg-8 align-items-center p-4 "
                       style={{ height: "700px" }}
                     >
+                                                                {alert && alert.map(x=>              <div className={`alert alert-${x.alertType} mx-1`} role="alert">
+  {x.msg}
+</div>)}
                       <div className="text-center">
                         <h1 className="h4 text-gray-900 my-2">Book a Visit</h1>
                       </div>
@@ -485,11 +492,13 @@ const Book = ({ userId, name }) => {
 Book.propTypes = {
   userId: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  alert:PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state) => ({
   userId: state.auth.attributes.userId,
   name: state.auth.attributes.name,
+  alert :state.alert
 });
 
-export default connect(mapStateToProps, {})(Book);
+export default connect(mapStateToProps, {setAlert})(Book);

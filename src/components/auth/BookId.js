@@ -24,7 +24,6 @@ const BookId = ({ match,profile }) => {
   const fetchBook= async () =>{
     const res= await getBookId(match.params.id);
     setForm(res);
-    console.log("dataform",res.data);
     setState(true);
   }
   useEffect(()=>{

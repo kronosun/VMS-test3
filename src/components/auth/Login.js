@@ -19,7 +19,6 @@ const Login = ({ loginCognito, isAdmin, isAuthenticated,setAlert,alert,loading }
   const [pressed, setPressed] = useState(false);
   //State
   const onSubmit = async (e) => {
-    console.log("PRESSED");
     setPressed(true);
     e.preventDefault();
     await loginCognito(email, password);

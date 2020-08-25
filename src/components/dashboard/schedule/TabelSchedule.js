@@ -64,19 +64,11 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        {/* <TableCell padding="checkbox">
-            <Checkbox
-              indeterminate={numSelected > 0 && numSelected < rowCount}
-              checked={rowCount > 0 && numSelected === rowCount}
-              onChange={onSelectAllClick}
-              inputProps={{ 'aria-label': 'select all desserts' }}
-            />
-          </TableCell> */}
+
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
             align="left"
-            // {headCell.numeric ? 'right' : 'left'}
             padding={headCell.disablePadding ? "none" : "default"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -220,9 +212,6 @@ const TabelSchedule = ({ rows,trigger,setAlert,alert }) => {
 
   const handleClick = (event, name) => {
     const selectedIndex = selected.indexOf(name);
-    console.log(selectedIndex);
-    console.log(name);
-    console.log(selected);
     let newSelected = [];
 
     if (selectedIndex === -1) {
@@ -266,9 +255,7 @@ const TabelSchedule = ({ rows,trigger,setAlert,alert }) => {
       setAlert("Please Select Row Rirst !","danger");
       return;
       };
-      console.log("selected",selected);
       await selected.map(x=>deleteBook(x));
-      await selected.map(x=>console.log("Deleted",x));
       await trigger();
       setAlert("Visit Row Deleted Successfully !","success");
     } catch (error) {
@@ -278,11 +265,8 @@ const TabelSchedule = ({ rows,trigger,setAlert,alert }) => {
   }
 
   const accessToggle = async(access,id)=>{
-    console.log("Toggled",access);
-    console.log("Id",id);
     await changeAccess(id,access);
     sliceSelected(id);
-    console.log("Change Access Success !");
     setAlert("Access Changed Successfully !","success");
     trigger();
   }

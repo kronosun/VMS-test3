@@ -1,4 +1,4 @@
-
+const axios = require ('axios');
 const getBookId= async (visitId) =>{
   try {
       const url=`https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/${String(visitId)}`;
@@ -26,7 +26,15 @@ const getHistory = async (userId) => {
     console.error(error);
   }
 };
-
+export const bookSchedule = async(data)=>{
+  try {
+      const res= await axios.post("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/book",JSON.stringify(data));
+      if (res.data.statusCode===200) {return res.data;}
+      else {return false};
+  } catch (error) {
+      console.error(error);
+  }
+} 
 // Coba getbookId
 const fetch = async () =>{
   const resp= await getBookId("9eeb01b80bcb2e4c7daaad21160074f2");

@@ -50,7 +50,6 @@ const Schedules = () => {
   const [rows,setRows]=useState([]);
   const fetchRows= async () => {
     const newRows= await getSchedule();
-    // console.log(newRows);
     const newDataSet= newRows.map(item=>({...item,date:`${item.date}/${item.session}`}));
     setRows(newDataSet);
   };
@@ -61,7 +60,6 @@ const Schedules = () => {
     return () => clearInterval(interval);
   }, []);
   const trigger = async()=>{
-    console.log("Trigger Triggered !");
     await fetchRows();
   }
   return (

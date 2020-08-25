@@ -1,14 +1,14 @@
 import axios from "axios";
+
 let config = {
   headers: {
     'Content-Type': 'application/json',
   }
 }
-
+// Dummy API for testing only 
 export const dummyApi = async () => {
   try {
     const res = await axios.get("https://randomuser.me/api/");
-    // console.log(res);
     return res.data;
   } catch (error) {
     console.error(error);
@@ -20,52 +20,74 @@ export const dummyFetch = async () => {
       "https://zlrfbbk9b2.execute-api.us-east-1.amazonaws.com/live/data",
       JSON.stringify({})
     );
-    console.log(res);
   } catch (error) {
     console.error(error);
   }
 };
 
-// Get all Bed from All Wards
+// API related for Booking features
+// Check Available sessions based on visitor's option on visit date. 
+export const getAvailableSessions = async (date) => {
+  try {
 
-export const getAllBed = async () => {
+    const res = await axios.get(
+      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/rules/get"
+    );
+    const data = res.data.body;
+    const sessionWeekDay = data[0].session_rules.map((x) => x.sessions)[0];
+    const sessionWeekEnd = data[0].session_rules.map((x) => x.sessions)[1];
+    const now = new Date(date).getDay();
+    if (now >= 1 && now <= 5) {
+      return sessionWeekDay;
+    } else if(now===0 || now===6) {
+      return sessionWeekEnd;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+// Get Written Rules only
+export const getWrittenRules = async () => {
   try {
     const res = await axios.get(
-      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/warddatabase/getallbed"
+      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/rules/get"
     );
-    const data = [...res.data.body];
+    const data = res.data.body[0].general;
     return data;
   } catch (error) {
     console.error(error);
   }
 };
+// Post Book form
+export const bookSchedule = async(data)=>{
+    try {
+        const res= await axios.post("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/book",JSON.stringify(data));
+        return res.data;
+    } catch (error) {
+        console.error(error);
+    }
+}
 
-// Update Ward Access
-
-export const updateAccess = async (FloorNumber, WardNumber, WardAccess) => {
-  const formData = JSON.stringify({
-    FloorNumber,
-    WardNumber,
-    WardAccess: String(!WardAccess),
-  });
-  console.log(formData);
+// Fetch data to render Digital Badge
+export const getBookId= async (visitId) =>{
   try {
-    const res = await axios.put(
-      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/warddatabase/editward/updatewardaccess",
-      formData
-    );
-    console.log(res);
+      const url="https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/get/id2"
+      const body={
+        "id":String(visitId)
+      }
+      const res= await axios.put(url,body,config);
+      return res.data.body;
+      
   } catch (error) {
-    console.error(error);
+      console.error(error);
   }
-};
+}
 
+
+// API related for user profile 
 // Get User History
 export const getHistory = async (userId) => {
   try {
-    // const res = await axios.get(
-    //   `https://cors-anywhere.herokuapp.com/https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/filter/${userId}`,config
-    // );
     const body={
       "userid":String(userId)
     }
@@ -80,21 +102,40 @@ export const getHistory = async (userId) => {
 };
 
 
-// Get All Schedule
+// Dashboard Panel 
+// Get Dashboard quantified variable data
+export const getGeneral = async ()=>{
+  try {
+    const res= await axios.get("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/dashboard/general");
+    return res.data.body;
+  } catch (error) {
+    console.error();
+  }
+}
+// Get Visitor Data for plotting purpose 
+export const getVisitorData = async() =>{
+  try {
+    const res= await axios.get("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/dashboard/visitortoday/getall");
+    return res.data.body;
+  } catch (error) {
+    console.error();
+  }
+}
 
-export const getSchedule = async () => {
+// Visitor Panel and Livestream Panel
+// Get all Bed from All Wards
+export const getAllBed = async () => {
   try {
     const res = await axios.get(
-      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/get"
+      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/warddatabase/getallbed"
     );
-    return res.data.body;
+    const data = [...res.data.body];
+    return data;
   } catch (error) {
     console.error(error);
   }
 };
-
 // Get Max Visitor
-
 export const getMax = async () => {
   try {
     const res = await axios.get(
@@ -107,9 +148,25 @@ export const getMax = async () => {
     console.error(error);
   }
 };
+// Update Ward Access
+export const updateAccess = async (FloorNumber, WardNumber, WardAccess) => {
+  const formData = JSON.stringify({
+    FloorNumber,
+    WardNumber,
+    WardAccess: String(!WardAccess),
+  });
+  try {
+    const res = await axios.put(
+      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/warddatabase/editward/updatewardaccess",
+      formData
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
 
+// Rules and Regulation Panel
 // Get All Rules
-
 export const getRules = async () => {
   try {
     const res = await axios.get(
@@ -131,121 +188,29 @@ export const getRules = async () => {
     console.error(error);
   }
 };
-
 // update Rules
-
 export const updateRules = async(formData)=>{
     try {
         const res = await axios.put("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/rules/update",JSON.stringify(formData));
-        console.log(res.data.statusCode);
         return res.data.statusCode;
     } catch (error) {
         console.error(error);
     }
 }
 
-
-
-// Get Written Rules only
-
-export const getWrittenRules = async () => {
+//Schedule Panel
+// Get All Schedule
+export const getSchedule = async () => {
   try {
     const res = await axios.get(
-      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/rules/get"
+      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/get"
     );
-    const data = res.data.body[0].general;
-    return data;
+    return res.data.body;
   } catch (error) {
     console.error(error);
   }
 };
-
-// Get Available Sessions
-
-export const getAvailableSessions = async (date) => {
-  try {
-
-    const res = await axios.get(
-      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/rules/get"
-    );
-    const data = res.data.body;
-    const sessionWeekDay = data[0].session_rules.map((x) => x.sessions)[0];
-    const sessionWeekEnd = data[0].session_rules.map((x) => x.sessions)[1];
-    const now = new Date(date).getDay();
-    // console.log("NOW :",now);
-    
-    if (now >= 1 && now <= 5) {
-      return sessionWeekDay;
-    } else if(now===0 || now===6) {
-      return sessionWeekEnd;
-    }
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-// Book 
-
-export const bookSchedule = async(data)=>{
-    try {
-        const res= await axios.post("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/book",JSON.stringify(data));
-        if (res.data.statusCode===200) {return res.data;}
-        else {return false};
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-// Fetch data to render Digital Badge
-
-export const getBookId= async (visitId) =>{
-    try {
-        // const url=`https://cors-anywhere.herokuapp.com/https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/${String(visitId)}`;
-        // const url=`https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/${String(visitId)}`;
-        const url="https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/get/id2"
-        console.log(url);
-        const body={
-          "id":String(visitId)
-        }
-        // const res= await axios.get(url,config);
-        const res= await axios.put(url,body,config);
-        console.log(res.data.body);
-
-        // return res.data.body
-        return res.data.body;
-        
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-// Get Dashboard quantified variable data
-
-export const getGeneral = async ()=>{
-  try {
-    const res= await axios.get("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/dashboard/general");
-    console.log(res.data.body);
-    return res.data.body;
-  } catch (error) {
-    console.error();
-  }
-}
-
-
-// Get Visitor Data 
-
-export const getVisitorData = async() =>{
-  try {
-    const res= await axios.get("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/dashboard/visitortoday/getall");
-    console.log(res.data.body);
-    return res.data.body;
-  } catch (error) {
-    console.error();
-  }
-}
-
 // Update schedule access 
-
 export const changeAccess = async(id,current) =>{
   try {
     const body = 
@@ -255,15 +220,12 @@ export const changeAccess = async(id,current) =>{
       }
     
     const res= await axios.put("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/updateaccess",body,config);
-    console.log(res.data);
     // return res.data.body;
   } catch (error) {
     console.error();
   }
 }
-
 // Delete book data
-
 export const deleteBook = async(id) =>{
   try {
     const body = 
@@ -272,7 +234,6 @@ export const deleteBook = async(id) =>{
       }
     
     const res= await axios.put("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/delete",body,config);
-    console.log(res.data.body);
     // return res.data.body;
   } catch (error) {
     console.error();

@@ -24,7 +24,6 @@ const LiveStream = (props) => {
       const maxData = await getMax();
       setFloors(res);
       setMax(maxData);
-      console.log("map", JSON.stringify(res));
     };
     fetchData();
     const interval = setInterval(fetchData, 3000);
@@ -34,11 +33,9 @@ const LiveStream = (props) => {
   //Functions
   const onChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
-    console.log({ ...input, [e.target.name]: e.target.value });
   };
   const onChangeFloor = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value, wardFilter: "" });
-    console.log({ ...input, [e.target.name]: e.target.value, wardFilter: "" });
   };
   return (
     <div id="wrapper">

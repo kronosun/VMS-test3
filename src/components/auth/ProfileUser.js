@@ -40,7 +40,6 @@ const ProfileUser = ({
   useEffect(()=>{
     const fetchHistory= async ()=>{
       const res= await getHistory(match.params.id);
-      console.log(res);
       setData(res);
     }
     fetchHistory();

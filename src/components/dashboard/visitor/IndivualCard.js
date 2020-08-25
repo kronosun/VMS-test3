@@ -2,18 +2,14 @@ import React, { Fragment,useState,useEffect } from "react";
 import {updateAccess, getAllBed,dummyFetch} from '../../../actions/api';
 import TableBed from "./TableBed";
 //Redux
-import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import {setAlert} from '../../../actions/alert';
 
 const IndivualCard = ({rows,max,ward,access,floorNumber,fetchData,alert,setAlert}) => {
-  const [currentAccess,setCurrentAccess]=useState(access=="true");
   const akses=access=="true";
   const changeAccess= async() =>{
-    // setCurrentAccess(!currentAccess);
     await updateAccess(String(floorNumber),String(ward),akses);
-    // await dummyFetch();
     await fetchData();
     setAlert("Access Changed !","success");
   }
@@ -64,53 +60,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {setAlert})(IndivualCard);
-
-          {/* <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p> */}
-          {/* <TableContainer
-            component={Paper}
-            // style={{ width: "300px" }}
-            className="shadow-sm p-1 border border-dark rounded-lg"
-          >
-            <Table aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell component="th" scope="row" key={uuidv4()} align="left">
-                    Bed
-                  </TableCell>
-                  <TableCell component="th" scope="row" key={uuidv4()} align="right">
-                    Visitor
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                <TableRow key={uuidv4()}>
-                  <TableCell component="th" scope="row">
-                  {Math.ceil(Math.random()*100)}
-                  </TableCell>
-                  <TableCell align="right">{Math.ceil(Math.random()*10)}</TableCell>
-                </TableRow>
-                <TableRow key={uuidv4()}>
-                  <TableCell component="th" scope="row">
-                  {Math.ceil(Math.random()*100)}
-                  </TableCell>
-                  <TableCell align="right">{Math.ceil(Math.random()*10)}</TableCell>
-                </TableRow>
-                <TableRow key={uuidv4()}>
-                  <TableCell component="th" scope="row">
-                  {Math.ceil(Math.random()*100)}
-                  </TableCell>
-                  <TableCell align="right">{Math.ceil(Math.random()*10)}</TableCell>
-                </TableRow>
-                <TableRow key={uuidv4()}>
-                  <TableCell component="th" scope="row">
-                  {Math.ceil(Math.random()*100)}
-                  </TableCell>
-                  <TableCell align="right">{Math.ceil(Math.random()*10)}</TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer> */}

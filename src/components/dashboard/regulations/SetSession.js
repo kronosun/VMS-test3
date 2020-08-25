@@ -87,27 +87,18 @@ const SetSession = ({alert,setAlert}) => {
     const freshWeekDay=[...newData.weekDaySession];
     const freshWeekEnd=[...newData.weekEndSession];
     const test= await dataDummy();
-    console.log("formData",freshFormData);
-    console.log("weekday",freshWeekDay);
-    console.log("weekend",freshWeekEnd);
-    console.log("test",test);
     setFormData(freshFormData);
     setweekDaySession(freshWeekDay);
     setweekEndSession(freshWeekEnd);
     setState(true);
   };
   const reAdjust = () =>{
-    console.log("Readjusting");
-    console.log(weekDaySession);
-    console.log(weekEndSession);
     if(weekDaySession.length===0) return;
     const newDay= weekDaySession.map((x,i)=>({...x,session_number:(i+1)}));
-    console.log(newDay);
     setweekDaySession(newDay);
 
     if(weekEndSession.length===0) return;
     const newEnd= weekEndSession.map((x,i)=>({...x,session_number:(i+1)}));
-    console.log(newEnd);
     setweekEndSession(newEnd);
   }
 
@@ -122,19 +113,14 @@ const SetSession = ({alert,setAlert}) => {
   const onChange = (e) => {
     const newForm = { ...formData, [e.target.name]: e.target.value };
     setFormData(newForm);
-    console.log(newForm);
   };
 
   const onChangeSwitch = (e) => {
     const newForm = { ...formData, [e.target.name]: e.target.checked };
     setFormData(newForm);
-    console.log(newForm);
   };
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    console.log(weekDaySession);
-    console.log(weekEndSession);
     const newSessionDay={
       session_day: 'weekday',
       sessions:[...weekDaySession]
@@ -158,9 +144,7 @@ const SetSession = ({alert,setAlert}) => {
   }
   setState(false);
 
-  console.log("SEND",JSON.stringify(newFormat));
     const code =await updateRules(newFormat);
-    if (code===200)console.log("Update SUCCESS");
     await fetchRules();
     setAlert("Rules Updated !","success");
 
@@ -197,16 +181,13 @@ const SetSession = ({alert,setAlert}) => {
     const idx = weekDaySession.findIndex(
       (x) => Number(x.session_number) === Number(updateDay)
     );
-    console.log(idx);
     const newData = [...weekDaySession];
-    console.log(newData);
 
     const newInput = {
       session_number: updateDay,
       session_from: editDay.fromDay.concat(":00"),
       session_to: editDay.toDay.concat(":00"),
     };
-    console.log(newInput);
     if (idx !== -1) newData.splice(idx, 1, newInput);
 
     const final=newData.map((x,i)=>({...x,session_number:(i+1)}))
@@ -216,7 +197,6 @@ const SetSession = ({alert,setAlert}) => {
 
   };
   const updateSessionEnd = (e) => {
-    console.log(updateEnd);
     const idx = weekDaySession.findIndex(
       (x) => Number(x.session_number) === Number(updateEnd)
     );
@@ -226,7 +206,6 @@ const SetSession = ({alert,setAlert}) => {
       session_from: editEnd.fromEnd.concat(":00"),
       session_to: editEnd.toEnd.concat(":00"),
     };
-    console.log(newInput);
     if (idx !== -1) newData.splice(idx, 1, newInput);
     const final=newData.map((x,i)=>({...x,session_number:(i+1)}))
 
@@ -256,7 +235,6 @@ const SetSession = ({alert,setAlert}) => {
       session_to: editEnd.toEnd.concat(":00"),
     };
     newData.push(newInput);
-    console.log(newData);
     const final=newData.map((x,i)=>({...x,session_number:(i+1)}))
     setweekEndSession(final);
     setAlert("Session Added !","success");
@@ -265,7 +243,6 @@ const SetSession = ({alert,setAlert}) => {
 
   const onChangeDay = (e) => {
     const newData = { ...editDay, [e.target.name]: e.target.value };
-    // console.log(newData);
     setEditDay(newData);
   };
   const onChangeEnd = (e) => {
@@ -278,7 +255,6 @@ const SetSession = ({alert,setAlert}) => {
   const onSubmitRules = () => {
     const newData = { ...formData };
     newData.rules.push(newRules);
-    console.log(newData);
     setFormData(newData);
   };
   const deleteRules = (x)=>{
@@ -288,7 +264,6 @@ const SetSession = ({alert,setAlert}) => {
     );
     if (idx!==-1) list.splice(idx, 1);
     const newInput={...formData,rules:list};
-    console.log(newInput);
     setFormData(newInput);
     setAlert("Rules Deleted !","danger");
   }

@@ -130,7 +130,6 @@ const ChartData = (props) => {
       const res= await getGeneral();
       const ses= await getAvailableSessions(Date.now());
       const plotData= await getVisitorData();
-      console.log(ses);
       const label = [
         Math.ceil(Math.random() * 100),
         Math.ceil(Math.random() * 100),

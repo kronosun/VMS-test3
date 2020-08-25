@@ -101,15 +101,7 @@ const TableBed = ({rows,max}) =>{
   
   useEffect(() => {
     const processRow= () => {
-      // setRows(rowsOut);
-      // console.log(rowsOut);
       setPage(((Math.ceil((new Date()).getSeconds()/2)%maxPage)));
-      // setEmpty(rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage));
-      // setMax(Math.ceil(rows.length/rowsPerPage));
-      // console.log("rowpage",rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage));
-      // console.log("row",rows);
-      // console.log("emptyrow",emptyRows);
-      // console.log("maxPage",maxPage);
     }
     const interval = setInterval(processRow, 2);
     processRow();
@@ -167,16 +159,3 @@ const TableBed = ({rows,max}) =>{
 }
 
 export default TableBed;
-// Logo dibawah , tapi gak kepake lagi
-        {/* <TableFooter>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={[5, 10, 25]}
-              count={rows.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              onChangePage={handleChangePage}
-              onChangeRowsPerPage={handleChangeRowsPerPage}
-            />
-          </TableRow>
-        </TableFooter> */}
