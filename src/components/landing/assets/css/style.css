@@ -578,9 +578,13 @@ section {
 }
 
 #about .about-container .background {
-  min-height: 300px;
-  background: url(../img/about-img.jpg) center top no-repeat;
+  /* min-height: 300px;
+  max-height: 500px;
+  max-width:300px; */
+  height:auto;
+  background: url(../img/phonehand.png) center top no-repeat;
   margin-bottom: 10px;
+  padd
 }
 
 #about .about-container .content {

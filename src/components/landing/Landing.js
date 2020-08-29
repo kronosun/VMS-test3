@@ -2,37 +2,36 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Link as Links } from "react-scroll";
-import ReactPlayer from 'react-player';
+import ReactPlayer from "react-player";
 // Main CSS style
 import "./assets/css/style.css";
-import 'bootstrap/dist/css/bootstrap.css';
-const Landing = ({loadUser}) => {
+import "bootstrap/dist/css/bootstrap.css";
+const Landing = ({ loadUser }) => {
   return (
     <Fragment>
       <header id="header" className="header-transparent">
         <div className="container">
           <div id="logo" className="pull-left">
-
             {/* <a href="index.html"><img src="assets/img/logo.png" alt=""></a> */}
             <h1>
-            <Links
-                  activeClass="active"
-                  to="hero"
-                  spy={true}
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                  className="text-light"
-                >
-              Obscura
+              <Links
+                activeClass="active"
+                to="hero"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                className="text-light"
+              >
+                Obscura
               </Links>
             </h1>
           </div>
 
           <nav id="nav-menu-container">
             <ul className="nav-menu">
-              <li >
-              <Links
+              <li>
+                <Links
                   activeClass="active"
                   to="hero"
                   spy={true}
@@ -41,13 +40,13 @@ const Landing = ({loadUser}) => {
                   duration={500}
                   className="btn text-light"
                 >
-              Home
-              </Links>
+                  Home
+                </Links>
               </li>
 
               <li>
-              <Links
-                className="menuu"
+                <Links
+                  className="menuu"
                   activeClass="active"
                   to="about"
                   spy={true}
@@ -56,12 +55,11 @@ const Landing = ({loadUser}) => {
                   duration={500}
                   className="btn text-light"
                 >
-             About
-              </Links>
-                
+                  About
+                </Links>
               </li>
               <li>
-              <Links
+                <Links
                   activeClass="ac tive"
                   to="services"
                   spy={true}
@@ -70,13 +68,12 @@ const Landing = ({loadUser}) => {
                   duration={500}
                   className="btn text-light"
                 >
-                Services
-              </Links>
-
+                  Services
+                </Links>
               </li>
               <li>
-              <Links
-                className="menuu"
+                <Links
+                  className="menuu"
                   activeClass="active"
                   to="portofolio"
                   spy={true}
@@ -85,12 +82,11 @@ const Landing = ({loadUser}) => {
                   duration={500}
                   className="btn text-light"
                 >
-                Portfolio
-              </Links>
-
+                  Portfolio
+                </Links>
               </li>
               <li>
-              <Links
+                <Links
                   activeClass="active"
                   to="team"
                   spy={true}
@@ -99,12 +95,11 @@ const Landing = ({loadUser}) => {
                   duration={500}
                   className="btn text-light"
                 >
-                Team
-              </Links>
-
+                  Team
+                </Links>
               </li>
               <li>
-              <Links
+                <Links
                   activeClass="active"
                   to="contact"
                   spy={true}
@@ -113,9 +108,8 @@ const Landing = ({loadUser}) => {
                   duration={500}
                   className="btn text-light"
                 >
-                Contact Us
-              </Links>
-
+                  Contact Us
+                </Links>
               </li>
               <li>
                 <Link to="/login">Login</Link>
@@ -130,24 +124,25 @@ const Landing = ({loadUser}) => {
 
       <section id="hero" name="hero">
         <div className="hero-container" data-aos="zoom-in" data-aos-delay="100">
-        <div className="row">
-          <div className="col-md-6 align-items-center my-4"  >
-          <ReactPlayer width="115%" height="125%"  controls url='https://www.youtube.com/watch?v=f9CfAqZfHoc'/>
-
-          </div>
-          <div className="col-md-1" />
-
-          <div className="col-md-5 align-items-end">
-          <h1>{" "} Welcome to Obscura</h1>
-          <h2>{" "} Contactless Visitor Management System done Seamlessly</h2>
-          <Link to="/book" className="btn-get-started">
-            Book a Visit
-          </Link>
+          <div className="row">
+            <div className="col-md-6 align-items-center my-4">
+              <ReactPlayer
+                width="115%"
+                height="125%"
+                controls
+                url="https://www.youtube.com/watch?v=f9CfAqZfHoc"
+              />
             </div>
+            <div className="col-md-1" />
 
-        </div>
-
-
+            <div className="col-md-5 align-items-end">
+              <h1> Welcome to Obscura</h1>
+              <h2> Contactless Visitor Management System done Seamlessly</h2>
+              <Link to="/book" className="btn-get-started">
+                Book a Visit
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -156,12 +151,12 @@ const Landing = ({loadUser}) => {
           <div className="container" data-aos="fade-up">
             <div className="row about-container">
               <div className="col-lg-6 content order-lg-1 order-2">
-                <h2 className="title">Few Words About Us</h2>
+                <h2 className="title">About Us</h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                  Obscura is a cloud-based visitor management solution for
+                  midsize and large hospitals. It is suitable for hospitals that
+                  need a VMS that can seamlessly monitor and identify visitors
+                  while still maintaining flexibility.
                 </p>
 
                 <div
@@ -173,11 +168,13 @@ const Landing = ({loadUser}) => {
                     <i className="fa fa-shopping-bag"></i>
                   </div>
                   <h4 className="title">
-                    <a href="">Eiusmod Tempor</a>
+                    <a href="">Virus-Free Environment</a>
                   </h4>
                   <p className="description">
-                    Et harum quidem rerum facilis est et expedita distinctio.
-                    Nam libero tempore, cum soluta nobis est eligendi
+                    Obscura provides a contactless visitor management system
+                    that can minimize human interaction and skin-to-surface
+                    contact as these are the way viruses spread, including
+                    COVID-19.
                   </p>
                 </div>
 
@@ -190,28 +187,35 @@ const Landing = ({loadUser}) => {
                     <i className="fa fa-photo"></i>
                   </div>
                   <h4 className="title">
-                    <a href="">Magni Dolores</a>
+                    <a href="">Low-Cost System</a>
                   </h4>
                   <p className="description">
-                    Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum
+                    Obscura is a cloud-based web application VMS with a fully
+                    serverless architecture that is built using AWS services.
+                    Obscura will help hospitals to reduce operating cost,
+                    especially in visitor management aspect, since there will be
+                    less manpower needed for managing the system and
+                    infrastructures needed to support Page 6 of 18 the system.
                   </p>
                 </div>
-
                 <div
                   className="icon-box"
                   data-aos="fade-up"
-                  data-aos-delay="300"
+                  data-aos-delay="200"
                 >
                   <div className="icon">
-                    <i className="fa fa-bar-chart"></i>
+                    <i className="fa fa-photo"></i>
                   </div>
                   <h4 className="title">
-                    <a href="">Dolor Sitema</a>
+                    <a href="">Productivity Improvement</a>
                   </h4>
                   <p className="description">
-                    Minim veniam, quis nostrud exercitation ullamco laboris nisi
-                    ut aliquip ex ea commodo consequat tarad limino ata
+                    As our product’s system needs very few man powers, this will
+                    help hospitals to improve overall productivity by allocating
+                    man powers to other more crucial sectors.Obscura already
+                    provides a well-automated system which gives management
+                    result as demanded by hospitals which is to maintain
+                    well-organized visitor management.
                   </p>
                 </div>
               </div>
@@ -664,7 +668,7 @@ const Landing = ({loadUser}) => {
           </div>
         </section>
 
-        <section id="team" name="team">
+        {/* <section id="team" name="team">
           <div className="container" data-aos="fade-up">
             <div className="section-header">
               <h3 className="section-title">Team</h3>
@@ -769,7 +773,7 @@ const Landing = ({loadUser}) => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section id="contact" name="contact">
           <div className="container">
@@ -793,26 +797,21 @@ const Landing = ({loadUser}) => {
         </section>
       </main>
       <footer id="footer">
-    <div className="footer-top">
-      <div className="container">
+        <div className="footer-top">
+          <div className="container"></div>
+        </div>
 
-      </div>
-    </div>
-
-    <div className="container">
-      <div className="copyright">
-        &copy; Copyright <strong>Regna</strong>. All Rights Reserved
-      </div>
-      <div className="credits">
-
-      <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer>
+        <div className="container">
+          <div className="copyright">
+            &copy; Copyright <strong>Regna</strong>. All Rights Reserved
+          </div>
+          <div className="credits">
+            <a href="https://bootstrapmade.com/">BootstrapMade</a>
+          </div>
+        </div>
+      </footer>
     </Fragment>
   );
 };
-
-
 
 export default Landing;
