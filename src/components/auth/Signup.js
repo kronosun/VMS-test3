@@ -160,7 +160,7 @@ function hasLength(str){
                 <div className="card-body p-0">
                   <div className="row justify-content-center">
                     <div
-                      className="col-lg-7 d-none d-lg-block bg-login-image"
+                      className="col-lg-7 d-none d-lg-block bg-register-image"
                       style={{ height: "650px" }}
                     ></div>
 

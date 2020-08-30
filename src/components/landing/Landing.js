@@ -112,10 +112,24 @@ const Landing = ({ loadUser }) => {
                 </Links>
               </li>
               <li>
-                <Link to="/login">Login</Link>
+                <Link 
+                                  activeClass="active"
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                  className="btn text-light"
+                to="/login">Login</Link>
               </li>
               <li>
-                <Link to="/book">Book Now</Link>
+                <Link 
+                                  activeClass="active"
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                  className="btn text-light"
+                to="/book">Book Now</Link>
               </li>
             </ul>
           </nav>

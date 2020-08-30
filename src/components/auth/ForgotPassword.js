@@ -112,7 +112,7 @@ const ForgotPassword= ({setAlert,alert})=>{
     <div className="card o-hidden border-0 shadow-lg my-5">
       <div className="card-body p-0">
         <div className="row">
-          <div className="col-lg-6 d-none d-lg-block bg-login-image" style={{height:"600px"}}></div>
+          <div className="col-lg-6 d-none d-lg-block bg-password-image" style={{height:"600px"}}></div>
           
           <div className="col-lg-6" style={{height:"600px"}}>
           {alert && alert.length!==0 && alert.map(x=>              <div class={`alert alert-${x.alertType}`} role="alert">
