@@ -9,8 +9,11 @@ const TextBox = props => {
                   <h6 className="m-0 font-weight-bold text-primary">Daily Logs</h6>
                 </div>
                 <div className="card-body">
-                  <p>Everything is under control</p>
-                  <p className="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.Before working with this theme, you should become familiar.</p>
+                  <p>Everything is currently under control</p>
+                  <p>Web Traffic is normal</p>
+                  <p>Please maintain health protocols</p>
+                  <p >Next maintenance will be done in a week</p>
+                  <p>We'll continue on developing this webapps, so any feedback would be greatly appreciated !</p>
                 </div>
               </div>
         </div>

@@ -32,7 +32,7 @@ const IndivualCard = ({rows,max,ward,access,floorNumber,fetchData,alert,setAlert
           </div>
 
           <hr className="mt-0 mb-2 border"/>
-          <div className="container-fluid p-2">
+          <div className="container-fluid px-2 py-4">
           <TableBed rows={rows} max={max} />
 
 

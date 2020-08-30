@@ -13,11 +13,17 @@ const SidePanel = ({msg}) => {
           className="sidebar-brand d-flex align-items-center justify-content-center"
           to="/dashboard"
         >
-          <div className="sidebar-brand-icon rotate-n-3">
-            <i className="fas fa-first-aid"></i>
-            <span>Obscura</span>
+          <div className="sidebar-brand-icon rotate-n-3 mb-3">
+            {/* <i className="fas fa-first-aid"></i> */}
+            <img
+              className="mt-4 mb-2 pt-3"
+              src="https://res.cloudinary.com/awshackaton/image/upload/v1598769880/photo/ffhuaw8oobkaykve3s5s.png"
+              style={{width:"55px",height:"60px"}}
+              
+            />
+            <span style={{fontSize:"1rem"}}>Obscura</span>
           </div>
-          <div className="sidebar-brand-text mx-3">
+          <div className="sidebar-brand-text mx-3 mt-2">
             SB Admin <sup>2</sup>
           </div>
         </Link>
@@ -47,6 +53,7 @@ const SidePanel = ({msg}) => {
             {msg==='visitor'?<u style={{fontSize:'0.8rem'}}>Visitor Number</u> : <span style={{fontSize:'0.8rem'}}>Visitor Number</span> }
 
           </Link>
+
         </li>
         <br />
         <li className="nav-item active">

@@ -27,7 +27,7 @@ return test ;
 const Gantt = ({sessionArray}) => {
     return (
       <Fragment>
-      {sessionArray && sessionArray.length !==0 &&<div className="px-2 py-1 mt-2">
+      {sessionArray && sessionArray.length !==0 &&<div className="px-2 py-2 mt-3">
                     <Chart
         //   width={"100%"}
         //   height={"400px"}
