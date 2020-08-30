@@ -50,7 +50,7 @@ const SidePanel = ({msg}) => {
             <i style={{fontSize:'2rem'}} className="fas fa-fw fa-user-friends"></i>
             <br />
 
-            {msg==='visitor'?<u style={{fontSize:'0.8rem'}}>Ward Livestream</u> : <span style={{fontSize:'0.8rem'}}>Visitor Number</span> }
+            {msg==='visitor'?<u style={{fontSize:'0.8rem'}}>Ward Livestream</u> : <span style={{fontSize:'0.8rem'}}>Ward Livestream</span> }
 
           </Link>
 
@@ -61,7 +61,7 @@ const SidePanel = ({msg}) => {
             <i style={{fontSize:'2rem'}} className="fas fa-fw fa-bed"></i>
             <br />
 
-            {msg==='livestream'?<u style={{fontSize:'0.8rem'}}>Bed Livestream</u> : <span style={{fontSize:'0.8rem'}}>Livestream</span> }
+            {msg==='livestream'?<u style={{fontSize:'0.8rem'}}>Bed Livestream</u> : <span style={{fontSize:'0.8rem'}}>Bed Livestream</span> }
 
           </Link>
         </li>
@@ -71,7 +71,7 @@ const SidePanel = ({msg}) => {
           <Link className="nav-link" to="/regulation">
             <i style={{fontSize:'2rem'}} className="fas fa-fw fa-sliders-h "></i>
             <br />
-            {msg==='regulation'?<u style={{fontSize:'0.8rem'}}>Set Rules</u> : <span style={{fontSize:'0.8rem'}}>Set Rules</span> }
+            {msg==='regulation'?<u style={{fontSize:'0.8rem'}}>Regulation</u> : <span style={{fontSize:'0.8rem'}}>Regulation</span> }
           </Link>
         </li>
 
