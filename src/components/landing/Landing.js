@@ -112,24 +112,30 @@ const Landing = ({ loadUser }) => {
                 </Links>
               </li>
               <li>
-                <Link 
-                                  activeClass="active"
+                <Link
+                  activeClass="active"
                   spy={true}
                   smooth={true}
                   offset={-70}
                   duration={500}
                   className="btn text-light"
-                to="/login">Login</Link>
+                  to="/login"
+                >
+                  Login
+                </Link>
               </li>
               <li>
-                <Link 
-                                  activeClass="active"
+                <Link
+                  activeClass="active"
                   spy={true}
                   smooth={true}
                   offset={-70}
                   duration={500}
                   className="btn text-light"
-                to="/book">Book Now</Link>
+                  to="/book"
+                >
+                  Book Now
+                </Link>
               </li>
             </ul>
           </nav>
@@ -243,43 +249,10 @@ const Landing = ({ loadUser }) => {
           </div>
         </section>
 
-        <section id="facts">
-          <div className="container" data-aos="fade-up">
-            <div className="section-header">
-              <h3 className="section-title">Facts</h3>
-              <p className="section-description">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque
-              </p>
-            </div>
-            <div className="row counters">
-              <div className="col-lg-3 col-6 text-center">
-                <span data-toggle="counter-up">232</span>
-                <p>Clients</p>
-              </div>
-
-              <div className="col-lg-3 col-6 text-center">
-                <span data-toggle="counter-up">521</span>
-                <p>Projects</p>
-              </div>
-
-              <div className="col-lg-3 col-6 text-center">
-                <span data-toggle="counter-up">1,463</span>
-                <p>Hours Of Support</p>
-              </div>
-
-              <div className="col-lg-3 col-6 text-center">
-                <span data-toggle="counter-up">15</span>
-                <p>Hard Workers</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section id="services" name="services">
           <div className="container" data-aos="fade-up">
             <div className="section-header">
-              <h3 className="section-title">Services</h3>
+              <h3 className="section-title">Features</h3>
               <p className="section-description">
                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                 accusantium doloremque
@@ -391,7 +364,9 @@ const Landing = ({ loadUser }) => {
           <div className="container">
             <div className="row" data-aos="zoom-in">
               <div className="col-lg-9 text-center text-lg-left">
-                <h3 className="cta-title">Call To Action</h3>
+                <h3 className="cta-title">
+                  Try our Contactless Visit System !
+                </h3>
                 <p className="cta-text">
                   {" "}
                   Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -402,19 +377,52 @@ const Landing = ({ loadUser }) => {
               </div>
               <div className="col-lg-3 cta-btn-container text-center">
                 <a className="cta-btn align-middle" href="#">
-                  Call To Action
+                  Try Now
                 </a>
               </div>
             </div>
           </div>
         </section>
+
+        <section id="facts">
+          <div className="container" data-aos="fade-up">
+            <div className="section-header">
+              <h3 className="section-title">Facts</h3>
+              <p className="section-description">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque
+              </p>
+            </div>
+            <div className="row counters">
+              <div className="col-lg-3 col-6 text-center">
+                <span data-toggle="counter-up">232</span>
+                <p>Clients</p>
+              </div>
+
+              <div className="col-lg-3 col-6 text-center">
+                <span data-toggle="counter-up">521</span>
+                <p>Projects</p>
+              </div>
+
+              <div className="col-lg-3 col-6 text-center">
+                <span data-toggle="counter-up">1,463</span>
+                <p>Hours Of Support</p>
+              </div>
+
+              <div className="col-lg-3 col-6 text-center">
+                <span data-toggle="counter-up">15</span>
+                <p>Hard Workers</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="portfolio" className="portfolio" name="portofolio">
           <div className="container" data-aos="fade-up">
             <div className="section-header">
               <h3 className="section-title">Portfolio</h3>
               <p className="section-description">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque
+                Kasi footage" buat showcase fitur" kita
               </p>
             </div>
 
@@ -424,9 +432,9 @@ const Landing = ({ loadUser }) => {
                   <li data-filter="*" className="filter-active">
                     All
                   </li>
-                  <li data-filter=".filter-app">App</li>
-                  <li data-filter=".filter-card">Card</li>
-                  <li data-filter=".filter-web">Web</li>
+                  <li data-filter=".filter-app">Book a Visit</li>
+                  <li data-filter=".filter-card">Digital Visitor Badge</li>
+                  <li data-filter=".filter-web">Dashboard Panel</li>
                 </ul>
               </div>
             </div>
@@ -436,31 +444,27 @@ const Landing = ({ loadUser }) => {
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              <div className="col-lg-4 col-md-6 portfolio-item filter-app">
+              <div className="col-lg-6 col-md-6 portfolio-item filter-app">
+              <a
+                    href="assets/img/portfolio/portfolio-1.jpg"
+                    data-gall="portfolioGallery"
+                    className="venobox preview-link"
+                    title="App 1"
+                  >
                 <img
                   src="assets/img/portfolio/portfolio-1.jpg"
                   className="img-fluid"
                   alt=""
                 />
                 <div className="portfolio-info">
-                  <h4>App 1</h4>
-                  <p>App</p>
-                  <a
-                    href="assets/img/portfolio/portfolio-1.jpg"
-                    data-gall="portfolioGallery"
-                    className="venobox preview-link"
-                    title="App 1"
-                  >
-                    <i className="bx bx-plus"></i>
-                  </a>
-                  <a
-                    href="portfolio-details.html"
-                    className="details-link"
-                    title="More Details"
-                  >
-                    <i className="bx bx-link"></i>
-                  </a>
+                  <h4>Online Booking System</h4>
+                  <p>Book your visit anywhere anytime</p>
+
+                    {/* <i className="bx bx-plus"></i> */}
+                 
+
                 </div>
+                 </a>
               </div>
 
               <div className="col-lg-4 col-md-6 portfolio-item filter-web">
@@ -490,7 +494,7 @@ const Landing = ({ loadUser }) => {
                 </div>
               </div>
 
-              <div className="col-lg-4 col-md-6 portfolio-item filter-app">
+              <div className="col-lg-6 col-md-6 portfolio-item filter-app">
                 <img
                   src="assets/img/portfolio/portfolio-3.jpg"
                   className="img-fluid"
@@ -682,6 +686,44 @@ const Landing = ({ loadUser }) => {
           </div>
         </section>
 
+        <section id="contact" name="contact">
+          <div className="container">
+            <div className="section-header">
+              <h3 className="section-title">Find Us</h3>
+              <p className="section-description">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque
+              </p>
+            </div>
+          </div>
+
+          <iframe
+            src="https://maps.google.com/maps?q=jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="380"
+            frameBorder="0"
+            style={{ border: "0" }}
+            allowFullScreen
+          ></iframe>
+        </section>
+      </main>
+      <footer id="footer">
+        <div className="footer-top">
+          <div className="container"></div>
+        </div>
+
+        <div className="container">
+          <div className="copyright">
+            &copy; Copyright <strong>2020</strong> Obscura.<br/><br/> All Rights Reserved
+          </div>
+        </div>
+      </footer>
+    </Fragment>
+  );
+};
+
+export default Landing;
+
         {/* <section id="team" name="team">
           <div className="container" data-aos="fade-up">
             <div className="section-header">
@@ -788,44 +830,3 @@ const Landing = ({ loadUser }) => {
             </div>
           </div>
         </section> */}
-
-        <section id="contact" name="contact">
-          <div className="container">
-            <div className="section-header">
-              <h3 className="section-title">Contact</h3>
-              <p className="section-description">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque
-              </p>
-            </div>
-          </div>
-
-          <iframe
-            src="https://maps.google.com/maps?q=jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed"
-            width="100%"
-            height="380"
-            frameBorder="0"
-            style={{ border: "0" }}
-            allowFullScreen
-          ></iframe>
-        </section>
-      </main>
-      <footer id="footer">
-        <div className="footer-top">
-          <div className="container"></div>
-        </div>
-
-        <div className="container">
-          <div className="copyright">
-            &copy; Copyright <strong>Regna</strong>. All Rights Reserved
-          </div>
-          <div className="credits">
-            <a href="https://bootstrapmade.com/">BootstrapMade</a>
-          </div>
-        </div>
-      </footer>
-    </Fragment>
-  );
-};
-
-export default Landing;

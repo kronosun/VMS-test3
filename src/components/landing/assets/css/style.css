@@ -582,7 +582,7 @@ section {
   max-height: 500px;
   max-width:300px; */
   height:auto;
-  background: url(../img/phonehand.png) center top no-repeat;
+  background: url(../img/phonehand.png) center bottom no-repeat;
   margin-bottom: 10px;
 }
 
@@ -749,7 +749,7 @@ section {
 /* Call To Action Section
 --------------------------------*/
 #call-to-action {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/call-to-action-bg.jpg) fixed center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://www.wallpapertip.com/wmimgs/87-876391_2048x1536-more-than-500-doctors-in-canada-sign.jpg") fixed center center;
   background-size: cover;
   padding: 80px 0;
 }
