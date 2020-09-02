@@ -147,7 +147,7 @@ const Landing = ({ loadUser }) => {
           <div className="row">
             <div className="col-md-6 align-items-center my-4">
               <ReactPlayer
-                width="115%"
+                width="100%"
                 height="125%"
                 controls
                 url="https://www.youtube.com/watch?v=f9CfAqZfHoc"
@@ -156,10 +156,16 @@ const Landing = ({ loadUser }) => {
             <div className="col-md-1" />
 
             <div className="col-md-5 align-items-end">
-              <h1> Welcome to Obscura</h1>
-              <h2> Contactless Visitor Management System done Seamlessly</h2>
+              <h1 style={{ fontSize: "2.2rem" }}>
+                {" "}
+                Comfort and protection for your visitor and workers
+              </h1>
+              <h2 style={{ fontSize: "1.5rem" }}>
+                {" "}
+                Completely contactless to ensure virus-free environment
+              </h2>
               <Link to="/book" className="btn-get-started">
-                Book a Visit
+                Book a Visit Now
               </Link>
             </div>
           </div>
@@ -185,7 +191,7 @@ const Landing = ({ loadUser }) => {
                   data-aos-delay="100"
                 >
                   <div className="icon">
-                    <i className="fa fa-shopping-bag"></i>
+                    <i className="fa fa-virus-slash"></i>
                   </div>
                   <h4 className="title">
                     <a href="">Virus-Free Environment</a>
@@ -204,7 +210,7 @@ const Landing = ({ loadUser }) => {
                   data-aos-delay="200"
                 >
                   <div className="icon">
-                    <i className="fa fa-photo"></i>
+                    <i className="fa fa-dollar-sign"></i>
                   </div>
                   <h4 className="title">
                     <a href="">Low-Cost System</a>
@@ -224,7 +230,7 @@ const Landing = ({ loadUser }) => {
                   data-aos-delay="200"
                 >
                   <div className="icon">
-                    <i className="fa fa-photo"></i>
+                    <i className="fa fa-business-time"></i>
                   </div>
                   <h4 className="title">
                     <a href="">Productivity Improvement</a>
@@ -232,7 +238,7 @@ const Landing = ({ loadUser }) => {
                   <p className="description">
                     As our product’s system needs very few man powers, this will
                     help hospitals to improve overall productivity by allocating
-                    man powers to other more crucial sectors.Obscura already
+                    man powers to other more crucial sectors. Obscura already
                     provides a well-automated system which gives management
                     result as demanded by hospitals which is to maintain
                     well-organized visitor management.
@@ -253,12 +259,27 @@ const Landing = ({ loadUser }) => {
           <div className="container" data-aos="fade-up">
             <div className="section-header">
               <h3 className="section-title">Features</h3>
-              <p className="section-description">
+              {/* <p className="section-description">
                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                 accusantium doloremque
-              </p>
+              </p> */}
             </div>
-            <div className="row">
+            <div className="row mt-5 justify-content-around">
+              <div className="col-lg-4 col-md-6" data-aos="zoom-in">
+                <div className="box">
+                  <div className="icon">
+                    <a href="">
+                      <i className="fa fa-cogs"></i>
+                    </a>
+                  </div>
+                  <h4 className="title">
+                    <a href="">Customizable</a>
+                  </h4>
+                  <p className="description">
+                  Fully adjustable regulation system to suits your needs including visitor limit, maximum visiting time, visiting hours, and general rules
+                  </p>
+                </div>
+              </div>
               <div className="col-lg-4 col-md-6" data-aos="zoom-in">
                 <div className="box">
                   <div className="icon">
@@ -267,11 +288,10 @@ const Landing = ({ loadUser }) => {
                     </a>
                   </div>
                   <h4 className="title">
-                    <a href="">Lorem Ipsum</a>
+                    <a href="">Monitoring </a>
                   </h4>
                   <p className="description">
-                    Voluptatum deleniti atque corrupti quos dolores et quas
-                    molestias excepturi sint occaecati cupiditate non provident
+                  Enables hospitals to count live visitor number per-bed in every ward and livestream it on any location in the hospital using a display device such as TV Screen and Monitor 
                   </p>
                 </div>
               </div>
@@ -279,31 +299,14 @@ const Landing = ({ loadUser }) => {
                 <div className="box">
                   <div className="icon">
                     <a href="">
-                      <i className="fa fa-bar-chart"></i>
+                      <i className="fa fa-id-badge"></i>
                     </a>
                   </div>
                   <h4 className="title">
-                    <a href="">Dolor Sitema</a>
+                    <a href="">Identification</a>
                   </h4>
                   <p className="description">
-                    Minim veniam, quis nostrud exercitation ullamco laboris nisi
-                    ut aliquip ex ea commodo consequat tarad limino ata
-                  </p>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6" data-aos="zoom-in">
-                <div className="box">
-                  <div className="icon">
-                    <a href="">
-                      <i className="fa fa-paper-plane"></i>
-                    </a>
-                  </div>
-                  <h4 className="title">
-                    <a href="">Sed ut perspiciatis</a>
-                  </h4>
-                  <p className="description">
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur
+                  Identify visitors using digital badge with QR code in the check-in and check-out system where these badges will be scanned and validated by QR scanners 
                   </p>
                 </div>
               </div>
@@ -312,20 +315,19 @@ const Landing = ({ loadUser }) => {
                 <div className="box">
                   <div className="icon">
                     <a href="">
-                      <i className="fa fa-photo"></i>
+                      <i className="fa fa-calendar"></i>
                     </a>
                   </div>
                   <h4 className="title">
-                    <a href="">Magni Dolores</a>
+                    <a href="">Online Booking System</a>
                   </h4>
                   <p className="description">
-                    Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum
+                  Uses web-based visitation booking for visitors to plan their visits in advance through pre-registration process, thus avoiding unwanted crowd within the hospitals
                   </p>
                 </div>
               </div>
-              <div className="col-lg-4 col-md-6" data-aos="zoom-in">
-                <div className="box">
+              {/* <div className="col-lg-4 col-md-6" data-aos="zoom-in"> */}
+                {/* <div className="box">
                   <div className="icon">
                     <a href="">
                       <i className="fa fa-road"></i>
@@ -338,21 +340,20 @@ const Landing = ({ loadUser }) => {
                     At vero eos et accusamus et iusto odio dignissimos ducimus
                     qui blanditiis praesentium voluptatum deleniti atque
                   </p>
-                </div>
-              </div>
+                </div> */}
+              {/* </div> */}
               <div className="col-lg-4 col-md-6" data-aos="zoom-in">
                 <div className="box">
                   <div className="icon">
                     <a href="">
-                      <i className="fa fa-shopping-bag"></i>
+                      <i className="fa fa-tasks"></i>
                     </a>
                   </div>
                   <h4 className="title">
-                    <a href="">Eiusmod Tempor</a>
+                    <a href="">Access Control System </a>
                   </h4>
                   <p className="description">
-                    Et harum quidem rerum facilis est et expedita distinctio.
-                    Nam libero tempore, cum soluta nobis est eligendi
+                  Limits visitors at a time and issues a warning if the visitor number has exceeded the limit, hence prohibiting new visitor to enter any ward until the warning is lifted. 
                   </p>
                 </div>
               </div>
@@ -365,14 +366,11 @@ const Landing = ({ loadUser }) => {
             <div className="row" data-aos="zoom-in">
               <div className="col-lg-9 text-center text-lg-left">
                 <h3 className="cta-title">
-                  Try our Contactless Visit System !
-                </h3>
+                Try our contactless visitor management system now !
+                </h3> 
                 <p className="cta-text">
                   {" "}
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                  occaecat cupidatat non proident, sunt in culpa qui officia
-                  deserunt mollit anim id est laborum.
+                  Directly experience the advance of contactless environment with Obscura system
                 </p>
               </div>
               <div className="col-lg-3 cta-btn-container text-center">
@@ -387,31 +385,51 @@ const Landing = ({ loadUser }) => {
         <section id="facts">
           <div className="container" data-aos="fade-up">
             <div className="section-header">
-              <h3 className="section-title">Facts</h3>
+              <h3 className="section-title">Our Partners </h3>
               <p className="section-description">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque
+              We are currently partnering with more than 100 hospitals and public health centers 
               </p>
             </div>
             <div className="row counters">
               <div className="col-lg-3 col-6 text-center">
-                <span data-toggle="counter-up">232</span>
-                <p>Clients</p>
+                {/* <span data-toggle="counter-up">232</span>
+                 */}
+                <img
+                  className="img-profile shadow rounded-circle mx-1 mb-3"
+                  src="https://cdn2.tstatic.net/tribunnewswiki/foto/bank/images/rsupn-dr-cipto-mangunkusumo.jpg"
+                  style={{ width: "150px", height: "130px" }}
+                />
+                <p>Cipto Mangunkusumo Hospital</p>
               </div>
 
               <div className="col-lg-3 col-6 text-center">
-                <span data-toggle="counter-up">521</span>
-                <p>Projects</p>
+                {/* <span data-toggle="counter-up">521</span> */}
+                <img
+                  className="img-profile shadow rounded-circle mx-1 mb-3"
+                  src="https://terminalhrd.com/public/images/article/actual_size/1502938c17c063de1276e95efd1b9822.jpg"
+                  style={{ width: "150px", height: "130px" }}
+                />
+                <p>Mayapada Hospital</p>
               </div>
 
               <div className="col-lg-3 col-6 text-center">
-                <span data-toggle="counter-up">1,463</span>
-                <p>Hours Of Support</p>
+                {/* <span data-toggle="counter-up">1,463</span> */}
+                <img
+                  className="img-profile shadow rounded-circle mx-1 mb-3"
+                  src="https://cdn.statically.io/img/www.smarterhealth.id/wp-content/uploads/2020/02/logo-siloam-large-768x432.jpg?quality=90&f=auto"
+                  style={{ width: "150px", height: "130px" }}
+                />
+                <p>Siloam Hospital</p>
               </div>
 
               <div className="col-lg-3 col-6 text-center">
-                <span data-toggle="counter-up">15</span>
-                <p>Hard Workers</p>
+                {/* <span data-toggle="counter-up">15</span> */}
+                <img
+                  className="img-profile shadow rounded-circle mx-1 mb-3"
+                  src="https://upload.wikimedia.org/wikipedia/id/3/37/Logo_rshs.jpg"
+                  style={{ width: "150px", height: "130px" }}
+                />
+                <p>Hasan Sadikin Hospital</p>
               </div>
             </div>
           </div>
@@ -445,26 +463,24 @@ const Landing = ({ loadUser }) => {
               data-aos-delay="200"
             >
               <div className="col-lg-6 col-md-6 portfolio-item filter-app">
-              <a
-                    href="assets/img/portfolio/portfolio-1.jpg"
-                    data-gall="portfolioGallery"
-                    className="venobox preview-link"
-                    title="App 1"
-                  >
-                <img
-                  src="assets/img/portfolio/portfolio-1.jpg"
-                  className="img-fluid"
-                  alt=""
-                />
-                <div className="portfolio-info">
-                  <h4>Online Booking System</h4>
-                  <p>Book your visit anywhere anytime</p>
+                <a
+                  href="assets/img/portfolio/portfolio-1.jpg"
+                  data-gall="portfolioGallery"
+                  className="venobox preview-link"
+                  title="App 1"
+                >
+                  <img
+                    src="https://res.cloudinary.com/awshackaton/image/upload/v1598886136/assets/guide/wdohhjhqbiq1nqplrbvi.png"
+                    className="img-fluid"
+                    alt=""
+                  />
+                  <div className="portfolio-info">
+                    <h4>Online Booking System</h4>
+                    <p>Book your visit anywhere anytime</p>
 
                     {/* <i className="bx bx-plus"></i> */}
-                 
-
-                </div>
-                 </a>
+                  </div>
+                </a>
               </div>
 
               <div className="col-lg-4 col-md-6 portfolio-item filter-web">
@@ -689,14 +705,45 @@ const Landing = ({ loadUser }) => {
         <section id="contact" name="contact">
           <div className="container">
             <div className="section-header">
-              <h3 className="section-title">Find Us</h3>
-              <p className="section-description">
+              <h3 className="section-title">Contact Us</h3>
+              {/* <p className="section-description">
                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                 accusantium doloremque
-              </p>
+              </p> */}
             </div>
           </div>
-
+          <div class="container mt-5">
+            <div className="row justify-content-center">
+              <div className="col-lg-3 col-md-4">
+                <div className="info">
+                  <div>
+                    <i className="fa fa-map-marker" />
+                    <p>
+                      Pondok Kemangi Street
+                      <br />
+                      Jakarta 10510
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-3 col-md-4">
+                <div className="info">
+                  <div>
+                    <i className="fa fa-envelope" />
+                    <p>davidfauzi@students.itb.ac.id</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-3 col-md-4">
+                <div className="info">
+                  <div>
+                    <i className="fa fa-phone" />
+                    <p>+62 87743872830</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <iframe
             src="https://maps.google.com/maps?q=jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed"
             width="100%"
@@ -705,6 +752,7 @@ const Landing = ({ loadUser }) => {
             style={{ border: "0" }}
             allowFullScreen
           ></iframe>
+
         </section>
       </main>
       <footer id="footer">
@@ -714,7 +762,9 @@ const Landing = ({ loadUser }) => {
 
         <div className="container">
           <div className="copyright">
-            &copy; Copyright <strong>2020</strong> Obscura.<br/><br/> All Rights Reserved
+            &copy; Copyright <strong>2020</strong> Obscura.
+            <br />
+            <br /> All Rights Reserved
           </div>
         </div>
       </footer>
@@ -724,7 +774,8 @@ const Landing = ({ loadUser }) => {
 
 export default Landing;
 
-        {/* <section id="team" name="team">
+{
+  /* <section id="team" name="team">
           <div className="container" data-aos="fade-up">
             <div className="section-header">
               <h3 className="section-title">Team</h3>
@@ -829,4 +880,5 @@ export default Landing;
               </div>
             </div>
           </div>
-        </section> */}
+        </section> */
+}
