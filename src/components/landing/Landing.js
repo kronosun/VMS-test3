@@ -55,7 +55,20 @@ const Landing = ({ loadUser }) => {
                   duration={500}
                   className="btn text-light"
                 >
-                  About
+                  About Us
+                </Links>
+              </li>
+              <li>
+                <Links
+                  activeClass="active"
+                  to="facts"
+                  spy={true}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                  className="btn text-light"
+                >
+                  Partners
                 </Links>
               </li>
               <li>
@@ -68,7 +81,7 @@ const Landing = ({ loadUser }) => {
                   duration={500}
                   className="btn text-light"
                 >
-                  Services
+                  Features
                 </Links>
               </li>
               <li>
@@ -82,22 +95,10 @@ const Landing = ({ loadUser }) => {
                   duration={500}
                   className="btn text-light"
                 >
-                  Portfolio
+                  Showcase
                 </Links>
               </li>
-              <li>
-                <Links
-                  activeClass="active"
-                  to="team"
-                  spy={true}
-                  smooth={true}
-                  offset={-70}
-                  duration={500}
-                  className="btn text-light"
-                >
-                  Team
-                </Links>
-              </li>
+
               <li>
                 <Links
                   activeClass="active"
@@ -258,6 +259,7 @@ const Landing = ({ loadUser }) => {
             </div>
           </div>
         </section>
+        
         <section id="facts">
           <div className="container" data-aos="fade-up">
             <div className="section-header">
@@ -311,6 +313,7 @@ const Landing = ({ loadUser }) => {
             </div>
           </div>
         </section>
+        
         <section id="services" name="services">
           <div className="container" data-aos="fade-up">
             <div className="section-header">
@@ -448,8 +451,6 @@ const Landing = ({ loadUser }) => {
             </div>
           </div>
         </section>
-
-
 
         <section id="portfolio" className="portfolio" name="portofolio">
           <div className="container" data-aos="fade-up">
