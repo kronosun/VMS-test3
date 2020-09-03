@@ -245,149 +245,26 @@ const Landing = ({ loadUser }) => {
                   </p>
                 </div>
               </div>
-
+          <div
+          className="col-lg-6 order-lg-2 order-1 px-3 py-3">
               <div
-                className="col-lg-6 background order-lg-2 order-1"
+                className="background mt-4"
                 data-aos="fade-left"
                 data-aos-delay="100"
+                style={{ display: "block" }}
+
               ></div>
-            </div>
-          </div>
-        </section>
-
-        <section id="services" name="services">
-          <div className="container" data-aos="fade-up">
-            <div className="section-header">
-              <h3 className="section-title">Features</h3>
-              {/* <p className="section-description">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque
-              </p> */}
-            </div>
-            <div className="row mt-5 justify-content-around">
-              <div className="col-lg-4 col-md-6" data-aos="zoom-in">
-                <div className="box">
-                  <div className="icon">
-                    <a href="">
-                      <i className="fa fa-cogs"></i>
-                    </a>
-                  </div>
-                  <h4 className="title">
-                    <a href="">Customizable</a>
-                  </h4>
-                  <p className="description">
-                  Fully adjustable regulation system to suits your needs including visitor limit, maximum visiting time, visiting hours, and general rules
-                  </p>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6" data-aos="zoom-in">
-                <div className="box">
-                  <div className="icon">
-                    <a href="">
-                      <i className="fa fa-desktop"></i>
-                    </a>
-                  </div>
-                  <h4 className="title">
-                    <a href="">Monitoring </a>
-                  </h4>
-                  <p className="description">
-                  Enables hospitals to count live visitor number per-bed in every ward and livestream it on any location in the hospital using a display device such as TV Screen and Monitor 
-                  </p>
-                </div>
-              </div>
-              <div className="col-lg-4 col-md-6" data-aos="zoom-in">
-                <div className="box">
-                  <div className="icon">
-                    <a href="">
-                      <i className="fa fa-id-badge"></i>
-                    </a>
-                  </div>
-                  <h4 className="title">
-                    <a href="">Identification</a>
-                  </h4>
-                  <p className="description">
-                  Identify visitors using digital badge with QR code in the check-in and check-out system where these badges will be scanned and validated by QR scanners 
-                  </p>
-                </div>
-              </div>
-
-              <div className="col-lg-4 col-md-6" data-aos="zoom-in">
-                <div className="box">
-                  <div className="icon">
-                    <a href="">
-                      <i className="fa fa-calendar"></i>
-                    </a>
-                  </div>
-                  <h4 className="title">
-                    <a href="">Online Booking System</a>
-                  </h4>
-                  <p className="description">
-                  Uses web-based visitation booking for visitors to plan their visits in advance through pre-registration process, thus avoiding unwanted crowd within the hospitals
-                  </p>
-                </div>
-              </div>
-              {/* <div className="col-lg-4 col-md-6" data-aos="zoom-in"> */}
-                {/* <div className="box">
-                  <div className="icon">
-                    <a href="">
-                      <i className="fa fa-road"></i>
-                    </a>
-                  </div>
-                  <h4 className="title">
-                    <a href="">Nemo Enim</a>
-                  </h4>
-                  <p className="description">
-                    At vero eos et accusamus et iusto odio dignissimos ducimus
-                    qui blanditiis praesentium voluptatum deleniti atque
-                  </p>
-                </div> */}
-              {/* </div> */}
-              <div className="col-lg-4 col-md-6" data-aos="zoom-in">
-                <div className="box">
-                  <div className="icon">
-                    <a href="">
-                      <i className="fa fa-tasks"></i>
-                    </a>
-                  </div>
-                  <h4 className="title">
-                    <a href="">Access Control System </a>
-                  </h4>
-                  <p className="description">
-                  Limits visitors at a time and issues a warning if the visitor number has exceeded the limit, hence prohibiting new visitor to enter any ward until the warning is lifted. 
-                  </p>
-                </div>
               </div>
             </div>
           </div>
         </section>
-
-        <section id="call-to-action">
-          <div className="container">
-            <div className="row" data-aos="zoom-in">
-              <div className="col-lg-9 text-center text-lg-left">
-                <h3 className="cta-title">
-                Try our contactless visitor management system now !
-                </h3> 
-                <p className="cta-text">
-                  {" "}
-                  Directly experience the advance of contactless environment with Obscura system
-                </p>
-              </div>
-              <div className="col-lg-3 cta-btn-container text-center">
-                <a className="cta-btn align-middle" href="#">
-                  Try Now
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section id="facts">
           <div className="container" data-aos="fade-up">
             <div className="section-header">
               <h3 className="section-title">Our Partners </h3>
               <p className="section-description">
-              We are currently partnering with more than 100 hospitals and public health centers 
+                We are currently partnering with more than 100 hospitals and
+                public health centers
               </p>
             </div>
             <div className="row counters">
@@ -434,37 +311,176 @@ const Landing = ({ loadUser }) => {
             </div>
           </div>
         </section>
+        <section id="services" name="services">
+          <div className="container" data-aos="fade-up">
+            <div className="section-header">
+              <h3 className="section-title">Features</h3>
+              {/* <p className="section-description">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque
+              </p> */}
+            </div>
+            <div className="row mt-5 justify-content-around">
+              <div className="col-lg-4 col-md-6" data-aos="zoom-in">
+                <div className="box">
+                  <div className="icon">
+                    <a href="">
+                      <i className="fa fa-cogs"></i>
+                    </a>
+                  </div>
+                  <h4 className="title">
+                    <a href="">Customizable</a>
+                  </h4>
+                  <p className="description">
+                    Fully adjustable regulation system to suits your needs
+                    including visitor limit, maximum visiting time, visiting
+                    hours, and general rules
+                  </p>
+                </div>
+              </div>
+              <div className="col-lg-4 col-md-6" data-aos="zoom-in">
+                <div className="box">
+                  <div className="icon">
+                    <a href="">
+                      <i className="fa fa-desktop"></i>
+                    </a>
+                  </div>
+                  <h4 className="title">
+                    <a href="">Monitoring </a>
+                  </h4>
+                  <p className="description">
+                    Enables hospitals to count live visitor number per-bed in
+                    every ward and livestream it on any location in the hospital
+                    using a display device such as TV Screen and Monitor
+                  </p>
+                </div>
+              </div>
+              <div className="col-lg-4 col-md-6" data-aos="zoom-in">
+                <div className="box">
+                  <div className="icon">
+                    <a href="">
+                      <i className="fa fa-id-badge"></i>
+                    </a>
+                  </div>
+                  <h4 className="title">
+                    <a href="">Identification</a>
+                  </h4>
+                  <p className="description">
+                    Identify visitors using digital badge with QR code in the
+                    check-in and check-out system where these badges will be
+                    scanned and validated by QR scanners
+                  </p>
+                </div>
+              </div>
+
+              <div className="col-lg-4 col-md-6" data-aos="zoom-in">
+                <div className="box">
+                  <div className="icon">
+                    <a href="">
+                      <i className="fa fa-calendar"></i>
+                    </a>
+                  </div>
+                  <h4 className="title">
+                    <a href="">Online Booking System</a>
+                  </h4>
+                  <p className="description">
+                    Uses web-based visitation booking for visitors to plan their
+                    visits in advance through pre-registration process, thus
+                    avoiding unwanted crowd within the hospitals
+                  </p>
+                </div>
+              </div>
+              {/* <div className="col-lg-4 col-md-6" data-aos="zoom-in"> */}
+              {/* <div className="box">
+                  <div className="icon">
+                    <a href="">
+                      <i className="fa fa-road"></i>
+                    </a>
+                  </div>
+                  <h4 className="title">
+                    <a href="">Nemo Enim</a>
+                  </h4>
+                  <p className="description">
+                    At vero eos et accusamus et iusto odio dignissimos ducimus
+                    qui blanditiis praesentium voluptatum deleniti atque
+                  </p>
+                </div> */}
+              {/* </div> */}
+              <div className="col-lg-4 col-md-6" data-aos="zoom-in">
+                <div className="box">
+                  <div className="icon">
+                    <a href="">
+                      <i className="fa fa-tasks"></i>
+                    </a>
+                  </div>
+                  <h4 className="title">
+                    <a href="">Access Control System </a>
+                  </h4>
+                  <p className="description">
+                    Limits visitors at a time and issues a warning if the
+                    visitor number has exceeded the limit, hence prohibiting new
+                    visitor to enter any ward until the warning is lifted.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="call-to-action">
+          <div className="container">
+            <div className="row" data-aos="zoom-in">
+              <div className="col-lg-9 text-center text-lg-left">
+                <h3 className="cta-title">
+                  Try our contactless visitor management system now !
+                </h3>
+                <p className="cta-text">
+                  {" "}
+                  Directly experience the advance of contactless environment
+                  with Obscura system
+                </p>
+              </div>
+              <div className="col-lg-3 cta-btn-container text-center">
+                <a className="cta-btn align-middle" href="#">
+                  Try Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
 
         <section id="portfolio" className="portfolio" name="portofolio">
           <div className="container" data-aos="fade-up">
             <div className="section-header">
-              <h3 className="section-title">Portfolio</h3>
-              <p className="section-description">
+              <h3 className="section-title">Product Showcase</h3>
+              {/* <p className="section-description">
                 Kasi footage" buat showcase fitur" kita
-              </p>
+              </p> */}
             </div>
 
-            <div className="row" data-aos="fade-up" data-aos-delay="100">
-              <div className="col-lg-12 d-flex justify-content-center">
+            <div className="row mt-3" data-aos="fade-up" data-aos-delay="100">
+              <div className="col-lg-12 d-flex ">
                 <ul id="portfolio-flters">
-                  <li data-filter="*" className="filter-active">
+                  {/* <li data-filter="*" className="filter-active">
                     All
-                  </li>
-                  <li data-filter=".filter-app">Book a Visit</li>
-                  <li data-filter=".filter-card">Digital Visitor Badge</li>
-                  <li data-filter=".filter-web">Dashboard Panel</li>
+                  </li> */}
+                  <li data-filter=".filter-app ">Online Booking System</li>
+                  <li data-filter=".filter-card">Profile Account</li>
+                  <li data-filter=".filter-web">Admin Dashboard</li>
                 </ul>
               </div>
             </div>
 
             <div
-              className="row portfolio-container"
+              className="row portfolio-container justify-content-around"
               data-aos="fade-up"
               data-aos-delay="200"
             >
               <div className="col-lg-6 col-md-6 portfolio-item filter-app">
                 <a
-                  href="assets/img/portfolio/portfolio-1.jpg"
+                  href="https://res.cloudinary.com/awshackaton/image/upload/v1598886136/assets/guide/wdohhjhqbiq1nqplrbvi.png"
                   data-gall="portfolioGallery"
                   className="venobox preview-link"
                   title="App 1"
@@ -473,230 +489,256 @@ const Landing = ({ loadUser }) => {
                     src="https://res.cloudinary.com/awshackaton/image/upload/v1598886136/assets/guide/wdohhjhqbiq1nqplrbvi.png"
                     className="img-fluid"
                     alt=""
+                    style={{ display: "block", height: "400px" }}
                   />
                   <div className="portfolio-info">
                     <h4>Online Booking System</h4>
-                    <p>Book your visit anywhere anytime</p>
+                    <p>Book your visit anywhere anytime without any hassle</p>
+
+                    {/* <i className="bx bx-plus"></i> */}
+                  </div>
+                </a>
+              </div>
+              <div className="col-lg-6 col-md-6 portfolio-item filter-app">
+                <a
+                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599097079/assets/guide/fiqwbjap7mrc9jlget3l.png"
+                  data-gall="portfolioGallery"
+                  className="venobox preview-link"
+                  title="App 1"
+                >
+                  <img
+                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599097079/assets/guide/fiqwbjap7mrc9jlget3l.png"
+                    className="img-fluid mx-auto"
+                    alt=""
+                    style={{ display: "block", height: "400px" }}
+                  />
+                  <div className="portfolio-info">
+                    <h4>Digital Visitor Badge</h4>
+                    <p>Get your own QR Digital Badge for a fully contactless visitor identification</p>
 
                     {/* <i className="bx bx-plus"></i> */}
                   </div>
                 </a>
               </div>
 
-              <div className="col-lg-4 col-md-6 portfolio-item filter-web">
-                <img
-                  src="assets/img/portfolio/portfolio-2.jpg"
-                  className="img-fluid"
-                  alt=""
-                />
-                <div className="portfolio-info">
-                  <h4>Web 3</h4>
-                  <p>Web</p>
-                  <a
-                    href="assets/img/portfolio/portfolio-2.jpg"
-                    data-gall="portfolioGallery"
-                    className="venobox preview-link"
-                    title="Web 3"
-                  >
-                    <i className="bx bx-plus"></i>
-                  </a>
-                  <a
-                    href="portfolio-details.html"
-                    className="details-link"
-                    title="More Details"
-                  >
-                    <i className="bx bx-link"></i>
-                  </a>
-                </div>
-              </div>
+              <div className="col-lg-6 col-md-6 portfolio-item filter-card">
+                <a
+                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599099228/assets/guide/k1whswjvhjgscqlhwefl.png"
+                  data-gall="portfolioGallery"
+                  className="venobox preview-link"
+                  title="Web 2"
+                >
+                  <img
+                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599099228/assets/guide/k1whswjvhjgscqlhwefl.png"
+                    className="img-fluid mx-auto"
+                    alt=""
+                    style={{ display: "block", height: "400px" }}
 
-              <div className="col-lg-6 col-md-6 portfolio-item filter-app">
-                <img
-                  src="assets/img/portfolio/portfolio-3.jpg"
-                  className="img-fluid"
-                  alt=""
-                />
-                <div className="portfolio-info">
-                  <h4>App 2</h4>
-                  <p>App</p>
-                  <a
-                    href="assets/img/portfolio/portfolio-3.jpg"
-                    data-gall="portfolioGallery"
-                    className="venobox preview-link"
-                    title="App 2"
-                  >
-                    <i className="bx bx-plus"></i>
-                  </a>
-                  <a
-                    href="portfolio-details.html"
-                    className="details-link"
-                    title="More Details"
-                  >
-                    <i className="bx bx-link"></i>
-                  </a>
-                </div>
+                  />
+                  <div className="portfolio-info">
+                    <h4>Account Registration</h4>
+                    <p>Register your account to start using our online booking services</p>
+                  </div>
+                </a>
               </div>
+              <div className="col-lg-6 col-md-6 portfolio-item filter-card">
+                <a
+                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599099228/assets/guide/zoqtkbz9zievnn4ujmry.png"
+                  data-gall="portfolioGallery"
+                  className="venobox preview-link"
+                  title="Web 2"
+                >
+                  <img
+                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599099228/assets/guide/zoqtkbz9zievnn4ujmry.png"
+                    className="img-fluid mx-auto"
+                    alt=""
+                    style={{ display: "block", height: "400px" }}
 
+                  />
+                  <div className="portfolio-info">
+                    <h4>Forgot Password</h4>
+                    <p>Just enter your email address below and we'll send you confirmation code to reset your password</p>
+                  </div>
+                </a>
+              </div>
               <div className="col-lg-4 col-md-6 portfolio-item filter-card">
-                <img
-                  src="assets/img/portfolio/portfolio-4.jpg"
-                  className="img-fluid"
-                  alt=""
-                />
-                <div className="portfolio-info">
-                  <h4>Card 2</h4>
-                  <p>Card</p>
-                  <a
-                    href="assets/img/portfolio/portfolio-4.jpg"
-                    data-gall="portfolioGallery"
-                    className="venobox preview-link"
-                    title="Card 2"
-                  >
-                    <i className="bx bx-plus"></i>
-                  </a>
-                  <a
-                    href="portfolio-details.html"
-                    className="details-link"
-                    title="More Details"
-                  >
-                    <i className="bx bx-link"></i>
-                  </a>
-                </div>
-              </div>
+                <a
+                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599100724/assets/guide/tvyt3digwhfmdf5jkoki.png"
+                  data-gall="portfolioGallery"
+                  className="venobox preview-link"
+                  title="Web 2"
+                >
+                  <img
+                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599100724/assets/guide/tvyt3digwhfmdf5jkoki.png"
+                    className="img-fluid mx-auto"
+                    alt=""
+                    style={{ display: "block", height: "300px" }}
 
-              <div className="col-lg-4 col-md-6 portfolio-item filter-web">
-                <img
-                  src="assets/img/portfolio/portfolio-5.jpg"
-                  className="img-fluid"
-                  alt=""
-                />
-                <div className="portfolio-info">
-                  <h4>Web 2</h4>
-                  <p>Web</p>
-                  <a
-                    href="assets/img/portfolio/portfolio-5.jpg"
-                    data-gall="portfolioGallery"
-                    className="venobox preview-link"
-                    title="Web 2"
-                  >
-                    <i className="bx bx-plus"></i>
-                  </a>
-                  <a
-                    href="portfolio-details.html"
-                    className="details-link"
-                    title="More Details"
-                  >
-                    <i className="bx bx-link"></i>
-                  </a>
-                </div>
+                  />
+                  <div className="portfolio-info">
+                    <h4>Login</h4>
+                    <p>Authenticate by logging in with your visitor account</p>
+                  </div>
+                </a>
               </div>
-
-              <div className="col-lg-4 col-md-6 portfolio-item filter-app">
-                <img
-                  src="assets/img/portfolio/portfolio-6.jpg"
-                  className="img-fluid"
-                  alt=""
-                />
-                <div className="portfolio-info">
-                  <h4>App 3</h4>
-                  <p>App</p>
-                  <a
-                    href="assets/img/portfolio/portfolio-6.jpg"
-                    data-gall="portfolioGallery"
-                    className="venobox preview-link"
-                    title="App 3"
-                  >
-                    <i className="bx bx-plus"></i>
-                  </a>
-                  <a
-                    href="portfolio-details.html"
-                    className="details-link"
-                    title="More Details"
-                  >
-                    <i className="bx bx-link"></i>
-                  </a>
-                </div>
-              </div>
-
               <div className="col-lg-4 col-md-6 portfolio-item filter-card">
-                <img
-                  src="assets/img/portfolio/portfolio-7.jpg"
-                  className="img-fluid"
-                  alt=""
-                />
-                <div className="portfolio-info">
-                  <h4>Card 1</h4>
-                  <p>Card</p>
-                  <a
-                    href="assets/img/portfolio/portfolio-7.jpg"
-                    data-gall="portfolioGallery"
-                    className="venobox preview-link"
-                    title="Card 1"
-                  >
-                    <i className="bx bx-plus"></i>
-                  </a>
-                  <a
-                    href="portfolio-details.html"
-                    className="details-link"
-                    title="More Details"
-                  >
-                    <i className="bx bx-link"></i>
-                  </a>
-                </div>
-              </div>
+                <a
+                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/wsxrulyw3iybmcdbwojq.png"
+                  data-gall="portfolioGallery"
+                  className="venobox preview-link"
+                  title="Web 2"
+                >
+                  <img
+                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/wsxrulyw3iybmcdbwojq.png"
+                    className="img-fluid mx-auto"
+                    alt=""
+                    style={{ display: "block", height: "300px" }}
 
+                  />
+                  <div className="portfolio-info">
+                    <h4>Profile Page</h4>
+                    <p>Visitor's complete identification data, including profile picture and identification card</p>
+                  </div>
+                </a>
+              </div>
               <div className="col-lg-4 col-md-6 portfolio-item filter-card">
-                <img
-                  src="assets/img/portfolio/portfolio-8.jpg"
-                  className="img-fluid"
-                  alt=""
-                />
-                <div className="portfolio-info">
-                  <h4>Card 3</h4>
-                  <p>Card</p>
-                  <a
-                    href="assets/img/portfolio/portfolio-8.jpg"
-                    data-gall="portfolioGallery"
-                    className="venobox preview-link"
-                    title="Card 3"
-                  >
-                    <i className="bx bx-plus"></i>
-                  </a>
-                  <a
-                    href="portfolio-details.html"
-                    className="details-link"
-                    title="More Details"
-                  >
-                    <i className="bx bx-link"></i>
-                  </a>
-                </div>
+                <a
+                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599097079/assets/guide/n5vy8k4sdq8wwmpuykyn.png"
+                  data-gall="portfolioGallery"
+                  className="venobox preview-link"
+                  title="Web 2"
+                >
+                  <img
+                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599097079/assets/guide/n5vy8k4sdq8wwmpuykyn.png"
+                    className="img-fluid mx-auto"
+                    alt=""
+                    style={{ display: "block", height: "300px" }}
+
+                  />
+                  <div className="portfolio-info">
+                    <h4>Visit History</h4>
+                    <p>Track you visitation history and its digital badge link easily</p>
+                  </div>
+                </a>
               </div>
 
               <div className="col-lg-4 col-md-6 portfolio-item filter-web">
-                <img
-                  src="assets/img/portfolio/portfolio-9.jpg"
-                  className="img-fluid"
-                  alt=""
-                />
-                <div className="portfolio-info">
-                  <h4>Web 3</h4>
-                  <p>Web</p>
-                  <a
-                    href="assets/img/portfolio/portfolio-9.jpg"
-                    data-gall="portfolioGallery"
-                    className="venobox preview-link"
-                    title="Web 3"
-                  >
+                <a
+                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/vzza6n6crzrtd985p9wu.png"
+                  data-gall="portfolioGallery"
+                  className="venobox preview-link"
+                  title="Web 2"
+                >
+                  <img
+                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/vzza6n6crzrtd985p9wu.png"
+                    className="img-fluid mx-auto"
+                    alt=""
+                    style={{ display: "block", height: "275px" }}
+
+                  />
+                  <div className="portfolio-info">
+                    <h4>Dashboard Panel</h4>
+                    <p>Show and Visualize your vistation data to gain insight</p>
+
                     <i className="bx bx-plus"></i>
-                  </a>
-                  <a
-                    href="portfolio-details.html"
-                    className="details-link"
-                    title="More Details"
-                  >
-                    <i className="bx bx-link"></i>
-                  </a>
-                </div>
+                  </div>
+                </a>
+              </div>
+
+              <div className="col-lg-4 col-md-6 portfolio-item filter-web">
+                <a
+                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/gvd4jxcvmorlglaxt41i.png"
+                  data-gall="portfolioGallery"
+                  className="venobox preview-link"
+                  title="Web 2"
+                >
+                  <img
+                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/gvd4jxcvmorlglaxt41i.png"
+                    className="img-fluid mx-auto"
+                    alt=""
+                    style={{ display: "block", height: "275px" }}
+
+                  />
+                  <div className="portfolio-info">
+                    <h4>Ward Livestream</h4>
+                    <p>Monitor visitor from each ward and stream it from TV/Display device in screening counter or lobby and change the ward's visitation access</p>
+
+                    <i className="bx bx-plus"></i>
+                  </div>
+                </a>
+              </div>
+
+              <div className="col-lg-4 col-md-6 portfolio-item filter-web">
+                <a
+                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/mtjhpachl7baxn0iyqzf.png"
+                  data-gall="portfolioGallery"
+                  className="venobox preview-link"
+                  title="Web 2"
+                >
+                  <img
+                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/mtjhpachl7baxn0iyqzf.png"
+                    className="img-fluid mx-auto"
+                    alt=""
+                    style={{ display: "block", height: "275px" }}
+
+                  />
+                  <div className="portfolio-info">
+                    <h4>Bed Livestream</h4>
+                    <p>Monitor visitor of a particular ward and stream it in the ward's front desk</p>
+
+                    <i className="bx bx-plus"></i>
+                  </div>
+                </a>
+              </div>
+              <div className="col-lg-2 col-md-1 portfolio-item filter-web">
+              </div>
+
+              <div className="col-lg-4 col-md-6 portfolio-item filter-web">
+                <a
+                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/j3htiieomutzeh6qtsmo.png"
+                  data-gall="portfolioGallery"
+                  className="venobox preview-link"
+                  title="Web 2"
+                >
+                  <img
+                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/j3htiieomutzeh6qtsmo.png"
+                    className="img-fluid mx-auto"
+                    alt=""
+                    style={{ display: "block", height: "275px" }}
+
+                  />
+                  <div className="portfolio-info">
+                    <h4>Customize Regulation</h4>
+                    <p>Adjust and Customize various visitation regulation and visit session seamlessly</p>
+
+                    <i className="bx bx-plus"></i>
+                  </div>
+                </a>
+              </div>
+
+              <div className="col-lg-4 col-md-6 portfolio-item filter-web">
+                <a
+                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/dxsgwarp2bckfonvgdpu.png"
+                  data-gall="portfolioGallery"
+                  className="venobox preview-link"
+                  title="Web 2"
+                >
+                  <img
+                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/dxsgwarp2bckfonvgdpu.png"
+                    className="img-fluid mx-auto"
+                    alt=""
+                    style={{ display: "block", height: "275px" }}
+
+                  />
+                  <div className="portfolio-info">
+                    <h4>Schedule Table</h4>
+                    <p>List all the visitation that is made by the visitor and have the ability to change the visit's access</p>
+
+                    <i className="bx bx-plus"></i>
+                  </div>
+                </a>
+              </div>
+              <div className="col-lg-2 col-md-1 portfolio-item filter-web">
               </div>
             </div>
           </div>
@@ -752,7 +794,6 @@ const Landing = ({ loadUser }) => {
             style={{ border: "0" }}
             allowFullScreen
           ></iframe>
-
         </section>
       </main>
       <footer id="footer">

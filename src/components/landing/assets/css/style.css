@@ -581,8 +581,8 @@ section {
   /* min-height: 300px;
   max-height: 500px;
   max-width:300px; */
-  height:auto;
-  background: url(../img/phonehand.png) center bottom no-repeat;
+  height:500px;
+  background: url(../img/rez.png) center no-repeat;
   margin-bottom: 10px;
 }
 

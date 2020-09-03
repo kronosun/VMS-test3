@@ -71,7 +71,7 @@ const TopBar = ({ message ,burger,logOut,userName,profilePicture,isLock,userId})
   <span className="sr-only">Loading...</span>
 </div>:(          <Fragment>
             <img
-              className="img-profile rounded-circle mx-1"
+              className="img-profile rounded-circle mx-1 center"
               src={profilePicture}
               style={{width:"32px",height:"32px"}}
               
