@@ -152,6 +152,7 @@ const Landing = ({ loadUser }) => {
                 height="125%"
                 controls
                 url="https://www.youtube.com/watch?v=f9CfAqZfHoc"
+                // url="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fignenrico%2Fvideos%2F3270019243033992%2F&show_text=1&width=560"
               />
             </div>
             <div className="col-md-1" />
@@ -444,9 +445,9 @@ const Landing = ({ loadUser }) => {
                 </p>
               </div>
               <div className="col-lg-3 cta-btn-container text-center">
-                <a className="cta-btn align-middle" href="#">
+                <Link className="cta-btn align-middle" to="/book">
                   Try Now
-                </a>
+                </Link>
               </div>
             </div>
           </div>

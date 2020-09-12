@@ -1,5 +1,17 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Obscura : Seamless Visitor Management System
+In the amidst of COVID-19 pandemic, Indonesia is one of the countries that struggles to mitigate the pandemic due to the lack of preparation in health sectors along with its regulations. Hospitals and health facilities throughout the country have tried to adapt to the current situation and this inevitably affects its daily activities especially visitors and the visitation policy.
+Obscura is a cloud-based visitor management solution for midsize and large hospitals. It is suitable for hospitals that need a VMS that can seamlesslymonitor and identify visitors while still maintaining flexibility
+
+## AWS Amplify
+Deployed on AWS Amplify Static Hosting Service, you can check it here : 
+https://master.d3a8jjyn40sdoi.amplifyapp.com
+
+## Promotional Video
+Also Check and watch or Demonstration video here :
+bit.ly/TeamAWSome
+
 ## Available Scripts
 
 In the project directory, you can run:
