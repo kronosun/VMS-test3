@@ -48,7 +48,7 @@ const BookId = ({ match,profile }) => {
                     style={{ height: "615px" }}
                   >
                     <div className="text-center">
-                      <h1 className="h4 text-gray-900 mb-1">Digital Badge</h1>
+                      <h1 className="h4 text-gray-900 mb-1">Visitor Badge</h1>
                     </div>
 
                     <small className="d-block text-muted inline-block mt-1 mb-1">
