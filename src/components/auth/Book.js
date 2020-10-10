@@ -35,7 +35,7 @@ import {
   getAvailableSessions,
   bookSchedule,
 } from "../../actions/api";
-import {setAlert} from '../../actions/alert';
+import { setAlert } from "../../actions/alert";
 
 const useStyles = makeStyles({
   root: {
@@ -99,7 +99,7 @@ function getSteps() {
   return ["Pick the Date", "Choose Session", "Confirm"];
 }
 
-const Book = ({ userId, name, setAlert, alert}) => {
+const Book = ({ userId, name, setAlert, alert }) => {
   // State
   const [appointment, setAppointment] = useState("");
   const [rules, SetRules] = useState([]);
@@ -159,18 +159,14 @@ const Book = ({ userId, name, setAlert, alert}) => {
       session: String(session),
     };
     const res = await bookSchedule(dataSent);
-    if (res.statusCode===200){
+    if (res.statusCode === 200) {
       setAppointment(res.body);
-    }
-    else if (res.statusCode === 201) {
-    setAlert("Sessions is full !","danger");
-    setActiveStep((prevActiveStep) => prevActiveStep - 3);
-
-    }
-    else if (res.statusCode=== 202){
-      setAlert("Incorrect visitee or wards number","danger");
-    setActiveStep((prevActiveStep) => prevActiveStep - 3);
-
+    } else if (res.statusCode === 201) {
+      setAlert("Sessions is full !", "danger");
+      setActiveStep((prevActiveStep) => prevActiveStep - 3);
+    } else if (res.statusCode === 202) {
+      setAlert("Incorrect visitee or wards number", "danger");
+      setActiveStep((prevActiveStep) => prevActiveStep - 3);
     }
   };
 
@@ -196,9 +192,15 @@ const Book = ({ userId, name, setAlert, alert}) => {
                       className="col-lg-8 align-items-center p-4 "
                       style={{ height: "700px" }}
                     >
-                                                                {alert && alert.map(x=>              <div className={`alert alert-${x.alertType} mx-1`} role="alert">
-  {x.msg}
-</div>)}
+                      {alert &&
+                        alert.map((x) => (
+                          <div
+                            className={`alert alert-${x.alertType} mx-1`}
+                            role="alert" 
+                          >
+                            {x.msg}
+                          </div>
+                        ))}
                       <div className="text-center">
                         <h1 className="h4 text-gray-900 my-2">Book a Visit</h1>
                       </div>
@@ -311,12 +313,14 @@ const Book = ({ userId, name, setAlert, alert}) => {
                                   ))}
                                 </RadioGroup>
                               </FormControl>
-                              {sessions.length ===0 &&
-                              (<Fragment>
-                              <br />
-                              <div className="spinner-border" role="status">
-  <span className="sr-only">Loading...</span>
-</div></Fragment>)}
+                              {sessions.length === 0 && (
+                                <Fragment>
+                                  <br />
+                                  <div className="spinner-border" role="status">
+                                    <span className="sr-only">Loading...</span>
+                                  </div>
+                                </Fragment>
+                              )}
                             </Fragment>
                           ) : null}
                           {activeStep === 2 ? (
@@ -457,7 +461,6 @@ const Book = ({ userId, name, setAlert, alert}) => {
                                 color="primary"
                                 onClick={handleNext}
                                 className="mx-2"
-
                               >
                                 Next
                               </Button>
@@ -492,13 +495,13 @@ const Book = ({ userId, name, setAlert, alert}) => {
 Book.propTypes = {
   userId: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  alert:PropTypes.array.isRequired
+  alert: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   userId: state.auth.attributes.userId,
   name: state.auth.attributes.name,
-  alert :state.alert
+  alert: state.alert,
 });
 
-export default connect(mapStateToProps, {setAlert})(Book);
+export default connect(mapStateToProps, { setAlert })(Book);
