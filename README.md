@@ -5,14 +5,13 @@ In the amidst of COVID-19 pandemic, Indonesia is one of the countries that strug
 Obscura is a cloud-based visitor management solution for midsize and large hospitals. It is suitable for hospitals that need a VMS that can seamlesslymonitor and identify visitors while still maintaining flexibility
 
 ## AWS Amplify
-Deployed on AWS Amplify Static Hosting Service, you can check it here : 
-https://master.d3a8jjyn40sdoi.amplifyapp.com 
+Deployed on AWS Amplify Static Hosting Service
 
 Pitch Deck : https://drive.google.com/drive/folders/10iKmSvS17DYIjLi8x6_x52HLdQjhuBAl?usp=sharing 
 
 ## Promotional Video
 Also Check and watch or Demonstration video here :
-bit.ly/TeamAWSome
+https://drive.google.com/file/d/17Iq4vufO1eNuG9QJ4_qtilkL_HwgCqmB/view?usp=sharing
 
 ## Available Scripts
 
