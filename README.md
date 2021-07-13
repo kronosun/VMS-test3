@@ -6,7 +6,9 @@ Obscura is a cloud-based visitor management solution for midsize and large hospi
 
 ## AWS Amplify
 Deployed on AWS Amplify Static Hosting Service, you can check it here : 
-https://master.d3a8jjyn40sdoi.amplifyapp.com
+https://master.d3a8jjyn40sdoi.amplifyapp.com 
+
+Pitch Deck : https://drive.google.com/drive/folders/10iKmSvS17DYIjLi8x6_x52HLdQjhuBAl?usp=sharing 
 
 ## Promotional Video
 Also Check and watch or Demonstration video here :
