@@ -13,6 +13,10 @@ Pitch Deck : https://drive.google.com/drive/folders/10iKmSvS17DYIjLi8x6_x52HLdQj
 Also Check and watch or Demonstration video here :
 https://drive.google.com/file/d/17Iq4vufO1eNuG9QJ4_qtilkL_HwgCqmB/view?usp=sharing
 
+## Project Update
+We Also Created mobile apps version for this project, 
+https://github.com/davidf1000/MAGEITS_Mobile
+
 ## Available Scripts
 
 In the project directory, you can run:
