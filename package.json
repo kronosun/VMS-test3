@@ -1,5 +1,5 @@
 {
-  "homepage": "https://master.d3a8jjyn40sdoi.amplifyapp.com",
+  "homepage": "",
   "name": "cognito-aws",
   "version": "0.1.0",
   "private": true,
@@ -38,24 +38,18 @@
     "uuid": "^8.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "start": "serve -s build",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "engines": {
+    "node": "14.17.0",
+    "npm": "6.14.13"
   }
 }
