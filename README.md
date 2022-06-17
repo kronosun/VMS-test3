@@ -5,14 +5,16 @@ In the amidst of COVID-19 pandemic, Indonesia is one of the countries that strug
 Obscura is a cloud-based visitor management solution for midsize and large hospitals. It is suitable for hospitals that need a VMS that can seamlesslymonitor and identify visitors while still maintaining flexibility
 
 ## AWS Amplify
-Deployed on AWS Amplify Static Hosting Service
+Deployed on AWS Amplify Static Hosting Service : Currently unavailable
 
-Pitch Deck : https://drive.google.com/drive/folders/10iKmSvS17DYIjLi8x6_x52HLdQjhuBAl?usp=sharing 
+## Heroku
+Currently Deployed on Heroku (note that the functional of the webapps can't be accessed anymore since the serverless API is not deployed anymore) :
+<br />
+https://awsome-obscura.herokuapp.com
 
 ## Promotional Video
-Also Check and watch or Demonstration video here :
-https://drive.google.com/file/d/17Iq4vufO1eNuG9QJ4_qtilkL_HwgCqmB/view?usp=sharing
-
+Also Check and watch our Pitch Deck and Demonstration video here :
+https://drive.google.com/drive/folders/1RaoZkTeAROKc6Sm9eDxpubu1L3VAdfUQ?usp=sharing
 ## Project Update
 We Also Created mobile apps version for this project, 
 https://github.com/davidf1000/MAGEITS_Mobile

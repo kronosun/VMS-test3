@@ -2,10 +2,10 @@ import axios from "axios";
 
 let config = {
   headers: {
-    'Content-Type': 'application/json',
-  }
-}
-// Dummy API for testing only 
+    "Content-Type": "application/json",
+  },
+};
+// Dummy API for testing only
 export const dummyApi = async () => {
   try {
     const res = await axios.get("https://randomuser.me/api/");
@@ -26,10 +26,9 @@ export const dummyFetch = async () => {
 };
 
 // API related for Booking features
-// Check Available sessions based on visitor's option on visit date. 
+// Check Available sessions based on visitor's option on visit date.
 export const getAvailableSessions = async (date) => {
   try {
-
     const res = await axios.get(
       "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/rules/get"
     );
@@ -39,7 +38,7 @@ export const getAvailableSessions = async (date) => {
     const now = new Date(date).getDay();
     if (now >= 1 && now <= 5) {
       return sessionWeekDay;
-    } else if(now===0 || now===6) {
+    } else if (now === 0 || now === 6) {
       return sessionWeekEnd;
     }
   } catch (error) {
@@ -59,40 +58,44 @@ export const getWrittenRules = async () => {
   }
 };
 // Post Book form
-export const bookSchedule = async(data)=>{
-    try {
-        const res= await axios.post("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/book",JSON.stringify(data));
-        return res.data;
-    } catch (error) {
-        console.error(error);
-    }
-}
+export const bookSchedule = async (data) => {
+  try {
+    const res = await axios.post(
+      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/book",
+      JSON.stringify(data)
+    );
+    return res.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 // Fetch data to render Digital Badge
-export const getBookId= async (visitId) =>{
+export const getBookId = async (visitId) => {
   try {
-      const url="https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/get/id2"
-      const body={
-        "id":String(visitId)
-      }
-      const res= await axios.put(url,body,config);
-      return res.data.body;
-      
+    const url =
+      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/get/id2";
+    const body = {
+      id: String(visitId),
+    };
+    const res = await axios.put(url, body, config);
+    return res.data.body;
   } catch (error) {
-      console.error(error);
+    console.error(error);
   }
-}
+};
 
-
-// API related for user profile 
+// API related for user profile
 // Get User History
 export const getHistory = async (userId) => {
   try {
-    const body={
-      "userid":String(userId)
-    }
+    const body = {
+      userid: String(userId),
+    };
     const res = await axios.put(
-      `https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/filter/userid2`,body,config
+      `https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/filter/userid2`,
+      body,
+      config
     );
 
     return res.data.body;
@@ -101,26 +104,29 @@ export const getHistory = async (userId) => {
   }
 };
 
-
-// Dashboard Panel 
+// Dashboard Panel
 // Get Dashboard quantified variable data
-export const getGeneral = async ()=>{
+export const getGeneral = async () => {
   try {
-    const res= await axios.get("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/dashboard/general");
+    const res = await axios.get(
+      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/dashboard/general"
+    );
     return res.data.body;
   } catch (error) {
     console.error();
   }
-}
-// Get Visitor Data for plotting purpose 
-export const getVisitorData = async() =>{
+};
+// Get Visitor Data for plotting purpose
+export const getVisitorData = async () => {
   try {
-    const res= await axios.get("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/dashboard/visitortoday/getall");
+    const res = await axios.get(
+      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/dashboard/visitortoday/getall"
+    );
     return res.data.body;
   } catch (error) {
     console.error();
   }
-}
+};
 
 // Visitor Panel and Livestream Panel
 // Get all Bed from All Wards
@@ -189,14 +195,17 @@ export const getRules = async () => {
   }
 };
 // update Rules
-export const updateRules = async(formData)=>{
-    try {
-        const res = await axios.put("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/rules/update",JSON.stringify(formData));
-        return res.data.statusCode;
-    } catch (error) {
-        console.error(error);
-    }
-}
+export const updateRules = async (formData) => {
+  try {
+    const res = await axios.put(
+      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/rules/update",
+      JSON.stringify(formData)
+    );
+    return res.data.statusCode;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 //Schedule Panel
 // Get All Schedule
@@ -210,32 +219,38 @@ export const getSchedule = async () => {
     console.error(error);
   }
 };
-// Update schedule access 
-export const changeAccess = async(id,current) =>{
+// Update schedule access
+export const changeAccess = async (id, current) => {
   try {
-    const body = 
-      {
-        "id": String(id),
-        "access": String(current)
-      }
-    
-    const res= await axios.put("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/updateaccess",body,config);
+    const body = {
+      id: String(id),
+      access: String(current),
+    };
+
+    const res = await axios.put(
+      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/updateaccess",
+      body,
+      config
+    );
     // return res.data.body;
   } catch (error) {
     console.error();
   }
-}
+};
 // Delete book data
-export const deleteBook = async(id) =>{
+export const deleteBook = async (id) => {
   try {
-    const body = 
-      {
-        "id": String(id)
-      }
-    
-    const res= await axios.put("https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/delete",body,config);
+    const body = {
+      id: String(id),
+    };
+
+    const res = await axios.put(
+      "https://7z4mgi9veg.execute-api.us-east-1.amazonaws.com/VMS/visitschedule/delete",
+      body,
+      config
+    );
     // return res.data.body;
   } catch (error) {
     console.error();
   }
-}
+};

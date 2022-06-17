@@ -4,7 +4,11 @@ import { Line, Pie, Bar } from "react-chartjs-2";
 import CardDesign from "./CardDesign";
 import Gantt from "./Gantt";
 import TextBox from "./TextBox";
-import {getGeneral,getAvailableSessions,getVisitorData} from '../../../actions/api';
+import {
+  getGeneral,
+  getAvailableSessions,
+  getVisitorData,
+} from "../../../actions/api";
 const dataset = {
   labels: [
     "Boston",
@@ -31,14 +35,14 @@ const dataset = {
   ],
 };
 
-const chartRender = (label,data) =>{
-  return ({
-    labels: label.map(x=>{
-      if(x==='1') return "1st Floor"
-      if(x==='2') return "2nd Floor"
-      if(x==='3') return "3rd Floor"
-      else return `${x}th Floor`
-    }) ,
+const chartRender = (label, data) => {
+  return {
+    labels: label.map((x) => {
+      if (x === "1") return "1st Floor";
+      if (x === "2") return "2nd Floor";
+      if (x === "3") return "3rd Floor";
+      else return `${x}th Floor`;
+    }),
     datasets: [
       {
         label: "My First dataset",
@@ -70,11 +74,11 @@ const chartRender = (label,data) =>{
         ],
       },
     ],
-  });
-}
-const plotRender = (x) =>{
-  return ({
-    labels: x.map(item=>item.date) ,
+  };
+};
+const plotRender = (x) => {
+  return {
+    labels: x.map((item) => item.date),
     datasets: [
       {
         label: "Visitor",
@@ -95,7 +99,7 @@ const plotRender = (x) =>{
         pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: x.map(item=>item.visitorToday).reverse(),
+        data: x.map((item) => item.visitorToday).reverse(),
         backgroundColor: [
           "rgba(255, 99, 132, 0.6)",
           "rgba(54, 162, 235, 0.6)",
@@ -107,37 +111,42 @@ const plotRender = (x) =>{
         ],
       },
     ],
-  });
-}
+  };
+};
 
 const ChartData = (props) => {
-  const [loading,setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [dataChart, setDataChart] = useState({});
-  const [plotChart,setPlotChart]=useState({});
+  const [plotChart, setPlotChart] = useState({});
   const [general, setGeneral] = useState({
     TotalFloors: "",
     TotalWards: "",
     SumVisitor: "",
     SumOfBlockedWards: "",
     VisitorPerFloor: [],
-    FullBed:'',
-    TotalBooks:''
+    FullBed: "",
+    TotalBooks: "",
   });
-  const [plot,setPlot] = useState([]);
-  const [session,setSession]= useState([]);
+  const [plot, setPlot] = useState([]);
+  const [session, setSession] = useState([]);
   useEffect(() => {
     const updateChart = async () => {
-      const res= await getGeneral();
-      const ses= await getAvailableSessions(Date.now());
-      const plotData= await getVisitorData();
+      const res = await getGeneral();
+      const ses = await getAvailableSessions(Date.now());
+      const plotData = await getVisitorData();
       const label = [
         Math.ceil(Math.random() * 100),
         Math.ceil(Math.random() * 100),
         Math.ceil(Math.random() * 100),
         Math.ceil(Math.random() * 100),
       ];
-      const dataNew = chartRender(res.VisitorPerFloor.map(x=>x.FloorNumber),res.VisitorPerFloor.map(x=>x.VisitorCount));
-      const plotNew= plotRender(plotData.sort((a,b)=>(a.date>b.date?1:-1)));
+      const dataNew = chartRender(
+        res.VisitorPerFloor.map((x) => x.FloorNumber),
+        res.VisitorPerFloor.map((x) => x.VisitorCount)
+      );
+      const plotNew = plotRender(
+        plotData.sort((a, b) => (a.date > b.date ? 1 : -1))
+      );
       setDataChart(dataNew);
       setGeneral(res);
       setSession(ses);
@@ -168,7 +177,7 @@ const ChartData = (props) => {
               logo="clinic-medical"
               color="dark"
               colorlogo="dark"
-            /> 
+            />
             <CardDesign
               title="Floors"
               value={general.TotalFloors}
@@ -205,9 +214,19 @@ const ChartData = (props) => {
         <div className="col-sm-6 px-3 pt-0 pb-2">
           <div className="card mb-4 shadow">
             <div className="card-header py-3">
-              <h6 className="m-0 font-weight-bold text-primary">                {loading &&(                <div className="spinner-border mr-2 mb-1" role="status" style={{fontSize:"1rem",height:"15px",width:"15px"}}>
-  <span className="sr-only">Loading...</span>
-</div>)}Visitor</h6>
+              <h6 className="m-0 font-weight-bold text-primary">
+                {" "}
+                {loading && (
+                  <div
+                    className="spinner-border mr-2 mb-1"
+                    role="status"
+                    style={{ fontSize: "1rem", height: "15px", width: "15px" }}
+                  >
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                )}
+                Visitor
+              </h6>
             </div>
             <div className="card-body">
               <Line
@@ -229,53 +248,76 @@ const ChartData = (props) => {
       <div className="row">
         <div className="col-sm-4">
           <div className="py-2 p-3">
-            <div className="card mb-4 shadow" style={{height:"350px"}}>
+            <div className="card mb-4 shadow" style={{ height: "350px" }}>
               <div className="card-header py-3">
                 <h6 className="m-0 font-weight-bold text-primary">
-{loading &&(                <div className="spinner-border mr-2 mb-1" role="status" style={{fontSize:"1rem",height:"15px",width:"15px"}}>
-  <span className="sr-only">Loading...</span>
-</div>)}
-                  Visitor per Floor 
+                  {loading && (
+                    <div
+                      className="spinner-border mr-2 mb-1"
+                      role="status"
+                      style={{
+                        fontSize: "1rem",
+                        height: "15px",
+                        width: "15px",
+                      }}
+                    >
+                      <span className="sr-only">Loading...</span>
+                    </div>
+                  )}
+                  Visitor per Floor
                 </h6>
               </div>
               <div className="card-body">
-              {dataChart ?                 <Pie
-                  data={dataChart}
-                  options={{
-                    legend: {
-                      // display: true,
-                      // position: true,
-                      // labels: {
-                      //   fontColor: '#000'
-                      // }
-                    },
-                  }}
-                /> : <div className="spinner-border" role="status">
-  <span className="sr-only">Loading...</span>
-</div>}
-
+                {dataChart ? (
+                  <Pie
+                    data={dataChart}
+                    options={{
+                      legend: {
+                        // display: true,
+                        // position: true,
+                        // labels: {
+                        //   fontColor: '#000'
+                        // }
+                      },
+                    }}
+                  />
+                ) : (
+                  <div className="spinner-border" role="status">
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
         <div className="col-sm-5">
           <div className="py-1 px-3">
-            <div className="card mb-4 shadow" style={{height:"350px"}}>
+            <div className="card mb-4 shadow" style={{ height: "350px" }}>
               <div className="card-header ">
                 <h6 className="m-0 font-weight-bold text-primary">
-                {loading &&(                <div className="spinner-border mr-2 mb-1" role="status" style={{fontSize:"1rem",height:"15px",width:"15px"}}>
-  <span className="sr-only">Loading...</span>
-</div>)}
+                  {loading && (
+                    <div
+                      className="spinner-border mr-2 mb-1"
+                      role="status"
+                      style={{
+                        fontSize: "1rem",
+                        height: "15px",
+                        width: "15px",
+                      }}
+                    >
+                      <span className="sr-only">Loading...</span>
+                    </div>
+                  )}
                   Available Sessions Today
                 </h6>
               </div>
               <div className="card-body">
-                <Gantt sessionArray={session}/>
+                <Gantt sessionArray={session} />
               </div>
             </div>
           </div>
         </div>
-        <div className="col-sm-3" >
+        <div className="col-sm-3">
           <TextBox />
         </div>
       </div>

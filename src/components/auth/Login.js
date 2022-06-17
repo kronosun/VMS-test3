@@ -12,7 +12,6 @@ import TopBarGuest from "../dashboard/layout/TopBarGuest";
 // Actions
 import { loadUser, loginCognito } from "../../actions/auth";
 import { setAlert } from "../../actions/alert";
-import { CSSTransition } from "react-transition-group";
 const Login = ({
   loginCognito,
   isAdmin,
@@ -73,53 +72,51 @@ const Login = ({
                       <div className="p-5" style={{ height: "375px" }}>
                         {choice ? (
                           <Fragment>
-                              <div className="text-center">
-                                <h1 className="h4 text-gray-900 mb-5 mt-1">
-                                  Welcome Back!
-                                </h1>
+                            <div className="text-center">
+                              <h1 className="h4 text-gray-900 mb-5 mt-1">
+                                Welcome Back!
+                              </h1>
+                            </div>
+
+                            <form className="user">
+                              <div className="form-group">
+                                <input
+                                  value={email}
+                                  onChange={(e) => setEmail(e.target.value)}
+                                  type="email"
+                                  className="form-control form-control-user mb-4"
+                                  id="exampleInputEmail"
+                                  aria-describedby="emailHelp"
+                                  placeholder="Enter Email Address..."
+                                />
                               </div>
+                              <div className="form-group">
+                                <input
+                                  type="password"
+                                  value={password}
+                                  onChange={(e) => setPassword(e.target.value)}
+                                  type="password"
+                                  className="form-control form-control-user mb-0"
+                                  id="exampleInputPassword"
+                                  placeholder="Password"
+                                />
+                              </div>
+                              <br />
 
-                              <form className="user">
-                                <div className="form-group">
-                                  <input
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    type="email"
-                                    className="form-control form-control-user mb-4"
-                                    id="exampleInputEmail"
-                                    aria-describedby="emailHelp"
-                                    placeholder="Enter Email Address..."
-                                  />
-                                </div>
-                                <div className="form-group">
-                                  <input
-                                    type="password"
-                                    value={password}
-                                    onChange={(e) =>
-                                      setPassword(e.target.value)
-                                    }
-                                    type="password"
-                                    className="form-control form-control-user mb-0"
-                                    id="exampleInputPassword"
-                                    placeholder="Password"
-                                  />
-                                </div>
-                                <br />
-
-                                <button
-                                  type="submit"
-                                  className="btn btn-primary btn-user btn-block mb-3 mt-0"
-                                  onClick={onSubmit}
-                                >
-                                  Login
-                                </button>
-                                {pressed && !(!loading && !isAuthenticated) ? (
-                                  <div
-                                    className="spinner-border visible mb-3"
-                                    role="status"
-                                  ></div>
-                                ) : null}
-                              </form>
+                              <button
+                                type="submit"
+                                className="btn btn-primary btn-user btn-block mb-3 mt-0"
+                                onClick={onSubmit}
+                              >
+                                Login
+                              </button>
+                              {pressed && !(!loading && !isAuthenticated) ? (
+                                <div
+                                  className="spinner-border visible mb-3"
+                                  role="status"
+                                ></div>
+                              ) : null}
+                            </form>
                           </Fragment>
                         ) : (
                           <Fragment>

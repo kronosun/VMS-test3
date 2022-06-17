@@ -2,9 +2,9 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import "../../auth/assets/css/sb-admin-2.css";
 
-const SidePanel = ({msg}) => {
+const SidePanel = ({ msg }) => {
   return (
-    <Fragment >
+    <Fragment>
       <ul
         className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled collapse show"
         id="sidebarcollapse"
@@ -16,12 +16,12 @@ const SidePanel = ({msg}) => {
           <div className="sidebar-brand-icon rotate-n-3 mb-3">
             {/* <i className="fas fa-first-aid"></i> */}
             <img
+              alt="obscura"
               className="mt-4 mb-2 pt-3"
               src="https://res.cloudinary.com/awshackaton/image/upload/v1598769880/photo/ffhuaw8oobkaykve3s5s.png"
-              style={{width:"55px",height:"60px"}}
-              
+              style={{ width: "55px", height: "60px" }}
             />
-            <span style={{fontSize:"1rem"}}>Obscura</span>
+            <span style={{ fontSize: "1rem" }}>Obscura</span>
           </div>
           <div className="sidebar-brand-text mx-3 mt-2">
             SB Admin <sup>2</sup>
@@ -37,53 +37,80 @@ const SidePanel = ({msg}) => {
         {/* <!-- Nav Item - Dashboard --> */}
         <li className="nav-item active">
           <Link className="nav-link" to="/dashboard">
-            <i style={{fontSize:'2rem'}} className="fas fa-fw fa-tachometer-alt"></i>
+            <i
+              style={{ fontSize: "2rem" }}
+              className="fas fa-fw fa-tachometer-alt"
+            ></i>
             <br />
 
-            {msg==='dashboard'?<u style={{fontSize:'0.8rem'}}>Dashboard</u> : <span style={{fontSize:'0.8rem'}}>Dashboard</span> }
-           
+            {msg === "dashboard" ? (
+              <u style={{ fontSize: "0.8rem" }}>Dashboard</u>
+            ) : (
+              <span style={{ fontSize: "0.8rem" }}>Dashboard</span>
+            )}
           </Link>
         </li>
         <br />
         <li className="nav-item active">
           <Link className="nav-link" to="/visitor">
-            <i style={{fontSize:'2rem'}} className="fas fa-fw fa-user-friends"></i>
+            <i
+              style={{ fontSize: "2rem" }}
+              className="fas fa-fw fa-user-friends"
+            ></i>
             <br />
 
-            {msg==='visitor'?<u style={{fontSize:'0.8rem'}}>Ward Livestream</u> : <span style={{fontSize:'0.8rem'}}>Ward Livestream</span> }
-
+            {msg === "visitor" ? (
+              <u style={{ fontSize: "0.8rem" }}>Ward Livestream</u>
+            ) : (
+              <span style={{ fontSize: "0.8rem" }}>Ward Livestream</span>
+            )}
           </Link>
-
         </li>
         <br />
         <li className="nav-item active">
           <Link className="nav-link" to="/livestream">
-            <i style={{fontSize:'2rem'}} className="fas fa-fw fa-bed"></i>
+            <i style={{ fontSize: "2rem" }} className="fas fa-fw fa-bed"></i>
             <br />
 
-            {msg==='livestream'?<u style={{fontSize:'0.8rem'}}>Bed Livestream</u> : <span style={{fontSize:'0.8rem'}}>Bed Livestream</span> }
-
+            {msg === "livestream" ? (
+              <u style={{ fontSize: "0.8rem" }}>Bed Livestream</u>
+            ) : (
+              <span style={{ fontSize: "0.8rem" }}>Bed Livestream</span>
+            )}
           </Link>
         </li>
 
         <br />
         <li className="nav-item active">
           <Link className="nav-link" to="/regulation">
-            <i style={{fontSize:'2rem'}} className="fas fa-fw fa-sliders-h "></i>
+            <i
+              style={{ fontSize: "2rem" }}
+              className="fas fa-fw fa-sliders-h "
+            ></i>
             <br />
-            {msg==='regulation'?<u style={{fontSize:'0.8rem'}}>Regulation</u> : <span style={{fontSize:'0.8rem'}}>Regulation</span> }
+            {msg === "regulation" ? (
+              <u style={{ fontSize: "0.8rem" }}>Regulation</u>
+            ) : (
+              <span style={{ fontSize: "0.8rem" }}>Regulation</span>
+            )}
           </Link>
         </li>
 
         <br />
 
-
         <li className="nav-item active">
           <Link className="nav-link" to="/schedules">
-            <i style={{fontSize:'2rem'}} className="fas fa-fw fa-calendar-alt"></i>
+            <i
+              style={{ fontSize: "2rem" }}
+              className="fas fa-fw fa-calendar-alt"
+            ></i>
             <br />
 
-            {msg==='schedules'?<u style={{fontSize:'0.8rem'}}>Schedules</u> : <span style={{fontSize:'0.8rem'}}>Schedules</span> }
+            {msg === "schedules" ? (
+              <u style={{ fontSize: "0.8rem" }}>Schedules</u>
+            ) : (
+              <span style={{ fontSize: "0.8rem" }}>Schedules</span>
+            )}
           </Link>
         </li>
       </ul>

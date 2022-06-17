@@ -1,7 +1,7 @@
 import * as Action from "./types";
 import UserPool from "../UserPool";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
-import {setAlert} from './alert';
+import { setAlert } from "./alert";
 // import axios from 'axios';
 
 // Load User pas web loading
@@ -11,30 +11,35 @@ export const loadUser = () => async (dispatch) => {
     const user = UserPool.getCurrentUser();
     if (user) {
       user.getSession((err, session) => {
-        if (err) console.log("Get Session User Error !");
-        console.log("Session Found from loadUser Action: ", session);
-        dispatch({
-          type: Action.USER_LOADED,
-          payload: session.idToken.payload,
-        });
+        try {
+          if (err) console.log("Get Session User Error !");
+          console.log("Session Found from loadUser Action: ", session);
+          dispatch({
+            type: Action.USER_LOADED,
+            payload: session.idToken.payload,
+          });
+        } catch (e) {
+          dispatch({
+            type: Action.LOADED_FAIL,
+          });
+        }
       });
     } else {
       console.log("Loaduser: User Not Found");
       dispatch({
-        type: Action.LOADED_FAIL
+        type: Action.LOADED_FAIL,
       });
-      
     }
   } catch (err) {
     dispatch({
-      type: Action.LOADED_FAIL
+      type: Action.LOADED_FAIL,
     });
     console.error(err);
   }
 };
 
 // Login pake Cognito
-export const loginCognito =  (email, password) => async (dispatch)=> {
+export const loginCognito = (email, password) => async (dispatch) => {
   const user = new CognitoUser({
     Username: email,
     Pool: UserPool,
@@ -52,23 +57,31 @@ export const loginCognito =  (email, password) => async (dispatch)=> {
       onFailure: (err) => {
         console.log("Login Failed: ", err);
         dispatch(loadUser());
-        dispatch(setAlert("Invalid Credentials !","danger"));
+        dispatch(setAlert("Invalid Credentials !", "danger"));
       },
       newPasswordRequired: (data) => {
         console.log("newPasswordRequired: ", data);
         dispatch(loadUser());
-        dispatch(setAlert("Invalid Credentials !","danger"));
+        dispatch(setAlert("Invalid Credentials !", "danger"));
       },
     });
   } catch (error) {
     console.error(error);
   }
-
-
 };
 
 // Register pake Cognito
-export const signupCognito = async (email, password,name,gender,birthDate,address,phone,profile,ektp) => {
+export const signupCognito = async (
+  email,
+  password,
+  name,
+  gender,
+  birthDate,
+  address,
+  phone,
+  profile,
+  ektp
+) => {
   const addressAttribute = {
     Name: "address",
     Value: address,
@@ -91,11 +104,11 @@ export const signupCognito = async (email, password,name,gender,birthDate,addres
   };
   const phoneAttribute = {
     Name: "custom:mobile",
-    Value:phone.toString()
-  };  
+    Value: phone.toString(),
+  };
   const adminAttribute = {
     Name: "custom:admin",
-    Value:"false"
+    Value: "false",
   };
   const pictureAttribute = {
     Name: "picture",
@@ -114,7 +127,7 @@ export const signupCognito = async (email, password,name,gender,birthDate,addres
     pictureAttribute,
     phoneAttribute,
     birthAttribue,
-    adminAttribute
+    adminAttribute,
   ];
 
   UserPool.signUp(email, password, attributeList, null, (err, data) => {
@@ -125,51 +138,53 @@ export const signupCognito = async (email, password,name,gender,birthDate,addres
 
 // Logout
 
-export const logOut = () => async(dispatch)=> {
+export const logOut = () => async (dispatch) => {
   const user = UserPool.getCurrentUser();
   if (user) {
     user.signOut();
-    
   }
   dispatch({
-    type: Action.LOGOUT
+    type: Action.LOGOUT,
   });
   console.log("Logout Success !");
 };
 
 // get User Attributes
 
-export const getAttributes = () => async (dispatch) =>{
-  const user =  UserPool.getCurrentUser();
-  if(user){
-   user.getSession(async (err,session)=>{
-     if(err) console.error("error : ",err);
+export const getAttributes = () => async (dispatch) => {
+  const user = UserPool.getCurrentUser();
+  if (user) {
+    user.getSession(async (err, session) => {
+      if (err) console.error("error : ", err);
 
-     user.getUserAttributes((err, attributes) => {
-      if (err) console.error("getAttributes Error :", err);
-      console.log("User Attributes : ", attributes);
-      const atri= {
-        userId:attributes[0].Value,
-        address:attributes[1].Value,
-        birthdate:attributes[2].Value,
-        phone:attributes[4].Value,
-        gender:attributes[5].Value,
-        admin:attributes[6].Value==="true",
-        profile:attributes[7].Value,
-        name:attributes[8].Value,
-        email:attributes[9].Value,
-        ektp:attributes[10].Value
-      }
-      dispatch({
-        type: Action.ATTRIBUTES_LOADED,
-        payload: atri,
+      user.getUserAttributes((err, attributes) => {
+        try {
+          if (err) console.error("getAttributes Error :", err);
+          console.log("User Attributes : ", attributes);
+          const atri = {
+            userId: attributes[0].Value,
+            address: attributes[1].Value,
+            birthdate: attributes[2].Value,
+            phone: attributes[4].Value,
+            gender: attributes[5].Value,
+            admin: attributes[6].Value === "true",
+            profile: attributes[7].Value,
+            name: attributes[8].Value,
+            email: attributes[9].Value,
+            ektp: attributes[10].Value,
+          };
+          dispatch({
+            type: Action.ATTRIBUTES_LOADED,
+            payload: atri,
+          });
+        } catch (e) {
+          console.error(e.message);
+          dispatch({
+            type: Action.LOADED_FAIL,
+          });
+        }
       });
+      //
     });
-   })
   }
-
 };
-
-
-
-// const resetPassword = ()

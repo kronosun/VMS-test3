@@ -20,16 +20,16 @@ import PropTypes from "prop-types";
 // Actions
 import { signupCognito } from "../../actions/auth";
 import TopBarGuest from "../dashboard/layout/TopBarGuest";
-import {setAlert} from "../../actions/alert";
+import { setAlert } from "../../actions/alert";
 
 function getSteps() {
   return ["Login Details", "Personal Details", "Upload Pictures"];
 }
 
-const Signup = ({setAlert,alert}) => {
+const Signup = ({ setAlert, alert }) => {
   // State
-  const [uploadA,setUploadA] = useState(false);
-  const [uploadB,setUploadB] = useState(false);
+  const [uploadA, setUploadA] = useState(false);
+  const [uploadB, setUploadB] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -55,29 +55,49 @@ const Signup = ({setAlert,alert}) => {
     ektp,
   } = formData;
 
-function hasUpperCase(str) {
+  function hasUpperCase(str) {
     return str.toLowerCase() != str;
-}
-function hasNumber(myString) {
-  return /\d/.test(myString);
-}
-function hasLength(str){
-  return str.length>=8;
-}
-  const checkEmpty=()=>{
-    return ((email==="")|| (password==="")|| (passwordConfirm==="")|| (fullName==="")|| (gender==="")|| (address==="")|| (birthDate==="")||(phone==="")||(profilePicture==="")||(ektp===""));
   }
-  const checkPass= ()=>{
-   return password !== passwordConfirm;
+  function hasNumber(myString) {
+    return /\d/.test(myString);
   }
-  const validateForm = () =>{
-    if(checkEmpty()) setAlert("Fill every field !","danger");
-    if(checkPass()) setAlert("Password doesn't match !","danger");
-    if(!hasUpperCase(password)) setAlert("Password must have uppercase letter !","danger");
-    if(!hasNumber(password)) setAlert("Password must include Number !","danger");
-    if(!hasLength(password)) setAlert("Password length must be 8 or longer !","danger");
-    return (checkEmpty() || checkPass() || !hasUpperCase(password) ||!hasNumber(password) ||!hasLength(password) );
+  function hasLength(str) {
+    return str.length >= 8;
   }
+  const checkEmpty = () => {
+    return (
+      email === "" ||
+      password === "" ||
+      passwordConfirm === "" ||
+      fullName === "" ||
+      gender === "" ||
+      address === "" ||
+      birthDate === "" ||
+      phone === "" ||
+      profilePicture === "" ||
+      ektp === ""
+    );
+  };
+  const checkPass = () => {
+    return password !== passwordConfirm;
+  };
+  const validateForm = () => {
+    if (checkEmpty()) setAlert("Fill every field !", "danger");
+    if (checkPass()) setAlert("Password doesn't match !", "danger");
+    if (!hasUpperCase(password))
+      setAlert("Password must have uppercase letter !", "danger");
+    if (!hasNumber(password))
+      setAlert("Password must include Number !", "danger");
+    if (!hasLength(password))
+      setAlert("Password length must be 8 or longer !", "danger");
+    return (
+      checkEmpty() ||
+      checkPass() ||
+      !hasUpperCase(password) ||
+      !hasNumber(password) ||
+      !hasLength(password)
+    );
+  };
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -101,16 +121,16 @@ function hasLength(str){
     if (validateForm()) return;
     handleNext();
     signupCognito(
-        email,
-        password,
-        fullName,
-        gender,
-        birthDate,
-        address,
-        phone,
-        profilePicture,
-        ektp
-      );
+      email,
+      password,
+      fullName,
+      gender,
+      birthDate,
+      address,
+      phone,
+      profilePicture,
+      ektp
+    );
   };
 
   const uploadprofile = async (e) => {
@@ -168,9 +188,15 @@ function hasLength(str){
                       className="col-lg-5 align-items-center p-2 "
                       style={{ height: "650px" }}
                     >
-                        {alert && alert.map(x=>              <div className={`alert alert-${x.alertType} mx-3`} role="alert">
-  {x.msg}
-</div>)}
+                      {alert &&
+                        alert.map((x) => (
+                          <div
+                            className={`alert alert-${x.alertType} mx-3`}
+                            role="alert"
+                          >
+                            {x.msg}
+                          </div>
+                        ))}
                       <div className="text-center">
                         <h1 className="h4 text-gray-900 my-2">
                           Account Registration
@@ -202,154 +228,172 @@ function hasLength(str){
                             Home
                           </Link>
                         </Fragment>
-                      ) : (<Fragment>
-                        <div className="mx-5 p-1 text-center h-70" style={{height:"315px"}}>
-                          {activeStep === 0 ? (
-                            <div>
-                              <TextField
-                                id="standard-basic"
-                                label="Standard"
-                                type="text"
-                                label="Email"
-                                name="email"
-                                value={email}
-                                onChange={(e) => onChange(e)}
-                                className="mb-3 "
-                                style={{ width: "230px" }}
-                              />
-                              <br />
-                              <TextField
-                                id="standard-basic"
-                                label="Standard"
-                                type="password"
-                                autoComplete="current-password"
-                                label="Password"
-                                name="password"
-                                value={password}
-                                onChange={(e) => onChange(e)}
-                                className="my-3"
-                                style={{ width: "230px" }}
-                              />
-                              <br />
-
-                              <TextField
-                                id="standard-basic"
-                                label="Standard"
-                                type="password"
-                                autoComplete="current-password"
-                                label="Confirm Password"
-                                name="passwordConfirm"
-                                value={passwordConfirm}
-                                onChange={(e) => onChange(e)}
-                                className="my-3"
-                                style={{ width: "230px" }}
-                              />
-                            </div>
-                          ) : null}
-                          {activeStep === 1 ? (
-                            <div>
-                              <TextField
-                                id="standard-basic"
-                                label="Standard"
-                                type="text"
-                                label="Full Name"
-                                name="fullName"
-                                value={fullName}
-                                onChange={(e) => onChange(e)}
-                                className=" mb-2"
-                                style={{ width: "230px" }}
-                              />
-                              <br />
-                              <FormControl style={{ width: "230px" }}>
-                                <InputLabel htmlFor="age-native-simple">
-                                  Gender
-                                </InputLabel>
-                                <Select
-                                  native
-                                  value={gender}
+                      ) : (
+                        <Fragment>
+                          <div
+                            className="mx-5 p-1 text-center h-70"
+                            style={{ height: "315px" }}
+                          >
+                            {activeStep === 0 ? (
+                              <div>
+                                <TextField
+                                  id="standard-basic"
+                                  label="Standard"
+                                  type="text"
+                                  label="Email"
+                                  name="email"
+                                  value={email}
                                   onChange={(e) => onChange(e)}
-                                  inputProps={{
-                                    name: "gender",
-                                    id: "gender-picker",
+                                  className="mb-3 "
+                                  style={{ width: "230px" }}
+                                />
+                                <br />
+                                <TextField
+                                  id="standard-basic"
+                                  label="Standard"
+                                  type="password"
+                                  autoComplete="current-password"
+                                  label="Password"
+                                  name="password"
+                                  value={password}
+                                  onChange={(e) => onChange(e)}
+                                  className="my-3"
+                                  style={{ width: "230px" }}
+                                />
+                                <br />
+
+                                <TextField
+                                  id="standard-basic"
+                                  label="Standard"
+                                  type="password"
+                                  autoComplete="current-password"
+                                  label="Confirm Password"
+                                  name="passwordConfirm"
+                                  value={passwordConfirm}
+                                  onChange={(e) => onChange(e)}
+                                  className="my-3"
+                                  style={{ width: "230px" }}
+                                />
+                              </div>
+                            ) : null}
+                            {activeStep === 1 ? (
+                              <div>
+                                <TextField
+                                  id="standard-basic"
+                                  label="Standard"
+                                  type="text"
+                                  label="Full Name"
+                                  name="fullName"
+                                  value={fullName}
+                                  onChange={(e) => onChange(e)}
+                                  className=" mb-2"
+                                  style={{ width: "230px" }}
+                                />
+                                <br />
+                                <FormControl style={{ width: "230px" }}>
+                                  <InputLabel htmlFor="age-native-simple">
+                                    Gender
+                                  </InputLabel>
+                                  <Select
+                                    native
+                                    value={gender}
+                                    onChange={(e) => onChange(e)}
+                                    inputProps={{
+                                      name: "gender",
+                                      id: "gender-picker",
+                                    }}
+                                  >
+                                    <option aria-label="None" value="" />
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                  </Select>
+                                </FormControl>
+                                <br />
+                                <TextField
+                                  name="birthDate"
+                                  id="date"
+                                  label="Birthday"
+                                  type="date"
+                                  className="mt-2"
+                                  value={birthDate}
+                                  onChange={(e) => onChange(e)}
+                                  InputLabelProps={{
+                                    shrink: true,
                                   }}
-                                >
-                                  <option aria-label="None" value="" />
-                                  <option value="M">Male</option>
-                                  <option value="F">Female</option>
-                                </Select>
-                              </FormControl>
-                              <br />
-                              <TextField
-                                name="birthDate"
-                                id="date"
-                                label="Birthday"
-                                type="date"
-                                className="mt-2"
-                                value={birthDate}
-                                onChange={(e) => onChange(e)}
-                                InputLabelProps={{
-                                  shrink: true,
-                                }}
-                                style={{ width: "230px" }}
-                              />
-                              <TextField
-                                name="address"
-                                className="mb-3"
-                                id="standard-multiline-static"
-                                label="Address"
-                                multiline
-                                rows={2}
-                                value={address}
-                                style={{ width: "230px" }}
-                                onChange={(e) => onChange(e)}
-                              />
-                              <br />
-                              <TextField
-                                name="phone"
-                                value={phone}
-                                onChange={(e) => onChange(e)}
-                                id="standard-number"
-                                label="Phone Number"
-                                type="number"
-                                InputLabelProps={{
-                                  shrink: true,
-                                }}
-                                style={{ width: "230px" }}
-                              />
-                            </div>
-                          ) : null}
-                          {activeStep === 2 ? (
-                            <Fragment>
-                              <h6 className="mb-2 mt-3">
-                              {uploadA  && <div className="spinner-border visible mb-1 mr-1" role="status" style={{height:"15px",width:"15px"}}>
-                          </div>}
-                               {profilePicture ? "Profile Picture Uploaded !": "Upload your Profile Picture !"}
-                              </h6>
-                              <input
-                                type="file"
-                                name="file"
-                                placeholder="Upload Profile Picture !"
-                                onChange={uploadprofile}
-                                className="form-control-file mb-4"
-                                style={{ width: "230px" }}
-                              />
-                              <h6 className="mb-2 mt-3">
-                              {uploadB && <div className="spinner-border visible mb-1 mr-1" role="status" style={{height:"15px",width:"15px"}}>
-                          </div>}
-                          {ektp ? "E-KTP Uploaded !": "Upload your E-KTP !"}
-                              </h6>
-                              <input
-                                type="file"
-                                name="file"
-                                placeholder="Upload E-KTP !"
-                                onChange={uploadektp}
-                                className="form-control-file   mb-5"
-                                style={{ width: "230px" }}
-                              />
-                            </Fragment>
-                          ) : null}
-                        </div>
-                        <div className="my-4 mx-1 text-center ">
+                                  style={{ width: "230px" }}
+                                />
+                                <TextField
+                                  name="address"
+                                  className="mb-3"
+                                  id="standard-multiline-static"
+                                  label="Address"
+                                  multiline
+                                  rows={2}
+                                  value={address}
+                                  style={{ width: "230px" }}
+                                  onChange={(e) => onChange(e)}
+                                />
+                                <br />
+                                <TextField
+                                  name="phone"
+                                  value={phone}
+                                  onChange={(e) => onChange(e)}
+                                  id="standard-number"
+                                  label="Phone Number"
+                                  type="number"
+                                  InputLabelProps={{
+                                    shrink: true,
+                                  }}
+                                  style={{ width: "230px" }}
+                                />
+                              </div>
+                            ) : null}
+                            {activeStep === 2 ? (
+                              <Fragment>
+                                <h6 className="mb-2 mt-3">
+                                  {uploadA && (
+                                    <div
+                                      className="spinner-border visible mb-1 mr-1"
+                                      role="status"
+                                      style={{ height: "15px", width: "15px" }}
+                                    ></div>
+                                  )}
+                                  {profilePicture
+                                    ? "Profile Picture Uploaded !"
+                                    : "Upload your Profile Picture !"}
+                                </h6>
+                                <input
+                                  type="file"
+                                  name="file"
+                                  placeholder="Upload Profile Picture !"
+                                  onChange={uploadprofile}
+                                  className="form-control-file mb-4"
+                                  style={{ width: "230px" }}
+                                />
+                                <h6 className="mb-2 mt-3">
+                                  {uploadB && (
+                                    <div
+                                      className="spinner-border visible mb-1 mr-1"
+                                      role="status"
+                                      style={{ height: "15px", width: "15px" }}
+                                    ></div>
+                                  )}
+                                  {ektp
+                                    ? "E-KTP Uploaded !"
+                                    : "Upload your E-KTP !"}
+                                </h6>
+                                <input
+                                  type="file"
+                                  name="file"
+                                  placeholder="Upload E-KTP !"
+                                  onChange={uploadektp}
+                                  className="form-control-file   mb-5"
+                                  style={{ width: "230px" }}
+                                />
+                              </Fragment>
+                            ) : null}
+                          </div>
+                          <div className="my-4 mx-1 text-center ">
                             <Button
                               disabled={activeStep === 0}
                               onClick={handleBack}
@@ -375,9 +419,8 @@ function hasLength(str){
                               </Button>
                             )}
                           </div>
-                          </Fragment>
+                        </Fragment>
                       )}
-
                     </div>
                   </div>
                 </div>
@@ -392,11 +435,11 @@ function hasLength(str){
 
 Signup.propTypes = {
   alert: PropTypes.array.isRequired,
-  setAlert:PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  alert: state.alert
+  alert: state.alert,
 });
 
-export default connect(mapStateToProps, {setAlert})(Signup);
+export default connect(mapStateToProps, { setAlert })(Signup);

@@ -15,10 +15,12 @@ body {
 }
 
 a {
-  color: #385ECE;
+  color: #385ece;
 }
 
-a:hover, a:active, a:focus {
+a:hover,
+a:active,
+a:focus {
   color: #2dca98;
   outline: none;
   text-decoration: none;
@@ -29,7 +31,12 @@ p {
   margin: 0 0 30px 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   margin: 0 0 20px 0;
@@ -75,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .back-to-top:hover {
-  background: #385ECE;
+  background: #385ece;
   color: #fff;
 }
 
@@ -118,7 +125,8 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
-#header #logo h1 a, #header #logo h1 a:hover {
+#header #logo h1 a,
+#header #logo h1 a:hover {
   color: #fff;
 }
 
@@ -233,7 +241,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hero .btn-get-started:hover {
-  background: #385ECE;
+  background: #385ece;
   border: 2px solid #ffffff;
 }
 
@@ -241,7 +249,8 @@ h1, h2, h3, h4, h5, h6 {
 # Navigation Menu
 --------------------------------------------------------------*/
 /* Nav Menu Essentials */
-.nav-menu, .nav-menu * {
+.nav-menu,
+.nav-menu * {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -279,8 +288,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* OBSCURA */
-.obscura{
-  color:#385ECE;
+.obscura {
+  color: #385ece;
 }
 
 /* Nav Menu Arrows */
@@ -337,13 +346,15 @@ h1, h2, h3, h4, h5, h6 {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #385ECE;
+  background-color: #385ece;
   visibility: hidden;
   transform: scaleX(0);
   transition: all 0.3s ease-in-out 0s;
 }
 
-.nav-menu a:hover:before, .nav-menu li:hover > a:before, .nav-menu .menu-active > a:before {
+.nav-menu a:hover:before,
+.nav-menu li:hover > a:before,
+.nav-menu .menu-active > a:before {
   visibility: visible;
   transform: scaleX(1);
 }
@@ -373,8 +384,8 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 } */
 .nav-menu ul li a:hover {
-  background: #385ECE;
-  color: #385ECE;
+  background: #385ece;
+  color: #385ece;
 }
 
 .nav-menu ul ul {
@@ -461,11 +472,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mobile-nav ul .menu-has-children i.fa-chevron-up {
-  color: #385ECE;
+  color: #385ece;
 }
 
 #mobile-nav ul .menu-item-active {
-  color: #385ECE;
+  color: #385ece;
 }
 
 #mobile-body-overly {
@@ -581,7 +592,7 @@ section {
   /* min-height: 300px;
   max-height: 500px;
   max-width:300px; */
-  height:500px;
+  height: 500px;
   background: url(../img/rez.png) center no-repeat;
   margin-bottom: 10px;
 }
@@ -627,11 +638,11 @@ section {
   flex-direction: column;
   text-align: center;
   border-radius: 50%;
-  border: 2px solid #385ECE;
+  border: 2px solid #385ece;
 }
 
 #about .about-container .icon-box .icon i {
-  color: #385ECE;
+  color: #385ece;
   font-size: 24px;
 }
 
@@ -663,7 +674,7 @@ section {
 #facts .counters span {
   font-size: 48px;
   display: block;
-  color: #385ECE;
+  color: #385ece;
 }
 
 #facts .counters p {
@@ -705,7 +716,7 @@ section {
   text-align: center;
   width: 72px;
   height: 72px;
-  background: #385ECE;
+  background: #385ece;
 }
 
 #services .icon a {
@@ -719,15 +730,15 @@ section {
 
 #services .box:hover .icon {
   background: #fff;
-  border: 2px solid #385ECE;
+  border: 2px solid #385ece;
 }
 
 #services .box:hover .icon i {
-  color: #385ECE;
+  color: #385ece;
 }
 
 #services .box:hover .icon a {
-  color: #385ECE;
+  color: #385ece;
 }
 
 #services .title {
@@ -749,7 +760,9 @@ section {
 /* Call To Action Section
 --------------------------------*/
 #call-to-action {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("https://www.wallpapertip.com/wmimgs/87-876391_2048x1536-more-than-500-doctors-in-canada-sign.jpg") fixed center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("https://www.wallpapertip.com/wmimgs/87-876391_2048x1536-more-than-500-doctors-in-canada-sign.jpg")
+      fixed center center;
   background-size: cover;
   padding: 80px 0;
 }
@@ -794,8 +807,8 @@ section {
 }
 
 #call-to-action .cta-btn:hover {
-  background: #385ECE;
-  border: 2px solid #385ECE;
+  background: #385ece;
+  border: 2px solid #385ece;
 }
 
 /* Portfolio Section
@@ -827,9 +840,10 @@ section {
   border-radius: 4px;
 }
 
-#portfolio #portfolio-flters li:hover, #portfolio #portfolio-flters li.filter-active {
+#portfolio #portfolio-flters li:hover,
+#portfolio #portfolio-flters li.filter-active {
   color: #fff;
-  background: #385ECE;
+  background: #385ece;
 }
 
 #portfolio #portfolio-flters li:last-child {
@@ -855,7 +869,7 @@ section {
   bottom: -50px;
   z-index: 3;
   transition: all ease-in-out 0.3s;
-  background: #385ECE;
+  background: #385ece;
   padding: 15px 20px;
 }
 
@@ -871,7 +885,8 @@ section {
   margin-bottom: 0;
 }
 
-#portfolio .portfolio-item .portfolio-info .preview-link, #portfolio .portfolio-item .portfolio-info .details-link {
+#portfolio .portfolio-item .portfolio-info .preview-link,
+#portfolio .portfolio-item .portfolio-info .details-link {
   position: absolute;
   right: 50px;
   font-size: 24px;
@@ -880,7 +895,8 @@ section {
   transition: ease-in-out 0.3s;
 }
 
-#portfolio .portfolio-item .portfolio-info .preview-link:hover, #portfolio .portfolio-item .portfolio-info .details-link:hover {
+#portfolio .portfolio-item .portfolio-info .preview-link:hover,
+#portfolio .portfolio-item .portfolio-info .details-link:hover {
   color: #a4ebd4;
 }
 
@@ -913,7 +929,8 @@ section {
   z-index: 1;
 }
 
-.portfolio-details .portfolio-details-carousel .owl-nav, .portfolio-details .portfolio-details-carousel .owl-dots {
+.portfolio-details .portfolio-details-carousel .owl-nav,
+.portfolio-details .portfolio-details-carousel .owl-dots {
   margin-top: 5px;
   text-align: left;
 }
@@ -928,7 +945,7 @@ section {
 }
 
 .portfolio-details .portfolio-details-carousel .owl-dot.active {
-  background-color: #385ECE !important;
+  background-color: #385ece !important;
 }
 
 .portfolio-details .portfolio-info {
@@ -1027,7 +1044,7 @@ section {
 }
 
 #team .member .social a:hover {
-  color: #385ECE;
+  color: #385ece;
 }
 
 #team .member .social i {
@@ -1053,7 +1070,7 @@ section {
 
 #contact .info i {
   font-size: 32px;
-  color: #385ECE;
+  color: #385ece;
   float: left;
 }
 
@@ -1087,7 +1104,7 @@ section {
 }
 
 #contact .social-links a:hover {
-  background: #385ECE;
+  background: #385ece;
   color: #fff;
 }
 
@@ -1141,18 +1158,20 @@ section {
   animation: animate-loading 1s linear infinite;
 }
 
-#contact .php-email-form input, #contact .php-email-form textarea {
+#contact .php-email-form input,
+#contact .php-email-form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
 }
 
-#contact .php-email-form input::focus, #contact .php-email-form textarea::focus {
-  background-color: #385ECE;
+#contact .php-email-form input::focus,
+#contact .php-email-form textarea::focus {
+  background-color: #385ece;
 }
 
 #contact .php-email-form button[type="submit"] {
-  background: #385ECE;
+  background: #385ece;
   border: 0;
   padding: 10px 24px;
   color: #fff;

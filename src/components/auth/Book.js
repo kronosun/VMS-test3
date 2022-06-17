@@ -196,7 +196,7 @@ const Book = ({ userId, name, setAlert, alert }) => {
                         alert.map((x) => (
                           <div
                             className={`alert alert-${x.alertType} mx-1`}
-                            role="alert" 
+                            role="alert"
                           >
                             {x.msg}
                           </div>

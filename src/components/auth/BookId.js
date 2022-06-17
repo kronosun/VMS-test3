@@ -1,4 +1,4 @@
-import React, { Fragment,useState,useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import "./Signup.css";
 import { QRCode } from "react-qr-svg";
@@ -14,22 +14,19 @@ import Paper from "@material-ui/core/Paper";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+import { getBookId } from "../../actions/api";
 
-import {getBookId} from '../../actions/api';
-
-
-const BookId = ({ match,profile }) => {
-  const [form,setForm]= useState({});
-  const [state,setState]=  useState(false);
-  const fetchBook= async () =>{
-    const res= await getBookId(match.params.id);
+const BookId = ({ match, profile }) => {
+  const [form, setForm] = useState({});
+  const [state, setState] = useState(false);
+  const fetchBook = async () => {
+    const res = await getBookId(match.params.id);
     setForm(res);
     setState(true);
-  }
-  useEffect(()=>{
-
+  };
+  useEffect(() => {
     fetchBook();
-  },[])
+  }, []);
 
   return (
     <Fragment>
@@ -54,58 +51,68 @@ const BookId = ({ match,profile }) => {
                     <small className="d-block text-muted inline-block mt-1 mb-1">
                       {match.params.id}
                     </small>
-{(form && state) ?   <Fragment>                 <img
-                      className="shadow img-profile rounded-circle mx-1 mt-2"
-                      src={profile}
-                      style={{ width: "115px", height: "115px" }}
-                    />
-                    <br />
-                    {/* <p className="h3">David Fauzi</p> */}
-                    <p className="h4 text-dark mt-3 mb-0">{form.visitor}</p>
-                    <hr className="border-bottom-primary" />
-                    <TableContainer
-                      component={Paper}
-                      style={{ width: "315x" }}
-                      className="mb-3"
-                    >
-                      <Table aria-label="simple table">
-                        <TableBody>
-                          <TableRow key={0}>
-                            <TableCell component="th" scope="row">
-                              Visitee's Name
-                            </TableCell>
-                            <TableCell align="right">{form.visitee}</TableCell>
-                          </TableRow>
-                          <TableRow key={1}>
-                            <TableCell component="th" scope="row">
-                              Ward's Number
-                            </TableCell>
-                            <TableCell align="right">{form.room}</TableCell>
-                          </TableRow>
-                          <TableRow key={2}>
-                            <TableCell component="th" scope="row">
-                              Visit Date
-                            </TableCell>
-                            <TableCell align="right">{form.date}</TableCell>
-                          </TableRow>
-                          <TableRow key={3}>
-                            <TableCell component="th" scope="row">
-                              Session
-                            </TableCell>
-                            <TableCell align="right">{form.session}</TableCell>
-                          </TableRow>
-                        </TableBody>
-                      </Table>
-                    </TableContainer>
-
-                    <QRCode
-                      className="shadow-sm border border-light rounded"
-                      level="Q"
-                      style={{ width: 130 }}
-                      value={form.id}
-                    /></Fragment> : (<div className="spinner-border" role="status">
-  <span className="sr-only">Loading...</span>
-</div>)}
+                    {form && state ? (
+                      <Fragment>
+                        {" "}
+                        <img
+                          alt="profile"
+                          className="shadow img-profile rounded-circle mx-1 mt-2"
+                          src={profile}
+                          style={{ width: "115px", height: "115px" }}
+                        />
+                        <br />
+                        <p className="h4 text-dark mt-3 mb-0">{form.visitor}</p>
+                        <hr className="border-bottom-primary" />
+                        <TableContainer
+                          component={Paper}
+                          style={{ width: "315x" }}
+                          className="mb-3"
+                        >
+                          <Table aria-label="simple table">
+                            <TableBody>
+                              <TableRow key={0}>
+                                <TableCell component="th" scope="row">
+                                  Visitee's Name
+                                </TableCell>
+                                <TableCell align="right">
+                                  {form.visitee}
+                                </TableCell>
+                              </TableRow>
+                              <TableRow key={1}>
+                                <TableCell component="th" scope="row">
+                                  Ward's Number
+                                </TableCell>
+                                <TableCell align="right">{form.room}</TableCell>
+                              </TableRow>
+                              <TableRow key={2}>
+                                <TableCell component="th" scope="row">
+                                  Visit Date
+                                </TableCell>
+                                <TableCell align="right">{form.date}</TableCell>
+                              </TableRow>
+                              <TableRow key={3}>
+                                <TableCell component="th" scope="row">
+                                  Session
+                                </TableCell>
+                                <TableCell align="right">
+                                  {form.session}
+                                </TableCell>
+                              </TableRow>
+                            </TableBody>
+                          </Table>
+                        </TableContainer>
+                        <QRCode
+                          className="shadow-sm border border-light rounded"
+                          level="Q"
+                          style={{ width: 130 }}
+                          value={form.id}
+                        />
+                      </Fragment>
+                    ) : (
+                      <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -120,7 +127,7 @@ const BookId = ({ match,profile }) => {
 BookId.propTypes = {
   profile: PropTypes.string.isRequired,
 };
-  
+
 const mapStateToProps = (state) => ({
   profile: state.auth.attributes.profile,
 });

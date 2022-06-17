@@ -12,7 +12,6 @@ const Landing = ({ loadUser }) => {
       <header id="header" className="header-transparent">
         <div className="container">
           <div id="logo" className="pull-left">
-            {/* <a href="index.html"><img src="assets/img/logo.png" alt=""></a> */}
             <h1>
               <Links
                 activeClass="active"
@@ -152,7 +151,6 @@ const Landing = ({ loadUser }) => {
                 height="125%"
                 controls
                 url="https://www.youtube.com/watch?v=f9CfAqZfHoc"
-                // url="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fignenrico%2Fvideos%2F3270019243033992%2F&show_text=1&width=560"
               />
             </div>
             <div className="col-md-1" />
@@ -247,20 +245,18 @@ const Landing = ({ loadUser }) => {
                   </p>
                 </div>
               </div>
-          <div
-          className="col-lg-6 order-lg-2 order-1 px-3 py-3">
-              <div
-                className="background mt-4"
-                data-aos="fade-left"
-                data-aos-delay="100"
-                style={{ display: "block" }}
-
-              ></div>
+              <div className="col-lg-6 order-lg-2 order-1 px-3 py-3">
+                <div
+                  className="background mt-4"
+                  data-aos="fade-left"
+                  data-aos-delay="100"
+                  style={{ display: "block" }}
+                ></div>
               </div>
             </div>
           </div>
         </section>
-        
+
         <section id="facts">
           <div className="container" data-aos="fade-up">
             <div className="section-header">
@@ -278,6 +274,7 @@ const Landing = ({ loadUser }) => {
                   className="img-profile shadow rounded-circle mx-1 mb-3"
                   src="https://cdn2.tstatic.net/tribunnewswiki/foto/bank/images/rsupn-dr-cipto-mangunkusumo.jpg"
                   style={{ width: "150px", height: "130px" }}
+                  alt="Cipto Mangunkusumo Hospital"
                 />
                 <p>Cipto Mangunkusumo Hospital</p>
               </div>
@@ -288,6 +285,7 @@ const Landing = ({ loadUser }) => {
                   className="img-profile shadow rounded-circle mx-1 mb-3"
                   src="https://terminalhrd.com/public/images/article/actual_size/1502938c17c063de1276e95efd1b9822.jpg"
                   style={{ width: "150px", height: "130px" }}
+                  alt="Mayapada Hospital"
                 />
                 <p>Mayapada Hospital</p>
               </div>
@@ -298,6 +296,7 @@ const Landing = ({ loadUser }) => {
                   className="img-profile shadow rounded-circle mx-1 mb-3"
                   src="https://cdn.statically.io/img/www.smarterhealth.id/wp-content/uploads/2020/02/logo-siloam-large-768x432.jpg?quality=90&f=auto"
                   style={{ width: "150px", height: "130px" }}
+                  alt="Siloam Hospital"
                 />
                 <p>Siloam Hospital</p>
               </div>
@@ -308,21 +307,18 @@ const Landing = ({ loadUser }) => {
                   className="img-profile shadow rounded-circle mx-1 mb-3"
                   src="https://upload.wikimedia.org/wikipedia/id/3/37/Logo_rshs.jpg"
                   style={{ width: "150px", height: "130px" }}
+                  alt="Hasan Sadikin Hospital"
                 />
                 <p>Hasan Sadikin Hospital</p>
               </div>
             </div>
           </div>
         </section>
-        
+
         <section id="services" name="services">
           <div className="container" data-aos="fade-up">
             <div className="section-header">
               <h3 className="section-title">Features</h3>
-              {/* <p className="section-description">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque
-              </p> */}
             </div>
             <div className="row mt-5 justify-content-around">
               <div className="col-lg-4 col-md-6" data-aos="zoom-in">
@@ -333,7 +329,7 @@ const Landing = ({ loadUser }) => {
                     </a>
                   </div>
                   <h4 className="title">
-                    <a href="">Customizable</a>
+                    <a href="#">Customizable</a>
                   </h4>
                   <p className="description">
                     Fully adjustable regulation system to suits your needs
@@ -345,12 +341,12 @@ const Landing = ({ loadUser }) => {
               <div className="col-lg-4 col-md-6" data-aos="zoom-in">
                 <div className="box">
                   <div className="icon">
-                    <a href="">
+                    <a href="#">
                       <i className="fa fa-desktop"></i>
                     </a>
                   </div>
                   <h4 className="title">
-                    <a href="">Monitoring </a>
+                    <a href="#">Monitoring </a>
                   </h4>
                   <p className="description">
                     Enables hospitals to count live visitor number per-bed in
@@ -362,12 +358,12 @@ const Landing = ({ loadUser }) => {
               <div className="col-lg-4 col-md-6" data-aos="zoom-in">
                 <div className="box">
                   <div className="icon">
-                    <a href="">
+                    <a href="#">
                       <i className="fa fa-id-badge"></i>
                     </a>
                   </div>
                   <h4 className="title">
-                    <a href="">Identification</a>
+                    <a href="#">Identification</a>
                   </h4>
                   <p className="description">
                     Identify visitors using digital badge with QR code in the
@@ -380,12 +376,12 @@ const Landing = ({ loadUser }) => {
               <div className="col-lg-4 col-md-6" data-aos="zoom-in">
                 <div className="box">
                   <div className="icon">
-                    <a href="">
+                    <a href="#">
                       <i className="fa fa-calendar"></i>
                     </a>
                   </div>
                   <h4 className="title">
-                    <a href="">Online Booking System</a>
+                    <a href="#">Online Booking System</a>
                   </h4>
                   <p className="description">
                     Uses web-based visitation booking for visitors to plan their
@@ -394,31 +390,15 @@ const Landing = ({ loadUser }) => {
                   </p>
                 </div>
               </div>
-              {/* <div className="col-lg-4 col-md-6" data-aos="zoom-in"> */}
-              {/* <div className="box">
-                  <div className="icon">
-                    <a href="">
-                      <i className="fa fa-road"></i>
-                    </a>
-                  </div>
-                  <h4 className="title">
-                    <a href="">Nemo Enim</a>
-                  </h4>
-                  <p className="description">
-                    At vero eos et accusamus et iusto odio dignissimos ducimus
-                    qui blanditiis praesentium voluptatum deleniti atque
-                  </p>
-                </div> */}
-              {/* </div> */}
               <div className="col-lg-4 col-md-6" data-aos="zoom-in">
                 <div className="box">
                   <div className="icon">
-                    <a href="">
+                    <a href="#">
                       <i className="fa fa-tasks"></i>
                     </a>
                   </div>
                   <h4 className="title">
-                    <a href="">Access Control System </a>
+                    <a href="#">Access Control System </a>
                   </h4>
                   <p className="description">
                     Limits visitors at a time and issues a warning if the
@@ -457,20 +437,15 @@ const Landing = ({ loadUser }) => {
           <div className="container" data-aos="fade-up">
             <div className="section-header">
               <h3 className="section-title">Product Showcase</h3>
-              {/* <p className="section-description">
-                Kasi footage" buat showcase fitur" kita
-              </p> */}
             </div>
 
             <div className="row mt-3" data-aos="fade-up" data-aos-delay="100">
               <div className="col-lg-12 d-flex ">
                 <ul id="portfolio-flters">
-                  {/* <li data-filter="*" className="filter-active">
-                    All
-                  </li> */}
                   <li data-filter=".filter-app ">Online Booking System</li>
                   <li data-filter=".filter-card">Profile Account</li>
                   <li data-filter=".filter-web">Admin Dashboard</li>
+                  <li data-filter=".filter-mobile">Mobile App</li>
                 </ul>
               </div>
             </div>
@@ -482,13 +457,13 @@ const Landing = ({ loadUser }) => {
             >
               <div className="col-lg-6 col-md-6 portfolio-item filter-app">
                 <a
-                  href="https://res.cloudinary.com/awshackaton/image/upload/v1598886136/assets/guide/wdohhjhqbiq1nqplrbvi.png"
+                  href="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/wdohhjhqbiq1nqplrbvi.png"
                   data-gall="portfolioGallery"
                   className="venobox preview-link"
                   title="App 1"
                 >
                   <img
-                    src="https://res.cloudinary.com/awshackaton/image/upload/v1598886136/assets/guide/wdohhjhqbiq1nqplrbvi.png"
+                    src="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/wdohhjhqbiq1nqplrbvi.png"
                     className="img-fluid"
                     alt=""
                     style={{ display: "block", height: "400px" }}
@@ -497,85 +472,89 @@ const Landing = ({ loadUser }) => {
                     <h4>Online Booking System</h4>
                     <p>Book your visit anywhere anytime without any hassle</p>
 
-                    {/* <i className="bx bx-plus"></i> */}
                   </div>
                 </a>
               </div>
               <div className="col-lg-6 col-md-6 portfolio-item filter-app">
                 <a
-                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599097079/assets/guide/fiqwbjap7mrc9jlget3l.png"
+                  href="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/fiqwbjap7mrc9jlget3l.png"
                   data-gall="portfolioGallery"
                   className="venobox preview-link"
                   title="App 1"
                 >
                   <img
-                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599097079/assets/guide/fiqwbjap7mrc9jlget3l.png"
+                    src="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/fiqwbjap7mrc9jlget3l.png"
                     className="img-fluid mx-auto"
                     alt=""
                     style={{ display: "block", height: "400px" }}
                   />
                   <div className="portfolio-info">
                     <h4>Digital Visitor Badge</h4>
-                    <p>Get your own QR Digital Badge for a fully contactless visitor identification</p>
+                    <p>
+                      Get your own QR Digital Badge for a fully contactless
+                      visitor identification
+                    </p>
 
-                    {/* <i className="bx bx-plus"></i> */}
                   </div>
                 </a>
               </div>
 
               <div className="col-lg-6 col-md-6 portfolio-item filter-card">
                 <a
-                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599099228/assets/guide/k1whswjvhjgscqlhwefl.png"
+                  href="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/k1whswjvhjgscqlhwefl.png"
                   data-gall="portfolioGallery"
                   className="venobox preview-link"
                   title="Web 2"
                 >
                   <img
-                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599099228/assets/guide/k1whswjvhjgscqlhwefl.png"
+                    src="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/k1whswjvhjgscqlhwefl.png"
                     className="img-fluid mx-auto"
                     alt=""
                     style={{ display: "block", height: "400px" }}
-
                   />
                   <div className="portfolio-info">
                     <h4>Account Registration</h4>
-                    <p>Register your account to start using our online booking services</p>
+                    <p>
+                      Register your account to start using our online booking
+                      services
+                    </p>
                   </div>
                 </a>
               </div>
               <div className="col-lg-6 col-md-6 portfolio-item filter-card">
                 <a
-                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599099228/assets/guide/zoqtkbz9zievnn4ujmry.png"
+                  href="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/zoqtkbz9zievnn4ujmry.png"
                   data-gall="portfolioGallery"
                   className="venobox preview-link"
                   title="Web 2"
                 >
                   <img
-                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599099228/assets/guide/zoqtkbz9zievnn4ujmry.png"
+                    src="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/zoqtkbz9zievnn4ujmry.png"
                     className="img-fluid mx-auto"
                     alt=""
                     style={{ display: "block", height: "400px" }}
-
                   />
                   <div className="portfolio-info">
                     <h4>Forgot Password</h4>
-                    <p>Just enter your email address below and we'll send you confirmation code to reset your password</p>
+                    <p>
+                      Just enter your email address below and we'll send you
+                      confirmation code to reset your password
+                    </p>
                   </div>
                 </a>
               </div>
               <div className="col-lg-4 col-md-6 portfolio-item filter-card">
                 <a
-                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599100724/assets/guide/tvyt3digwhfmdf5jkoki.png"
+                  href="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/tvyt3digwhfmdf5jkoki.png"
                   data-gall="portfolioGallery"
                   className="venobox preview-link"
                   title="Web 2"
                 >
                   <img
-                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599100724/assets/guide/tvyt3digwhfmdf5jkoki.png"
+                    src="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/tvyt3digwhfmdf5jkoki.png"
                     className="img-fluid mx-auto"
                     alt=""
                     style={{ display: "block", height: "300px" }}
-
                   />
                   <div className="portfolio-info">
                     <h4>Login</h4>
@@ -585,62 +564,67 @@ const Landing = ({ loadUser }) => {
               </div>
               <div className="col-lg-4 col-md-6 portfolio-item filter-card">
                 <a
-                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/wsxrulyw3iybmcdbwojq.png"
+                  href="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/wsxrulyw3iybmcdbwojq.png"
                   data-gall="portfolioGallery"
                   className="venobox preview-link"
                   title="Web 2"
                 >
                   <img
-                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/wsxrulyw3iybmcdbwojq.png"
+                    src="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/wsxrulyw3iybmcdbwojq.png"
                     className="img-fluid mx-auto"
                     alt=""
                     style={{ display: "block", height: "300px" }}
-
                   />
                   <div className="portfolio-info">
                     <h4>Profile Page</h4>
-                    <p>Visitor's complete identification data, including profile picture and identification card</p>
+                    <p>
+                      Visitor's complete identification data, including profile
+                      picture and identification card
+                    </p>
                   </div>
                 </a>
               </div>
               <div className="col-lg-4 col-md-6 portfolio-item filter-card">
                 <a
-                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599097079/assets/guide/n5vy8k4sdq8wwmpuykyn.png"
+                  href="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/n5vy8k4sdq8wwmpuykyn.png"
                   data-gall="portfolioGallery"
                   className="venobox preview-link"
                   title="Web 2"
                 >
                   <img
-                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599097079/assets/guide/n5vy8k4sdq8wwmpuykyn.png"
+                    src="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/n5vy8k4sdq8wwmpuykyn.png"
                     className="img-fluid mx-auto"
                     alt=""
                     style={{ display: "block", height: "300px" }}
-
                   />
                   <div className="portfolio-info">
                     <h4>Visit History</h4>
-                    <p>Track you visitation history and its digital badge link easily</p>
+                    <p>
+                      Track you visitation history and its digital badge link
+                      easily
+                    </p>
                   </div>
                 </a>
               </div>
 
               <div className="col-lg-4 col-md-6 portfolio-item filter-web">
                 <a
-                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/vzza6n6crzrtd985p9wu.png"
+                  href="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/vzza6n6crzrtd985p9wu.png"
                   data-gall="portfolioGallery"
                   className="venobox preview-link"
                   title="Web 2"
                 >
                   <img
-                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/vzza6n6crzrtd985p9wu.png"
+                    src="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/vzza6n6crzrtd985p9wu.png"
                     className="img-fluid mx-auto"
                     alt=""
                     style={{ display: "block", height: "275px" }}
-
                   />
                   <div className="portfolio-info">
                     <h4>Dashboard Panel</h4>
-                    <p>Show and Visualize your vistation data to gain insight</p>
+                    <p>
+                      Show and Visualize your vistation data to gain insight
+                    </p>
 
                     <i className="bx bx-plus"></i>
                   </div>
@@ -649,21 +633,24 @@ const Landing = ({ loadUser }) => {
 
               <div className="col-lg-4 col-md-6 portfolio-item filter-web">
                 <a
-                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/gvd4jxcvmorlglaxt41i.png"
+                  href="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/gvd4jxcvmorlglaxt41i.png"
                   data-gall="portfolioGallery"
                   className="venobox preview-link"
                   title="Web 2"
                 >
                   <img
-                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/gvd4jxcvmorlglaxt41i.png"
+                    src="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/gvd4jxcvmorlglaxt41i.png"
                     className="img-fluid mx-auto"
                     alt=""
                     style={{ display: "block", height: "275px" }}
-
                   />
                   <div className="portfolio-info">
                     <h4>Ward Livestream</h4>
-                    <p>Monitor visitor from each ward and stream it from TV/Display device in screening counter or lobby and change the ward's visitation access</p>
+                    <p>
+                      Monitor visitor from each ward and stream it from
+                      TV/Display device in screening counter or lobby and change
+                      the ward's visitation access
+                    </p>
 
                     <i className="bx bx-plus"></i>
                   </div>
@@ -672,46 +659,49 @@ const Landing = ({ loadUser }) => {
 
               <div className="col-lg-4 col-md-6 portfolio-item filter-web">
                 <a
-                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/mtjhpachl7baxn0iyqzf.png"
+                  href="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/mtjhpachl7baxn0iyqzf.png"
                   data-gall="portfolioGallery"
                   className="venobox preview-link"
                   title="Web 2"
                 >
                   <img
-                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/mtjhpachl7baxn0iyqzf.png"
+                    src="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/mtjhpachl7baxn0iyqzf.png"
                     className="img-fluid mx-auto"
                     alt=""
                     style={{ display: "block", height: "275px" }}
-
                   />
                   <div className="portfolio-info">
                     <h4>Bed Livestream</h4>
-                    <p>Monitor visitor of a particular ward and stream it in the ward's front desk</p>
+                    <p>
+                      Monitor visitor of a particular ward and stream it in the
+                      ward's front desk
+                    </p>
 
                     <i className="bx bx-plus"></i>
                   </div>
                 </a>
               </div>
-              <div className="col-lg-2 col-md-1 portfolio-item filter-web">
-              </div>
+              <div className="col-lg-2 col-md-1 portfolio-item filter-web"></div>
 
               <div className="col-lg-4 col-md-6 portfolio-item filter-web">
                 <a
-                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/j3htiieomutzeh6qtsmo.png"
+                  href="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/j3htiieomutzeh6qtsmo.png"
                   data-gall="portfolioGallery"
                   className="venobox preview-link"
                   title="Web 2"
                 >
                   <img
-                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/j3htiieomutzeh6qtsmo.png"
+                    src="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/j3htiieomutzeh6qtsmo.png"
                     className="img-fluid mx-auto"
                     alt=""
                     style={{ display: "block", height: "275px" }}
-
                   />
                   <div className="portfolio-info">
                     <h4>Customize Regulation</h4>
-                    <p>Adjust and Customize various visitation regulation and visit session seamlessly</p>
+                    <p>
+                      Adjust and Customize various visitation regulation and
+                      visit session seamlessly
+                    </p>
 
                     <i className="bx bx-plus"></i>
                   </div>
@@ -720,28 +710,103 @@ const Landing = ({ loadUser }) => {
 
               <div className="col-lg-4 col-md-6 portfolio-item filter-web">
                 <a
-                  href="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/dxsgwarp2bckfonvgdpu.png"
+                  href="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/dxsgwarp2bckfonvgdpu.png"
                   data-gall="portfolioGallery"
                   className="venobox preview-link"
                   title="Web 2"
                 >
                   <img
-                    src="https://res.cloudinary.com/awshackaton/image/upload/v1599097080/assets/guide/dxsgwarp2bckfonvgdpu.png"
+                    src="https://res.cloudinary.com/davidfauzi/image/upload/v1599100724/assets/guide/dxsgwarp2bckfonvgdpu.png"
                     className="img-fluid mx-auto"
                     alt=""
                     style={{ display: "block", height: "275px" }}
-
                   />
                   <div className="portfolio-info">
                     <h4>Schedule Table</h4>
-                    <p>List all the visitation that is made by the visitor and have the ability to change the visit's access</p>
+                    <p>
+                      List all the visitation that is made by the visitor and
+                      have the ability to change the visit's access
+                    </p>
 
                     <i className="bx bx-plus"></i>
                   </div>
                 </a>
               </div>
-              <div className="col-lg-2 col-md-1 portfolio-item filter-web">
+
+              <div className="col-lg-4 col-md-6 portfolio-item filter-mobile">
+                <a
+                  href="https://res.cloudinary.com/davidfauzi/image/upload/v1655464260/assets/guide/dhn2vnzvegz6jrjnwxl9.png"
+                  data-gall="portfolioGallery"
+                  className="venobox preview-link"
+                  title="Web 2"
+                >
+                  <img
+                    src="https://res.cloudinary.com/davidfauzi/image/upload/v1655464260/assets/guide/dhn2vnzvegz6jrjnwxl9.png"
+                    className="img-fluid mx-auto"
+                    alt=""
+                    style={{ display: "block", height: "275px" }}
+                  />
+                  <div className="portfolio-info">
+                    <h4>Login Page</h4>
+                    <p>
+                      Page for use to login using our mobile apps developed using React Native
+                    </p>
+
+                    <i className="bx bx-plus"></i>
+                  </div>
+                </a>
               </div>
+              <div className="col-lg-4 col-md-6 portfolio-item filter-mobile">
+                <a
+                  href="https://res.cloudinary.com/davidfauzi/image/upload/v1655464260/assets/guide/kanfjwok1ff1zwm7mltm.png"
+                  data-gall="portfolioGallery"
+                  className="venobox preview-link"
+                  title="Web 2"
+                >
+                  <img
+                    src="https://res.cloudinary.com/davidfauzi/image/upload/v1655464260/assets/guide/kanfjwok1ff1zwm7mltm.png"
+                    className="img-fluid mx-auto"
+                    alt=""
+                    style={{ display: "block", height: "275px" }}
+                  />
+                  <div className="portfolio-info">
+                    <h4>Home Page</h4>
+                    <p>
+                      Home Page that shows various information and news
+                    </p>
+
+                    <i className="bx bx-plus"></i>
+                  </div>
+                </a>
+              </div>
+              <div className="col-lg-4 col-md-6 portfolio-item filter-mobile">
+                <a
+                  href="https://res.cloudinary.com/davidfauzi/image/upload/v1655464259/assets/guide/s77hyyjno1eu9pxgrpvu.png"
+                  data-gall="portfolioGallery"
+                  className="venobox preview-link"
+                  title="Web 2"
+                >
+                  <img
+                    src="https://res.cloudinary.com/davidfauzi/image/upload/v1655464259/assets/guide/s77hyyjno1eu9pxgrpvu.png"
+                    className="img-fluid mx-auto"
+                    alt=""
+                    style={{ display: "block", height: "275px" }}
+                  />
+                  <div className="portfolio-info">
+                    <h4>Visitor Badge</h4>
+                    <p>
+                      Simple and compact Visitor Badge that can be accessed and viewed anywhere
+                    </p>
+
+                    <i className="bx bx-plus"></i>
+                  </div>
+                </a>
+              </div>
+
+
+
+
+              <div className="col-lg-2 col-md-1 portfolio-item filter-web"></div>
             </div>
           </div>
         </section>
@@ -750,10 +815,6 @@ const Landing = ({ loadUser }) => {
           <div className="container">
             <div className="section-header">
               <h3 className="section-title">Contact Us</h3>
-              {/* <p className="section-description">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque
-              </p> */}
             </div>
           </div>
           <div class="container mt-5">
@@ -789,6 +850,7 @@ const Landing = ({ loadUser }) => {
             </div>
           </div>
           <iframe
+            title="mapsgoogle"
             src="https://maps.google.com/maps?q=jakarta&t=&z=13&ie=UTF8&iwloc=&output=embed"
             width="100%"
             height="380"
@@ -816,112 +878,3 @@ const Landing = ({ loadUser }) => {
 };
 
 export default Landing;
-
-{
-  /* <section id="team" name="team">
-          <div className="container" data-aos="fade-up">
-            <div className="section-header">
-              <h3 className="section-title">Team</h3>
-              <p className="section-description">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque
-              </p>
-            </div>
-            <div className="row">
-              <div className="col-lg-3 col-md-6">
-                <div className="member" data-aos="fade-up" data-aos-delay="100">
-                  <div className="pic">
-                    <img src="assets/img/team-1.jpg" alt="" />
-                  </div>
-                  <h4>Walter White</h4>
-                  <span>Chief Executive Officer</span>
-                  <div className="social">
-                      <i className="fa fa-twitter"></i>
-                    <a href="">
-                      <i className="fa fa-facebook"></i>
-                    </a>
-                    <a href="">
-                      <i className="fa fa-google-plus"></i>
-                    </a>
-                    <a href="">
-                      <i className="fa fa-linkedin"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-3 col-md-6">
-                <div className="member" data-aos="fade-up" data-aos-delay="200">
-                  <div className="pic">
-                    <img src="assets/img/team-2.jpg" alt="" />
-                  </div>
-                  <h4>Sarah Jhinson</h4>
-                  <span>Product Manager</span>
-                  <div className="social">
-                    <a href="">
-                      <i className="fa fa-twitter"></i>
-                    </a>
-                    <a href="">
-                      <i className="fa fa-facebook"></i>
-                    </a>
-                    <a href="">
-                      <i className="fa fa-google-plus"></i>
-                    </a>
-                    <a href="">
-                      <i className="fa fa-linkedin"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-3 col-md-6">
-                <div className="member" data-aos="fade-up" data-aos-delay="300">
-                  <div className="pic">
-                    <img src="assets/img/team-3.jpg" alt="" />
-                  </div>
-                  <h4>William Anderson</h4>
-                  <span>CTO</span>
-                  <div className="social">
-                    <a href="">
-                      <i className="fa fa-twitter"></i>
-                    </a>
-                    <a href="">
-                      <i className="fa fa-facebook"></i>
-                    </a>
-                    <a href="">
-                      <i className="fa fa-google-plus"></i>
-                    </a>
-                    <a href="">
-                      <i className="fa fa-linkedin"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="col-lg-3 col-md-6">
-                <div className="member" data-aos="fade-up" data-aos-delay="400">
-                  <div className="pic">
-                    <img src="assets/img/team-4.jpg" alt="" />
-                  </div>
-                  <h4>Amanda Jepson</h4>
-                  <span>Accountant</span>
-                  <div className="social">
-                    <a href="">
-                      <i className="fa fa-twitter"></i>
-                    </a>
-                    <a href="">
-                      <i className="fa fa-facebook"></i>
-                    </a>
-                    <a href="">
-                      <i className="fa fa-google-plus"></i>
-                    </a>
-                    <a href="">
-                      <i className="fa fa-linkedin"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> */
-}
