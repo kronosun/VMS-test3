@@ -20,7 +20,7 @@ https://drive.google.com/drive/folders/1RaoZkTeAROKc6Sm9eDxpubu1L3VAdfUQ?usp=sha
 
 # Tech Stacks
 
-![](https://github.com/davidf1000/AWSome-buildonindonesia/tree/master/docs/architecture.png)
+![](https://github.com/davidf1000/AWSome-buildonindonesia/blob/master/docs/architecture.png)
 
 ### Front end
 
@@ -53,21 +53,21 @@ Stacks :
 
 ## Landing Page
 
-![](https://github.com/davidf1000/AWSome-buildonindonesia/tree/master/docs/landing.gif)
+![](https://github.com/davidf1000/AWSome-buildonindonesia/blob/master/docs/landing.gif)
 
 ## Book
 
-![](https://github.com/davidf1000/AWSome-buildonindonesia/tree/master/docs/book.gif)
+![](https://github.com/davidf1000/AWSome-buildonindonesia/blob/master/docs/book.gif)
 
 User could book a hospital visitation by filling the form and receive digital visitor badge
 
-![](https://github.com/davidf1000/AWSome-buildonindonesia/tree/master/docs/iotdevice.gif)
+![](https://github.com/davidf1000/AWSome-buildonindonesia/blob/master/docs/iotdevice.gif)
 
 User could scan the badge in our IoT Devices to verify the visitation
 
 ## Dashboard
 
-![](https://github.com/davidf1000/AWSome-buildonindonesia/tree/master/docs/dashboard.gif)
+![](https://github.com/davidf1000/AWSome-buildonindonesia/blob/master/docs/dashboard.gif)
 
 Hospital admin could use the dashboard to monitor hospital ward capacity and customize the visitation rule
 
