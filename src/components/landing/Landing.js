@@ -272,7 +272,7 @@ const Landing = ({ loadUser }) => {
                  */}
                 <img
                   className="img-profile shadow rounded-circle mx-1 mb-3"
-                  src="https://cdn2.tstatic.net/tribunnewswiki/foto/bank/images/rsupn-dr-cipto-mangunkusumo.jpg"
+                  src="https://t-2.tstatic.net/tribunnewswiki/foto/bank/images/rsupn-dr-cipto-mangunkusumo.jpg"
                   style={{ width: "150px", height: "130px" }}
                   alt="Cipto Mangunkusumo Hospital"
                 />
@@ -283,7 +283,7 @@ const Landing = ({ loadUser }) => {
                 {/* <span data-toggle="counter-up">521</span> */}
                 <img
                   className="img-profile shadow rounded-circle mx-1 mb-3"
-                  src="https://terminalhrd.com/public/images/article/actual_size/1502938c17c063de1276e95efd1b9822.jpg"
+                  src="https://cdc.ui.ac.id/wp-content/uploads/2022/04/Mayapada-Logo.png"
                   style={{ width: "150px", height: "130px" }}
                   alt="Mayapada Hospital"
                 />
@@ -305,7 +305,7 @@ const Landing = ({ loadUser }) => {
                 {/* <span data-toggle="counter-up">15</span> */}
                 <img
                   className="img-profile shadow rounded-circle mx-1 mb-3"
-                  src="https://upload.wikimedia.org/wikipedia/id/3/37/Logo_rshs.jpg"
+                  src="https://t-2.tstatic.net/tribunnewswiki/foto/bank/images/rumah-sakit-hasan-sadikin.jpg"
                   style={{ width: "150px", height: "130px" }}
                   alt="Hasan Sadikin Hospital"
                 />

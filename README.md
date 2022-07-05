@@ -1,23 +1,75 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 # Obscura : Seamless Visitor Management System
+
 In the amidst of COVID-19 pandemic, Indonesia is one of the countries that struggles to mitigate the pandemic due to the lack of preparation in health sectors along with its regulations. Hospitals and health facilities throughout the country have tried to adapt to the current situation and this inevitably affects its daily activities especially visitors and the visitation policy.
 Obscura is a cloud-based visitor management solution for midsize and large hospitals. It is suitable for hospitals that need a VMS that can seamlesslymonitor and identify visitors while still maintaining flexibility
 
 ## AWS Amplify
+
 Deployed on AWS Amplify Static Hosting Service : Currently unavailable
 
 ## Heroku
+
 Currently Deployed on Heroku (note that the functional of the webapps can't be accessed anymore since the serverless API is not deployed anymore) :
 <br />
 https://awsome-obscura.herokuapp.com
 
 ## Promotional Video
+
 Also Check and watch our Pitch Deck and Demonstration video here :
 https://drive.google.com/drive/folders/1RaoZkTeAROKc6Sm9eDxpubu1L3VAdfUQ?usp=sharing
-## Project Update
-We Also Created mobile apps version for this project, 
+
+# Tech Stacks
+
+![](https://github.com/davidf1000/AWSome-buildonindonesia/tree/master/docs/architecture.png)
+
+### Front end
+
+- ReactJS (CRA)
+- Javascript
+- Bootstrap
+- Redux
+- AWS Cognito (Auth)
+- Cloudinary (Cloud Storage)
+- AWS Amplify (SPA Static deployment)
+
+### Backend
+
+- AWS Lambda and API Gateway
+- AWS DynamoDB (noSQL)
+- AWS IoT Core
+
+## Mobile Application
+
+We Also Created mobile apps version for this project,
 https://github.com/davidf1000/MAGEITS_Mobile
+<br/>
+Stacks :
+
+- React Native with Expo
+- Javascript
+- Redux
+
+# Features
+
+## Landing Page
+
+![](https://github.com/davidf1000/AWSome-buildonindonesia/tree/master/docs/landing.gif)
+
+## Book
+
+![](https://github.com/davidf1000/AWSome-buildonindonesia/tree/master/docs/book.gif)
+
+User could book a hospital visitation by filling the form and receive digital visitor badge
+
+![](https://github.com/davidf1000/AWSome-buildonindonesia/tree/master/docs/iotdevice.gif)
+
+User could scan the badge in our IoT Devices to verify the visitation
+
+## Dashboard
+
+![](https://github.com/davidf1000/AWSome-buildonindonesia/tree/master/docs/dashboard.gif)
+
+Hospital admin could use the dashboard to monitor hospital ward capacity and customize the visitation rule
 
 ## Available Scripts
 
