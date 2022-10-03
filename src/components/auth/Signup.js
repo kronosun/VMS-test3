@@ -142,7 +142,7 @@ const Signup = ({ setAlert, alert }) => {
     data.append("upload_preset", "userimages");
     const body = data;
     const res = await axios.post(
-      "https://api.cloudinary.com/v1_1/awshackaton/image/upload",
+      "https://api.cloudinary.com/v1_1/dsogqdean/image/upload",
       body
     );
     //Upload
@@ -157,7 +157,7 @@ const Signup = ({ setAlert, alert }) => {
     data.append("upload_preset", "userimages");
     const body = data;
     const res = await axios.post(
-      "https://api.cloudinary.com/v1_1/awshackaton/image/upload",
+      "https://api.cloudinary.com/v1_1/dsogqdean/image/upload",
       body
     );
     //Upload

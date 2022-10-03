@@ -22,7 +22,7 @@ const Landing = ({ loadUser }) => {
                 duration={500}
                 className="text-light"
               >
-                Obscura
+                Security One
               </Links>
             </h1>
           </div>
@@ -179,8 +179,8 @@ const Landing = ({ loadUser }) => {
               <div className="col-lg-6 content order-lg-1 order-2">
                 <h2 className="title">About Us</h2>
                 <p>
-                  Obscura is a cloud-based visitor management solution for
-                  midsize and large hospitals. It is suitable for hospitals that
+                  Security One is a cloud-based visitor management solution for
+                  midsize and large locations. It is suitable for locations that
                   need a VMS that can seamlessly monitor and identify visitors
                   while still maintaining flexibility.
                 </p>
@@ -197,7 +197,7 @@ const Landing = ({ loadUser }) => {
                     <a href="">Virus-Free Environment</a>
                   </h4>
                   <p className="description">
-                    Obscura provides a contactless visitor management system
+                    Security One provides a contactless visitor management system
                     that can minimize human interaction and skin-to-surface
                     contact as these are the way viruses spread, including
                     COVID-19.
@@ -216,9 +216,9 @@ const Landing = ({ loadUser }) => {
                     <a href="">Low-Cost System</a>
                   </h4>
                   <p className="description">
-                    Obscura is a cloud-based web application VMS with a fully
+                    Security One is a cloud-based web application VMS with a fully
                     serverless architecture that is built using AWS services.
-                    Obscura will help hospitals to reduce operating cost,
+                    Security One will help locations to reduce operating cost,
                     especially in visitor management aspect, since there will be
                     less manpower needed for managing the system and
                     infrastructures needed to support Page 6 of 18 the system.
@@ -237,10 +237,10 @@ const Landing = ({ loadUser }) => {
                   </h4>
                   <p className="description">
                     As our product’s system needs very few man powers, this will
-                    help hospitals to improve overall productivity by allocating
-                    man powers to other more crucial sectors. Obscura already
+                    help locations to improve overall productivity by allocating
+                    man powers to other more crucial sectors. Security One already
                     provides a well-automated system which gives management
-                    result as demanded by hospitals which is to maintain
+                    result as demanded by locations which is to maintain
                     well-organized visitor management.
                   </p>
                 </div>
@@ -262,7 +262,7 @@ const Landing = ({ loadUser }) => {
             <div className="section-header">
               <h3 className="section-title">Our Partners </h3>
               <p className="section-description">
-                We are currently partnering with more than 100 hospitals and
+                We are currently partnering with more than 100 locations and
                 public health centers
               </p>
             </div>
@@ -349,7 +349,7 @@ const Landing = ({ loadUser }) => {
                     <a href="#">Monitoring </a>
                   </h4>
                   <p className="description">
-                    Enables hospitals to count live visitor number per-bed in
+                    Enables locations to count live visitor number per-bed in
                     every ward and livestream it on any location in the hospital
                     using a display device such as TV Screen and Monitor
                   </p>
@@ -386,7 +386,7 @@ const Landing = ({ loadUser }) => {
                   <p className="description">
                     Uses web-based visitation booking for visitors to plan their
                     visits in advance through pre-registration process, thus
-                    avoiding unwanted crowd within the hospitals
+                    avoiding unwanted crowd within the locations
                   </p>
                 </div>
               </div>
@@ -421,7 +421,7 @@ const Landing = ({ loadUser }) => {
                 <p className="cta-text">
                   {" "}
                   Directly experience the advance of contactless environment
-                  with Obscura system
+                  with Security One system
                 </p>
               </div>
               <div className="col-lg-3 cta-btn-container text-center">
@@ -867,7 +867,7 @@ const Landing = ({ loadUser }) => {
 
         <div className="container">
           <div className="copyright">
-            &copy; Copyright <strong>2020</strong> Obscura.
+            &copy; Copyright <strong>2020</strong> Security One.
             <br />
             <br /> All Rights Reserved
           </div>
