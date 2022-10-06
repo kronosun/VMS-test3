@@ -78,7 +78,7 @@ export const signupCognito = async (
   gender,
   birthDate,
   address,
-  phone,
+  phone_number,
   profile,
   ektp
 ) => {
