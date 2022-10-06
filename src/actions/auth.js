@@ -103,7 +103,7 @@ export const signupCognito = async (
     Value: name,
   };
   const phoneAttribute = {
-    Name: "phone",
+    Name: "phone_number",
     Value: phone.toString(),
   };
   const adminAttribute = {
